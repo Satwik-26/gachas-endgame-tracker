@@ -11,16 +11,13 @@
 
     <style>
         :root {
-            /* Apple Typography */
             --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
             --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
             
-            /* Apple Glass Tokens */
             --glass-bg: rgba(20, 20, 25, 0.45);
             --glass-border: rgba(255, 255, 255, 0.1);
             --box-bg: rgba(0, 0, 0, 0.4);
             
-            /* Game Colors */
             --hsr-accent: #b388ff;
             --hsr-glow: rgba(179, 136, 255, 0.4);
             --genshin-accent: #00d2ff;
@@ -360,24 +357,24 @@
             { 
                 id: 'genshin', 
                 name: 'Genshin Impact', 
-                icon: `<img src="https://play-lh.googleusercontent.com/So91qs_eRRratijJwsZuD4t9MnEdT6l7_W9N6P-39yUoX-hXJidrP-E3XWvK4h36oT4=s128-rw" alt="Genshin Impact">`
+                icon: '<img src="genshin.png" alt="Genshin Impact">'
             },
             { 
                 id: 'hsr', 
                 name: 'Honkai: Star Rail', 
-                icon: `<img src="https://play-lh.googleusercontent.com/0i33fGq2oHhBvD6U62h4_U9Zg2eYIubC-3xXw5jA2G3D2i_K0Jj2y8rN9e8N0I19_2Q=s128-rw" alt="Honkai Star Rail">`
+                icon: '<img src="hsr.png" alt="Honkai Star Rail">'
             },
             { 
                 id: 'zzz', 
                 name: 'Zenless Zone Zero', 
-                icon: `<img src="https://play-lh.googleusercontent.com/9nF-u5H4180dZt-2868K7F81sT8n69t2z8p_n2D-G_a_M34y4y3T1wXw0Q44h9w116w=s128-rw" alt="Zenless Zone Zero">`
+                icon: '<img src="zzz.png" alt="Zenless Zone Zero">'
             },
             { 
                 id: 'wuwa', 
                 name: 'Wuthering Waves', 
-                icon: `<img src="https://play-lh.googleusercontent.com/4qXj87GvL4XyG8_1iO2tA4E7Qn3g74uPzW-F8Yv-yYd3y_h8eZ_7r95P_6d_b84X8Q=s128-rw" alt="Wuthering Waves">`
+                icon: '<img src="wuwa.png" alt="Wuthering Waves">'
             }
-        ];
+        ]
 
         const modes = [
             { id: 'sa', name: 'Spiral Abyss', gameId: 'genshin', type: 'monthly', resetDay: 16 },
@@ -390,33 +387,32 @@
             { id: 'da', name: 'Deadly Assault', gameId: 'zzz', anchorUTC: Date.UTC(2026, 8, 24, 20, 0, 0), days: 14 },
             { id: 'toa', name: 'Tower of Adversity', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 9, 11, 20, 0, 0), days: 14 },
             { id: 'ww', name: 'Whimpering Wastes', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 8, 27, 20, 0, 0), days: 14 }
-        ];
+        ]
 
         const container = document.getElementById('tracker-container')
         const regionSelect = document.getElementById('region-select')
 
-        // Generate DOM dynamically grouped by game
         games.forEach(game => {
-            const gameModes = modes.filter(m => m.gameId === game.id);
-            if (gameModes.length === 0) return;
+            const gameModes = modes.filter(m => m.gameId === game.id)
+            if (gameModes.length === 0) return
 
-            const section = document.createElement('div');
-            section.className = `game-section ${game.id}`;
+            const section = document.createElement('div')
+            section.className = `game-section ${game.id}`
             section.innerHTML = `
                 <div class="game-header">
                     ${game.icon}
                     <h2>${game.name}</h2>
                 </div>
                 <div class="grid" id="grid-${game.id}"></div>
-            `;
-            container.appendChild(section);
+            `
+            container.appendChild(section)
 
-            const grid = document.getElementById(`grid-${game.id}`);
+            const grid = document.getElementById(`grid-${game.id}`)
 
             gameModes.forEach(mode => {
-                const card = document.createElement('div');
-                card.className = `card`;
-                card.id = `card-${mode.id}`;
+                const card = document.createElement('div')
+                card.className = `card`
+                card.id = `card-${mode.id}`
                 card.innerHTML = `
                     <div class="mode-header">
                         <div class="title-group">
@@ -444,10 +440,10 @@
                         </div>
                     </div>
                     <div class="date-display" id="date-${mode.id}"></div>
-                `;
-                grid.appendChild(card);
-            });
-        });
+                `
+                grid.appendChild(card)
+            })
+        })
 
         function calculateMonthlyReset(day, offset) {
             const nowLocal = new Date().getTime() + (offset * 3600000)
@@ -482,7 +478,6 @@
             const offset = parseFloat(regionSelect.value)
             const now = new Date().getTime()
 
-            // Pass 1: Calculate raw remaining times
             modes.forEach(mode => {
                 let targetMs
                 if (mode.type === 'monthly') {
@@ -491,29 +486,27 @@
                     targetMs = calculateCycleReset(mode.anchorUTC, mode.days, offset)
                 }
 
-                mode.targetMs = targetMs;
-                mode.currentDiff = targetMs - now;
-            });
+                mode.targetMs = targetMs
+                mode.currentDiff = targetMs - now
+            })
 
-            // Pass 2: Sort the grid layout and set active badges
             games.forEach(game => {
-                const gameModes = modes.filter(m => m.gameId === game.id);
-                gameModes.sort((a, b) => a.currentDiff - b.currentDiff);
+                const gameModes = modes.filter(m => m.gameId === game.id)
+                gameModes.sort((a, b) => a.currentDiff - b.currentDiff)
                 
                 gameModes.forEach((mode, index) => {
-                    const card = document.getElementById(`card-${mode.id}`);
-                    const badge = document.getElementById(`badge-${mode.id}`);
+                    const card = document.getElementById(`card-${mode.id}`)
+                    const badge = document.getElementById(`badge-${mode.id}`)
                     
-                    if (card) card.style.order = index;
+                    if (card) card.style.order = index
                     
                     if (badge) {
-                        if (index === 0) badge.classList.add('active');
-                        else badge.classList.remove('active');
+                        if (index === 0) badge.classList.add('active')
+                        else badge.classList.remove('active')
                     }
-                });
-            });
+                })
+            })
 
-            // Pass 3: Update the actual numbers
             modes.forEach(mode => {
                 const diff = mode.currentDiff
                 const dEl = document.getElementById(`d-${mode.id}`)
