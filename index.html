@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gacha Endgame Tracker | Live Reset Timers</title>
     <meta name="description" content="Live countdown tracker for all major gacha game endgame resets. Track Memory of Chaos, Spiral Abyss, Shiyu Defense, Tower of Adversity, and more.">
-    <meta name="keywords" content="Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Wuthering Waves, endgame tracker, reset timer, Spiral Abyss, Memory of Chaos, Shiyu Defense, Tower of Adversity">
 
     <!-- PASTE YOUR GOOGLE SITE VERIFICATION META TAG ON THE BLANK LINE BELOW -->
     
@@ -68,7 +67,7 @@
         }
 
         .controls {
-            margin-bottom: 3.5rem;
+            margin-bottom: 4rem;
             display: flex;
             align-items: center;
             gap: 1rem;
@@ -104,12 +103,47 @@
             background-position: right center;
         }
 
+        #tracker-container {
+            width: 100%;
+            max-width: 1350px;
+            display: flex;
+            flex-direction: column;
+            gap: 5rem;
+        }
+
+        .game-section {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .game-header {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.25rem;
+        }
+
+        .game-header img {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            box-shadow: 0 0 16px var(--card-glow);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .game-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
-            width: 100%;
-            max-width: 1350px;
         }
 
         .card {
@@ -130,9 +164,7 @@
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             height: 3px;
             background: var(--card-accent);
             box-shadow: 0 0 20px var(--card-glow);
@@ -146,32 +178,49 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow);
         }
         
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .game-title {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            color: var(--card-accent);
-            text-shadow: 0 0 10px var(--card-glow);
-        }
+        .card:hover::before { opacity: 1; }
 
         .mode-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 2rem;
         }
 
+        .title-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
         .mode-title {
-            font-size: 1.4rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: #ffffff;
             letter-spacing: -0.01em;
+        }
+
+        .next-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--card-accent);
+            color: #000;
+            padding: 0.25rem 0.85rem;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            box-shadow: 0 0 12px var(--card-glow);
+            width: fit-content;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .next-badge.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @keyframes pulse {
@@ -187,6 +236,7 @@
             background-color: var(--card-accent);
             box-shadow: 0 0 12px var(--card-accent);
             animation: pulse 2s infinite;
+            margin-top: 0.6rem;
         }
 
         .timer-grid {
@@ -243,155 +293,25 @@
         .zzz { --card-accent: var(--zzz-accent); --card-glow: var(--zzz-glow); }
         .wuwa { --card-accent: var(--wuwa-accent); --card-glow: var(--wuwa-glow); }
 
-        .feedback-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 99px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .feedback-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 200;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            width: 90%;
-            max-width: 450px;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-        }
-
-        .modal-overlay.active .modal {
-            transform: translateY(0);
-        }
-
-        .modal h2 {
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .modal input, .modal textarea {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 1rem;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            font-size: 1rem;
-            outline: none;
-            font-family: var(--font-display);
-        }
-
-        .modal input:focus, .modal textarea:focus {
-            border-color: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 0 10px rgba(255,255,255,0.1);
-        }
-
-        .modal textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .modal-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .btn-cancel {
-            background: transparent;
-            border: none;
-            color: #a1a1aa;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .btn-submit {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 12px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .btn-submit:hover {
-            transform: scale(1.05);
-        }
-
-        .success-message {
-            display: none;
-            color: var(--zzz-accent);
-            font-weight: 700;
-            text-align: center;
-            padding: 2rem 0;
-            font-size: 1.1rem;
-        }
-
-        [data-fs-form-status="success"] .success-message {
-            display: block;
-        }
-
-        [data-fs-form-status="success"] #feedback-form {
-            display: none;
-        }
-
-        .error-text {
-            color: #ff4444;
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            display: none;
-        }
-
-        [data-fs-error]:not(:empty) {
-            display: block;
-        }
+        .feedback-btn { position: fixed; bottom: 2rem; right: 2rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.75rem 1.5rem; border-radius: 99px; font-size: 0.9rem; font-weight: 700; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 100; display: flex; align-items: center; gap: 0.5rem; }
+        .feedback-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; z-index: 200; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .modal-overlay.active { opacity: 1; pointer-events: auto; }
+        .modal { background: var(--glass-bg); border: 1px solid var(--glass-border); padding: 2.5rem; border-radius: 24px; width: 90%; max-width: 450px; transform: translateY(20px); transition: transform 0.3s ease; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .modal-overlay.active .modal { transform: translateY(0); }
+        .modal h2 { margin-bottom: 1.5rem; font-size: 1.5rem; letter-spacing: -0.01em; }
+        .modal input, .modal textarea { width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; padding: 1rem; border-radius: 12px; margin-bottom: 1rem; font-size: 1rem; outline: none; font-family: var(--font-display); }
+        .modal input:focus, .modal textarea:focus { border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px rgba(255,255,255,0.1); }
+        .modal textarea { resize: vertical; min-height: 120px; }
+        .modal-actions { display: flex; justify-content: flex-end; gap: 1rem; margin-top: 1rem; }
+        .btn-cancel { background: transparent; border: none; color: #a1a1aa; cursor: pointer; font-weight: 600; font-size: 0.95rem; }
+        .btn-submit { background: #fff; color: #000; border: none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 700; cursor: pointer; transition: transform 0.2s; }
+        .btn-submit:hover { transform: scale(1.05); }
+        .success-message { display: none; color: var(--zzz-accent); font-weight: 700; text-align: center; padding: 2rem 0; font-size: 1.1rem; }
+        [data-fs-form-status="success"] .success-message { display: block; }
+        [data-fs-form-status="success"] #feedback-form { display: none; }
+        .error-text { color: #ff4444; font-size: 0.85rem; margin-bottom: 1rem; display: none; }
+        [data-fs-error]:not(:empty) { display: block; }
     </style>
 </head>
 <body>
@@ -407,7 +327,7 @@
         </select>
     </div>
 
-    <div class="grid" id="tracker-grid"></div>
+    <div id="tracker-container"></div>
 
     <button class="feedback-btn" id="open-feedback">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -417,20 +337,16 @@
     <div class="modal-overlay" id="feedback-overlay">
         <div class="modal">
             <h2>Send Feedback</h2>
-            
             <div id="form-wrapper">
                 <form id="feedback-form">
                     <input type="text" name="name" placeholder="Your Name (optional)" data-fs-field>
-                    
                     <textarea name="message" placeholder="Found a bug? Want a new feature added? Let me know!" data-fs-field required></textarea>
                     <span data-fs-error="message" class="error-text"></span>
-
                     <div class="modal-actions">
                         <button type="button" class="btn-cancel" id="close-feedback">Cancel</button>
                         <button type="submit" class="btn-submit" data-fs-submit-btn>Send Message</button>
                     </div>
                 </form>
-                
                 <div data-fs-success class="success-message">
                     Message sent successfully. Thanks for the feedback!
                 </div>
@@ -440,53 +356,98 @@
     </div>
 
     <script>
-        const modes = [
-            { id: 'moc', name: 'Memory of Chaos', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 8, 21, 20, 0, 0), days: 42 },
-            { id: 'pf', name: 'Pure Fiction', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 9, 19, 20, 0, 0), days: 42 },
-            { id: 'as', name: 'Apocalyptic Shadow', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 9, 5, 20, 0, 0), days: 42 },
-            { id: 'sa', name: 'Spiral Abyss', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 16 },
-            { id: 'it', name: 'Imaginarium Theater', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 1 },
-            { id: 'so', name: 'Stygian Onslaught', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 30 },
-            { id: 'sd', name: 'Shiyu Defense', game: 'Zenless Zone Zero', class: 'zzz', anchorUTC: Date.UTC(2026, 9, 2, 20, 0, 0), days: 14 },
-            { id: 'da', name: 'Deadly Assault', game: 'Zenless Zone Zero', class: 'zzz', anchorUTC: Date.UTC(2026, 9, 9, 20, 0, 0), days: 14 },
-            { id: 'toa', name: 'Tower of Adversity', game: 'Wuthering Waves', class: 'wuwa', anchorUTC: Date.UTC(2026, 9, 12, 20, 0, 0), days: 14 },
-            { id: 'ww', name: 'Whimpering Wastes', game: 'Wuthering Waves', class: 'wuwa', anchorUTC: Date.UTC(2026, 8, 28, 20, 0, 0), days: 14 }
-        ]
+        const games = [
+            { 
+                id: 'genshin', 
+                name: 'Genshin Impact', 
+                icon: `<img src="https://play-lh.googleusercontent.com/So91qs_eRRratijJwsZuD4t9MnEdT6l7_W9N6P-39yUoX-hXJidrP-E3XWvK4h36oT4=s128-rw" alt="Genshin Impact">`
+            },
+            { 
+                id: 'hsr', 
+                name: 'Honkai: Star Rail', 
+                icon: `<img src="https://play-lh.googleusercontent.com/0i33fGq2oHhBvD6U62h4_U9Zg2eYIubC-3xXw5jA2G3D2i_K0Jj2y8rN9e8N0I19_2Q=s128-rw" alt="Honkai Star Rail">`
+            },
+            { 
+                id: 'zzz', 
+                name: 'Zenless Zone Zero', 
+                icon: `<img src="https://play-lh.googleusercontent.com/9nF-u5H4180dZt-2868K7F81sT8n69t2z8p_n2D-G_a_M34y4y3T1wXw0Q44h9w116w=s128-rw" alt="Zenless Zone Zero">`
+            },
+            { 
+                id: 'wuwa', 
+                name: 'Wuthering Waves', 
+                icon: `<img src="https://play-lh.googleusercontent.com/4qXj87GvL4XyG8_1iO2tA4E7Qn3g74uPzW-F8Yv-yYd3y_h8eZ_7r95P_6d_b84X8Q=s128-rw" alt="Wuthering Waves">`
+            }
+        ];
 
-        const grid = document.getElementById('tracker-grid')
+        const modes = [
+            { id: 'sa', name: 'Spiral Abyss', gameId: 'genshin', type: 'monthly', resetDay: 16 },
+            { id: 'it', name: 'Imaginarium Theater', gameId: 'genshin', type: 'monthly', resetDay: 1 },
+            { id: 'so', name: 'Stygian Onslaught', gameId: 'genshin', type: 'monthly', resetDay: 30 },
+            { id: 'moc', name: 'Memory of Chaos', gameId: 'hsr', anchorUTC: Date.UTC(2026, 8, 27, 20, 0, 0), days: 42 },
+            { id: 'pf', name: 'Pure Fiction', gameId: 'hsr', anchorUTC: Date.UTC(2026, 9, 18, 20, 0, 0), days: 42 },
+            { id: 'as', name: 'Apocalyptic Shadow', gameId: 'hsr', anchorUTC: Date.UTC(2026, 9, 4, 20, 0, 0), days: 42 },
+            { id: 'sd', name: 'Shiyu Defense', gameId: 'zzz', anchorUTC: Date.UTC(2026, 9, 1, 20, 0, 0), days: 14 },
+            { id: 'da', name: 'Deadly Assault', gameId: 'zzz', anchorUTC: Date.UTC(2026, 8, 24, 20, 0, 0), days: 14 },
+            { id: 'toa', name: 'Tower of Adversity', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 9, 11, 20, 0, 0), days: 14 },
+            { id: 'ww', name: 'Whimpering Wastes', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 8, 27, 20, 0, 0), days: 14 }
+        ];
+
+        const container = document.getElementById('tracker-container')
         const regionSelect = document.getElementById('region-select')
 
-        modes.forEach(mode => {
-            const card = document.createElement('div')
-            card.className = `card ${mode.class}`
-            card.innerHTML = `
-                <div class="game-title">${mode.game}</div>
-                <div class="mode-header">
-                    <div class="mode-title">${mode.name}</div>
-                    <div class="status-dot"></div>
+        // Generate DOM dynamically grouped by game
+        games.forEach(game => {
+            const gameModes = modes.filter(m => m.gameId === game.id);
+            if (gameModes.length === 0) return;
+
+            const section = document.createElement('div');
+            section.className = `game-section ${game.id}`;
+            section.innerHTML = `
+                <div class="game-header">
+                    ${game.icon}
+                    <h2>${game.name}</h2>
                 </div>
-                <div class="timer-grid">
-                    <div class="time-box">
-                        <span class="time-val" id="d-${mode.id}">00</span>
-                        <span class="time-label">Days</span>
+                <div class="grid" id="grid-${game.id}"></div>
+            `;
+            container.appendChild(section);
+
+            const grid = document.getElementById(`grid-${game.id}`);
+
+            gameModes.forEach(mode => {
+                const card = document.createElement('div');
+                card.className = `card`;
+                card.id = `card-${mode.id}`;
+                card.innerHTML = `
+                    <div class="mode-header">
+                        <div class="title-group">
+                            <span class="next-badge" id="badge-${mode.id}">🔥 Next Up</span>
+                            <div class="mode-title">${mode.name}</div>
+                        </div>
+                        <div class="status-dot"></div>
                     </div>
-                    <div class="time-box">
-                        <span class="time-val" id="h-${mode.id}">00</span>
-                        <span class="time-label">Hours</span>
+                    <div class="timer-grid">
+                        <div class="time-box">
+                            <span class="time-val" id="d-${mode.id}">00</span>
+                            <span class="time-label">Days</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="time-val" id="h-${mode.id}">00</span>
+                            <span class="time-label">Hours</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="time-val" id="m-${mode.id}">00</span>
+                            <span class="time-label">Mins</span>
+                        </div>
+                        <div class="time-box">
+                            <span class="time-val" id="s-${mode.id}">00</span>
+                            <span class="time-label">Secs</span>
+                        </div>
                     </div>
-                    <div class="time-box">
-                        <span class="time-val" id="m-${mode.id}">00</span>
-                        <span class="time-label">Mins</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-val" id="s-${mode.id}">00</span>
-                        <span class="time-label">Secs</span>
-                    </div>
-                </div>
-                <div class="date-display" id="date-${mode.id}"></div>
-            `
-            grid.appendChild(card)
-        })
+                    <div class="date-display" id="date-${mode.id}"></div>
+                `;
+                grid.appendChild(card);
+            });
+        });
 
         function calculateMonthlyReset(day, offset) {
             const nowLocal = new Date().getTime() + (offset * 3600000)
@@ -521,6 +482,7 @@
             const offset = parseFloat(regionSelect.value)
             const now = new Date().getTime()
 
+            // Pass 1: Calculate raw remaining times
             modes.forEach(mode => {
                 let targetMs
                 if (mode.type === 'monthly') {
@@ -529,7 +491,31 @@
                     targetMs = calculateCycleReset(mode.anchorUTC, mode.days, offset)
                 }
 
-                const diff = targetMs - now
+                mode.targetMs = targetMs;
+                mode.currentDiff = targetMs - now;
+            });
+
+            // Pass 2: Sort the grid layout and set active badges
+            games.forEach(game => {
+                const gameModes = modes.filter(m => m.gameId === game.id);
+                gameModes.sort((a, b) => a.currentDiff - b.currentDiff);
+                
+                gameModes.forEach((mode, index) => {
+                    const card = document.getElementById(`card-${mode.id}`);
+                    const badge = document.getElementById(`badge-${mode.id}`);
+                    
+                    if (card) card.style.order = index;
+                    
+                    if (badge) {
+                        if (index === 0) badge.classList.add('active');
+                        else badge.classList.remove('active');
+                    }
+                });
+            });
+
+            // Pass 3: Update the actual numbers
+            modes.forEach(mode => {
+                const diff = mode.currentDiff
                 const dEl = document.getElementById(`d-${mode.id}`)
                 const hEl = document.getElementById(`h-${mode.id}`)
                 const mEl = document.getElementById(`m-${mode.id}`)
@@ -554,7 +540,7 @@
                 mEl.innerText = m.toString().padStart(2, '0')
                 sEl.innerText = s.toString().padStart(2, '0')
                 
-                const resetDate = new Date(targetMs)
+                const resetDate = new Date(mode.targetMs)
                 const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
                 dateEl.innerText = "Local Time: " + resetDate.toLocaleDateString(undefined, options)
             })
