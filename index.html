@@ -3,336 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gacha Endgame Tracker</title>
+    <title>Gacha Endgame Tracker | Live Reset Timers</title>
+    <meta name="description" content="Live countdown tracker for all major gacha game endgame resets. Track Memory of Chaos, Spiral Abyss, Shiyu Defense, Tower of Adversity, and more.">
+    <meta name="keywords" content="Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Wuthering Waves, endgame tracker, reset timer, Spiral Abyss, Memory of Chaos, Shiyu Defense, Tower of Adversity">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- PASTE YOUR GOOGLE SITE VERIFICATION META TAG ON THE BLANK LINE BELOW -->
     
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Space Grotesk', 'sans-serif']
-                    }
-                }
-            }
-        }
-    </script>
 
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         body {
-            background-color: #020617;
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.05), transparent 40%),
-                radial-gradient(circle at 85% 30%, rgba(192, 132, 252, 0.05), transparent 40%),
-                radial-gradient(circle at 50% 80%, rgba(190, 242, 100, 0.04), transparent 40%),
-                radial-gradient(circle at 80% 90%, rgba(250, 204, 21, 0.04), transparent 40%);
+            background-color: #121212;
+            color: #ffffff;
             min-height: 100vh;
-            color: #f8fafc
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-
-        .glass-card {
-            background: rgba(15, 15, 20, 0.5);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.05)
+        h1 {
+            margin-bottom: 0.5rem;
+            text-align: center;
+            font-size: 2.5rem;
         }
-
-        .timer-cell {
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2)
+        .controls {
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
         }
+        select {
+            background: #2a2a2a;
+            color: white;
+            border: 1px solid #444;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .game-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        .mode-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        .timer {
+            font-size: 2rem;
+            font-weight: monospace;
+            color: #00ffcc;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+        .date-display {
+            font-size: 0.85rem;
+            color: #aaaaaa;
+            text-align: center;
+            margin-top: auto;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 0.5rem;
+            border-radius: 6px;
+        }
+        
+        .hsr .game-title { color: #d8a56d; }
+        .genshin .game-title { color: #ebd9b4; }
+        .zzz .game-title { color: #ccff00; }
+        .wuwa .game-title { color: #f2e3c6; }
     </style>
 </head>
-<body class="antialiased relative overflow-x-hidden p-4 sm:p-8 md:p-12">
+<body>
 
-    <div class="relative z-10 max-w-7xl mx-auto flex flex-col items-center">
-        
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black mb-3 text-transparent bg-clip-text bg-gradient-to-r from-slate-100 to-slate-400 text-center drop-shadow-md font-display tracking-tight">
-            Gacha Endgame Trackers
-        </h1>
-        <p class="text-slate-400 mb-8 text-center text-sm sm:text-base font-medium tracking-wide">
-            Live Global Countdowns & Reset Dates
-        </p>
-        
-        <!-- Region Selector -->
-        <div class="mb-10 flex flex-col md:flex-row items-center gap-4 bg-slate-900/60 p-2 sm:p-3 rounded-2xl border border-white/10 backdrop-blur-md shadow-xl w-full max-w-2xl justify-center">
-            <span class="text-xs sm:text-sm font-bold tracking-widest text-slate-400 uppercase">Server Region:</span>
-            <div class="flex flex-wrap justify-center gap-2">
-                <button class="region-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 bg-white/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/20" data-offset="8">Asia (UTC+8)</button>
-                <button class="region-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:bg-white/10 border border-transparent hover:border-white/10" data-offset="-5">America (UTC-5)</button>
-                <button class="region-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:bg-white/10 border border-transparent hover:border-white/10" data-offset="1">Europe (UTC+1)</button>
-            </div>
-        </div>
-        
-        <div id="grid-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 w-full">
-            <!-- Cards injected by JS -->
-        </div>
-        
+    <h1>Endgame Resets</h1>
+    
+    <div class="controls">
+        <label for="region-select">Server Region</label>
+        <select id="region-select">
+            <option value="8">Asia (UTC+8)</option>
+            <option value="-5">America (UTC-5)</option>
+            <option value="1">Europe (UTC+1)</option>
+        </select>
     </div>
 
+    <div class="grid" id="tracker-grid"></div>
+
     <script>
-        // Global state for selected server timezone offset
-        let currentOffset = 8; 
+        const modes = [
+            { id: 'moc', name: 'Memory of Chaos', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 8, 21, 20, 0, 0), days: 42 },
+            { id: 'pf', name: 'Pure Fiction', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 9, 19, 20, 0, 0), days: 42 },
+            { id: 'as', name: 'Apocalyptic Shadow', game: 'Honkai Star Rail', class: 'hsr', anchorUTC: Date.UTC(2026, 9, 5, 20, 0, 0), days: 42 },
+            { id: 'sa', name: 'Spiral Abyss', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 16 },
+            { id: 'it', name: 'Imaginarium Theater', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 1 },
+            { id: 'so', name: 'Stygian Onslaught', game: 'Genshin Impact', class: 'genshin', type: 'monthly', resetDay: 30 },
+            { id: 'sd', name: 'Shiyu Defense', game: 'Zenless Zone Zero', class: 'zzz', anchorUTC: Date.UTC(2026, 9, 2, 20, 0, 0), days: 14 },
+            { id: 'da', name: 'Deadly Assault', game: 'Zenless Zone Zero', class: 'zzz', anchorUTC: Date.UTC(2026, 9, 9, 20, 0, 0), days: 14 },
+            { id: 'toa', name: 'Tower of Adversity', game: 'Wuthering Waves', class: 'wuwa', anchorUTC: Date.UTC(2026, 9, 12, 20, 0, 0), days: 14 },
+            { id: 'ww', name: 'Whimpering Wastes', game: 'Wuthering Waves', class: 'wuwa', anchorUTC: Date.UTC(2026, 8, 28, 20, 0, 0), days: 14 }
+        ]
 
-        // Calculates exact UTC time for a monthly reset at 04:00 server time
-        const getMonthlyReset = (targetDay, offsetHours) => {
-            const now = new Date();
-            // Get current time localized to the target server
-            const serverNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offsetHours * 3600000);
+        const grid = document.getElementById('tracker-grid')
+        const regionSelect = document.getElementById('region-select')
+
+        modes.forEach(mode => {
+            const card = document.createElement('div')
+            card.className = `card ${mode.class}`
+            card.innerHTML = `
+                <div class="game-title">${mode.game}</div>
+                <div class="mode-title">${mode.name}</div>
+                <div class="timer" id="timer-${mode.id}">Loading...</div>
+                <div class="date-display" id="date-${mode.id}"></div>
+            `
+            grid.appendChild(card)
+        })
+
+        function calculateMonthlyReset(day, offset) {
+            const nowLocal = new Date().getTime() + (offset * 3600000)
+            const d = new Date(nowLocal)
+            let targetMonth = d.getUTCMonth()
+            let targetYear = d.getUTCFullYear()
             
-            let resetYear = serverNow.getFullYear();
-            let resetMonth = serverNow.getMonth();
-            
-            // Move to next month if past 04:00 on reset day
-            if (serverNow.getDate() > targetDay || (serverNow.getDate() === targetDay && serverNow.getHours() >= 4)) {
-                resetMonth++;
-                if (resetMonth > 11) {
-                    resetMonth = 0;
-                    resetYear++;
+            if (d.getUTCDate() > day || (d.getUTCDate() === day && d.getUTCHours() >= 4)) {
+                targetMonth++
+                if (targetMonth > 11) {
+                    targetMonth = 0
+                    targetYear++
                 }
             }
-            
-            // Server resets at 04:00. Convert back to UTC based on offset.
-            return Date.UTC(resetYear, resetMonth, targetDay, 4 - offsetHours, 0, 0, 0);
+            const targetUTC = Date.UTC(targetYear, targetMonth, day, 4, 0, 0)
+            return targetUTC - (offset * 3600000)
         }
 
-        // Calculates exact UTC time for cyclical resets (14/42 days)
-        const getPeriodicReset = (anchorY, anchorM, anchorD, intervalDays, offsetHours) => {
-            const now = Date.now();
-            const intervalMs = intervalDays * 24 * 60 * 60 * 1000;
-            
-            // Anchor is given in server local time at 04:00
-            const anchorUTC = Date.UTC(anchorY, anchorM, anchorD, 4 - offsetHours, 0, 0, 0);
-            
-            if (now < anchorUTC) return anchorUTC;
-            
-            const timePassed = now - anchorUTC;
-            const cyclesPassed = Math.floor(timePassed / intervalMs);
-            
-            return anchorUTC + ((cyclesPassed + 1) * intervalMs);
-        }
-
-        // Calculates exact UTC time for weekly resets
-        const getWeeklyReset = (targetDayOfWeek, offsetHours) => {
-            const now = new Date();
-            const serverNow = new Date(now.getTime() + now.getTimezoneOffset() * 60000 + offsetHours * 3600000);
-            
-            let daysToAdd = (targetDayOfWeek - serverNow.getDay() + 7) % 7;
-            
-            if (daysToAdd === 0 && serverNow.getHours() >= 4) {
-                daysToAdd = 7;
-            }
-            
-            const resetDate = new Date(serverNow);
-            resetDate.setDate(serverNow.getDate() + daysToAdd);
-            
-            return Date.UTC(resetDate.getFullYear(), resetDate.getMonth(), resetDate.getDate(), 4 - offsetHours, 0, 0, 0);
-        }
-
-        const trackers = [
-            {
-                game: "Honkai Star Rail",
-                accent: "#c084fc",
-                modes: [
-                    // MoC reseting in 3 days (Sept 28)
-                    { name: "Memory of Chaos", getResetTime: () => getPeriodicReset(2026, 8, 28, 42, currentOffset) },
-                    // Pure Fiction on 19 October
-                    { name: "Pure Fiction", getResetTime: () => getPeriodicReset(2026, 9, 19, 42, currentOffset) },
-                    // Apocalyptic Shadow on 5 October
-                    { name: "Apocalyptic Shadow", getResetTime: () => getPeriodicReset(2026, 9, 5, 42, currentOffset) }
-                ]
-            },
-            {
-                game: "Genshin Impact",
-                accent: "#38bdf8",
-                modes: [
-                    { name: "Spiral Abyss", getResetTime: () => getMonthlyReset(16, currentOffset) },
-                    { name: "Imaginarium Theater", getResetTime: () => getMonthlyReset(1, currentOffset) },
-                    // Stygian Onslaught on the 30th
-                    { name: "Stygian Onslaught", getResetTime: () => getMonthlyReset(30, currentOffset) } 
-                ]
-            },
-            {
-                game: "Zenless Zone Zero",
-                accent: "#bef264",
-                modes: [
-                    // Shiyu Defense on 2 October
-                    { name: "Shiyu Defense", getResetTime: () => getMonthlyReset(2, currentOffset) },
-                    { name: "Deadly Assault", getResetTime: () => getPeriodicReset(2026, 7, 28, 14, currentOffset) } 
-                ]
-            },
-            {
-                game: "Wuthering Waves",
-                accent: "#facc15",
-                modes: [
-                    // Tower of Adversity on 12 October
-                    { name: "Tower of Adversity", getResetTime: () => getPeriodicReset(2026, 9, 12, 14, currentOffset) },
-                    // Whimpering Wastes on 28 September 
-                    { name: "Whimpering Wastes", getResetTime: () => getMonthlyReset(28, currentOffset) } 
-                ]
-            }
-        ];
-
-        const gridContainer = document.getElementById('grid-container');
-        const activeTimers = [];
-
-        function buildGrid() {
-            gridContainer.innerHTML = ''; 
-            activeTimers.length = 0;
-
-            const allModes = [];
-            trackers.forEach(gameData => {
-                if (gameData && Array.isArray(gameData.modes)) {
-                    gameData.modes.forEach(mode => {
-                        allModes.push({
-                            gameName: gameData.game,
-                            accent: gameData.accent,
-                            modeName: mode.name,
-                            getResetTime: mode.getResetTime
-                        });
-                    });
-                }
-            });
-
-            allModes.forEach(modeData => {
-                const card = document.createElement('div');
-                card.className = "glass-card rounded-2xl p-5 sm:p-6 flex flex-col gap-4 relative overflow-hidden group transition-all hover:bg-white/5";
-                
-                const topAccent = document.createElement('div');
-                topAccent.className = "absolute top-0 left-0 right-0 h-[3px] opacity-90";
-                topAccent.style.backgroundColor = modeData.accent;
-                topAccent.style.boxShadow = `0 2px 10px ${modeData.accent}80`;
-                card.appendChild(topAccent);
-                
-                const headerDiv = document.createElement('div');
-                headerDiv.className = "flex flex-col gap-1";
-                
-                const gameLabel = document.createElement('span');
-                gameLabel.className = "text-[10px] sm:text-xs font-bold tracking-widest uppercase opacity-70";
-                gameLabel.style.color = modeData.accent;
-                gameLabel.innerText = modeData.gameName;
-                
-                const modeTitleDiv = document.createElement('div');
-                modeTitleDiv.className = "flex items-center justify-between";
-                
-                const modeTitle = document.createElement('h3');
-                modeTitle.className = "text-lg sm:text-xl font-display font-bold text-slate-100";
-                modeTitle.innerText = modeData.modeName;
-                
-                const liveIndicator = document.createElement('span');
-                liveIndicator.className = "flex h-2 w-2 rounded-full";
-                liveIndicator.style.backgroundColor = modeData.accent;
-                liveIndicator.style.boxShadow = `0 0 8px ${modeData.accent}`;
-                
-                modeTitleDiv.appendChild(modeTitle);
-                modeTitleDiv.appendChild(liveIndicator);
-                
-                headerDiv.appendChild(gameLabel);
-                headerDiv.appendChild(modeTitleDiv);
-                card.appendChild(headerDiv);
-                
-                const timerGrid = document.createElement('div');
-                timerGrid.className = "grid grid-cols-4 gap-2 mt-2";
-                
-                const cells = {};
-                
-                const timeUnits = ['Days', 'Hours', 'Mins', 'Secs'];
-                timeUnits.forEach(unit => {
-                    const cell = document.createElement('div');
-                    cell.className = "timer-cell rounded-lg py-2 flex flex-col items-center justify-center";
-                    
-                    const numSpan = document.createElement('span');
-                    numSpan.className = "text-lg sm:text-2xl font-display font-bold tabular-nums tracking-tight leading-none";
-                    numSpan.style.color = modeData.accent;
-                    numSpan.innerText = "00";
-                    
-                    const labelSpan = document.createElement('span');
-                    labelSpan.className = "text-[8px] sm:text-[9px] text-slate-400 uppercase font-bold tracking-[0.1em] mt-1";
-                    labelSpan.innerText = unit;
-                    
-                    cell.appendChild(numSpan);
-                    cell.appendChild(labelSpan);
-                    timerGrid.appendChild(cell);
-                    
-                    cells[unit] = numSpan;
-                });
-                card.appendChild(timerGrid);
-
-                // Add Reset Date Display
-                const dateDisplay = document.createElement('div');
-                dateDisplay.className = "mt-1 text-center text-[10px] sm:text-xs font-medium text-slate-300/80 bg-black/30 rounded-lg py-2 border border-white/5 transition-opacity duration-300";
-                dateDisplay.innerText = "Loading Date...";
-                card.appendChild(dateDisplay);
-                
-                gridContainer.appendChild(card);
-                
-                activeTimers.push({
-                    getResetTime: modeData.getResetTime,
-                    elements: cells,
-                    dateElement: dateDisplay
-                });
-            });
+        function calculateCycleReset(anchor, days, offset) {
+            const now = new Date().getTime()
+            const regionShift = (8 - offset) * 3600000
+            const regionAnchor = anchor + regionShift
+            const cycleMs = days * 24 * 3600000
+            const elapsed = now - regionAnchor
+            let remaining = cycleMs - (elapsed % cycleMs)
+            if (remaining === cycleMs) remaining = 0
+            if (elapsed < 0) return regionAnchor
+            return now + remaining
         }
 
         function updateTimers() {
-            const now = Date.now();
-            
-            activeTimers.forEach(timer => {
-                let target = timer.getResetTime();
-                let diff = target - now;
-                
-                if (diff < 0) {
-                    target = timer.getResetTime();
-                    diff = Math.max(0, target - now);
-                }
-                
-                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-                const minutes = Math.floor((diff / 1000 / 60) % 60);
-                const seconds = Math.floor((diff / 1000) % 60);
-                
-                timer.elements['Days'].innerText = String(days).padStart(2, '0');
-                timer.elements['Hours'].innerText = String(hours).padStart(2, '0');
-                timer.elements['Mins'].innerText = String(minutes).padStart(2, '0');
-                timer.elements['Secs'].innerText = String(seconds).padStart(2, '0');
+            const offset = parseFloat(regionSelect.value)
+            const now = new Date().getTime()
 
-                // Update date text to user's local timezone
-                const resetDateObj = new Date(target);
-                const dateString = resetDateObj.toLocaleString(undefined, {
-                    weekday: 'short', month: 'short', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit'
-                });
-                timer.dateElement.innerText = `Local Time: ${dateString}`;
-            });
+            modes.forEach(mode => {
+                let targetMs
+                if (mode.type === 'monthly') {
+                    targetMs = calculateMonthlyReset(mode.resetDay, offset)
+                } else {
+                    targetMs = calculateCycleReset(mode.anchorUTC, mode.days, offset)
+                }
+
+                const diff = targetMs - now
+                const timerEl = document.getElementById(`timer-${mode.id}`)
+                const dateEl = document.getElementById(`date-${mode.id}`)
+
+                if (diff <= 0) {
+                    timerEl.innerText = "RESETTING NOW"
+                    return
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24))
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24)
+                const m = Math.floor((diff / 1000 / 60) % 60)
+                const s = Math.floor((diff / 1000) % 60)
+
+                timerEl.innerText = `${d}d ${h}h ${m}m ${s}s`
+                
+                const resetDate = new Date(targetMs)
+                dateEl.innerText = "Local Reset: " + resetDate.toLocaleString()
+            })
         }
 
-        // Handle Region Toggle Clicks
-        const regionBtns = document.querySelectorAll('.region-btn');
-        regionBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // Remove active classes from all
-                regionBtns.forEach(b => {
-                    b.className = "region-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:bg-white/10 border border-transparent hover:border-white/10";
-                });
-                // Add active classes to clicked
-                e.target.className = "region-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 bg-white/20 text-white shadow-[0_0_15px_rgba(255,255,255,0.1)] border border-white/20";
-                
-                currentOffset = parseInt(e.target.dataset.offset);
-                updateTimers(); 
-            });
-        });
-
-        // Start App
-        buildGrid();
-        updateTimers();
-        setInterval(updateTimers, 1000);
+        setInterval(updateTimers, 1000)
+        regionSelect.addEventListener('change', updateTimers)
+        updateTimers()
     </script>
 </body>
 </html>
