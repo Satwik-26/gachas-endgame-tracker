@@ -6,105 +6,392 @@
     <title>Gacha Endgame Tracker | Live Reset Timers</title>
     <meta name="description" content="Live countdown tracker for all major gacha game endgame resets. Track Memory of Chaos, Spiral Abyss, Shiyu Defense, Tower of Adversity, and more.">
     <meta name="keywords" content="Genshin Impact, Honkai Star Rail, Zenless Zone Zero, Wuthering Waves, endgame tracker, reset timer, Spiral Abyss, Memory of Chaos, Shiyu Defense, Tower of Adversity">
-    
+
     <!-- PASTE YOUR GOOGLE SITE VERIFICATION META TAG ON THE BLANK LINE BELOW -->
     
 
     <style>
+        :root {
+            /* Apple Typography */
+            --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
+            
+            /* Apple Glass Tokens */
+            --glass-bg: rgba(20, 20, 25, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --box-bg: rgba(0, 0, 0, 0.4);
+            
+            /* Game Colors */
+            --hsr-accent: #b388ff;
+            --hsr-glow: rgba(179, 136, 255, 0.4);
+            --genshin-accent: #00d2ff;
+            --genshin-glow: rgba(0, 210, 255, 0.4);
+            --zzz-accent: #ccff00;
+            --zzz-glow: rgba(204, 255, 0, 0.4);
+            --wuwa-accent: #fbbf24;
+            --wuwa-glow: rgba(251, 191, 36, 0.4);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-display);
+            -webkit-font-smoothing: antialiased;
         }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         body {
-            background-color: #121212;
+            background: linear-gradient(-45deg, #07090e, #13111c, #0d1a20, #0a0a0a);
+            background-size: 400% 400%;
+            animation: gradientMove 20s ease infinite;
             color: #ffffff;
             min-height: 100vh;
-            padding: 2rem;
+            padding: 4rem 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
+
         h1 {
-            margin-bottom: 0.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
             text-align: center;
-            font-size: 2.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
+
         .controls {
-            margin-bottom: 2rem;
+            margin-bottom: 3.5rem;
             display: flex;
-            gap: 1rem;
             align-items: center;
+            gap: 1rem;
             background: rgba(255, 255, 255, 0.05);
-            padding: 1rem 2rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
+
+        .controls label {
+            font-size: 0.9rem;
+            color: #a1a1aa;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
         select {
-            background: #2a2a2a;
-            color: white;
-            border: 1px solid #444;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
+            background: transparent;
+            color: #fff;
+            border: none;
             font-size: 1rem;
+            font-weight: 700;
             outline: none;
             cursor: pointer;
+            appearance: none;
+            padding-right: 1.5rem;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right center;
         }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             width: 100%;
-            max-width: 1400px;
+            max-width: 1350px;
         }
+
         .card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 1.5rem;
+            position: relative;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 1.75rem;
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(10px);
-            transition: transform 0.2s;
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--card-accent);
+            box-shadow: 0 0 20px var(--card-glow);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-        }
-        .game-title {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .mode-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
-        }
-        .timer {
-            font-size: 2rem;
-            font-weight: monospace;
-            color: #00ffcc;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
-        }
-        .date-display {
-            font-size: 0.85rem;
-            color: #aaaaaa;
-            text-align: center;
-            margin-top: auto;
-            background: rgba(0, 0, 0, 0.2);
-            padding: 0.5rem;
-            border-radius: 6px;
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow);
         }
         
-        .hsr .game-title { color: #d8a56d; }
-        .genshin .game-title { color: #ebd9b4; }
-        .zzz .game-title { color: #ccff00; }
-        .wuwa .game-title { color: #f2e3c6; }
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .game-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: var(--card-accent);
+            text-shadow: 0 0 10px var(--card-glow);
+        }
+
+        .mode-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mode-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.01em;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--card-accent);
+            box-shadow: 0 0 12px var(--card-accent);
+            animation: pulse 2s infinite;
+        }
+
+        .timer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-box {
+            background: var(--box-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 14px;
+            padding: 1rem 0.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.02);
+        }
+
+        .time-val {
+            font-family: var(--font-mono);
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1;
+            font-variant-numeric: tabular-nums;
+            color: var(--card-accent);
+            text-shadow: 0 0 15px var(--card-glow);
+            margin-bottom: 0.4rem;
+        }
+
+        .time-label {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #a1a1aa;
+            text-transform: uppercase;
+        }
+
+        .date-display {
+            font-size: 0.8rem;
+            color: #a1a1aa;
+            text-align: center;
+            margin-top: auto;
+            font-weight: 600;
+            background: rgba(0,0,0,0.2);
+            padding: 0.75rem;
+            border-radius: 10px;
+        }
+
+        .hsr { --card-accent: var(--hsr-accent); --card-glow: var(--hsr-glow); }
+        .genshin { --card-accent: var(--genshin-accent); --card-glow: var(--genshin-glow); }
+        .zzz { --card-accent: var(--zzz-accent); --card-glow: var(--zzz-glow); }
+        .wuwa { --card-accent: var(--wuwa-accent); --card-glow: var(--wuwa-glow); }
+
+        .feedback-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 99px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feedback-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            width: 90%;
+            max-width: 450px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .modal-overlay.active .modal {
+            transform: translateY(0);
+        }
+
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .modal input, .modal textarea {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            outline: none;
+            font-family: var(--font-display);
+        }
+
+        .modal input:focus, .modal textarea:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 10px rgba(255,255,255,0.1);
+        }
+
+        .modal textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .btn-cancel {
+            background: transparent;
+            border: none;
+            color: #a1a1aa;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-submit {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-submit:hover {
+            transform: scale(1.05);
+        }
+
+        .success-message {
+            display: none;
+            color: var(--zzz-accent);
+            font-weight: 700;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 1.1rem;
+        }
+
+        [data-fs-form-status="success"] .success-message {
+            display: block;
+        }
+
+        [data-fs-form-status="success"] #feedback-form {
+            display: none;
+        }
+
+        .error-text {
+            color: #ff4444;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        [data-fs-error]:not(:empty) {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -112,7 +399,7 @@
     <h1>Endgame Resets</h1>
     
     <div class="controls">
-        <label for="region-select">Server Region</label>
+        <label for="region-select">Server</label>
         <select id="region-select">
             <option value="8">Asia (UTC+8)</option>
             <option value="-5">America (UTC-5)</option>
@@ -121,6 +408,36 @@
     </div>
 
     <div class="grid" id="tracker-grid"></div>
+
+    <button class="feedback-btn" id="open-feedback">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        Feedback
+    </button>
+
+    <div class="modal-overlay" id="feedback-overlay">
+        <div class="modal">
+            <h2>Send Feedback</h2>
+            
+            <div id="form-wrapper">
+                <form id="feedback-form">
+                    <input type="text" name="name" placeholder="Your Name (optional)" data-fs-field>
+                    
+                    <textarea name="message" placeholder="Found a bug? Want a new feature added? Let me know!" data-fs-field required></textarea>
+                    <span data-fs-error="message" class="error-text"></span>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-cancel" id="close-feedback">Cancel</button>
+                        <button type="submit" class="btn-submit" data-fs-submit-btn>Send Message</button>
+                    </div>
+                </form>
+                
+                <div data-fs-success class="success-message">
+                    Message sent successfully. Thanks for the feedback!
+                </div>
+                <div data-fs-error class="error-text"></div>
+            </div>
+        </div>
+    </div>
 
     <script>
         const modes = [
@@ -144,8 +461,28 @@
             card.className = `card ${mode.class}`
             card.innerHTML = `
                 <div class="game-title">${mode.game}</div>
-                <div class="mode-title">${mode.name}</div>
-                <div class="timer" id="timer-${mode.id}">Loading...</div>
+                <div class="mode-header">
+                    <div class="mode-title">${mode.name}</div>
+                    <div class="status-dot"></div>
+                </div>
+                <div class="timer-grid">
+                    <div class="time-box">
+                        <span class="time-val" id="d-${mode.id}">00</span>
+                        <span class="time-label">Days</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-val" id="h-${mode.id}">00</span>
+                        <span class="time-label">Hours</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-val" id="m-${mode.id}">00</span>
+                        <span class="time-label">Mins</span>
+                    </div>
+                    <div class="time-box">
+                        <span class="time-val" id="s-${mode.id}">00</span>
+                        <span class="time-label">Secs</span>
+                    </div>
+                </div>
                 <div class="date-display" id="date-${mode.id}"></div>
             `
             grid.appendChild(card)
@@ -193,11 +530,17 @@
                 }
 
                 const diff = targetMs - now
-                const timerEl = document.getElementById(`timer-${mode.id}`)
+                const dEl = document.getElementById(`d-${mode.id}`)
+                const hEl = document.getElementById(`h-${mode.id}`)
+                const mEl = document.getElementById(`m-${mode.id}`)
+                const sEl = document.getElementById(`s-${mode.id}`)
                 const dateEl = document.getElementById(`date-${mode.id}`)
 
                 if (diff <= 0) {
-                    timerEl.innerText = "RESETTING NOW"
+                    dEl.innerText = "00"
+                    hEl.innerText = "00"
+                    mEl.innerText = "00"
+                    sEl.innerText = "00"
                     return
                 }
 
@@ -206,16 +549,35 @@
                 const m = Math.floor((diff / 1000 / 60) % 60)
                 const s = Math.floor((diff / 1000) % 60)
 
-                timerEl.innerText = `${d}d ${h}h ${m}m ${s}s`
+                dEl.innerText = d.toString().padStart(2, '0')
+                hEl.innerText = h.toString().padStart(2, '0')
+                mEl.innerText = m.toString().padStart(2, '0')
+                sEl.innerText = s.toString().padStart(2, '0')
                 
                 const resetDate = new Date(targetMs)
-                dateEl.innerText = "Local Reset: " + resetDate.toLocaleString()
+                const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+                dateEl.innerText = "Local Time: " + resetDate.toLocaleDateString(undefined, options)
             })
         }
 
         setInterval(updateTimers, 1000)
         regionSelect.addEventListener('change', updateTimers)
         updateTimers()
+
+        const overlay = document.getElementById('feedback-overlay')
+        const openBtn = document.getElementById('open-feedback')
+        const closeBtn = document.getElementById('close-feedback')
+
+        openBtn.addEventListener('click', () => overlay.classList.add('active'))
+        closeBtn.addEventListener('click', () => overlay.classList.remove('active'))
+        
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.classList.remove('active')
+        })
+
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments) }
+        formspree('initForm', { formElement: '#feedback-form', formId: 'xaenbozz' })
     </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
