@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
+  issues: write
 
 jobs:
   verify:
@@ -26,9 +26,8 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
-      # Nothing changed: just bump "last verified" on the main branch
-      - name: Commit verified date
-        if: steps.verify.outputs.needs_review == 'false'
+      # Save confirmed changes and the "last verified" date straight to the live site
+      - name: Commit confirmed changes
         run: |
           git config user.name "reset-bot"
           git config user.email "reset-bot@users.noreply.github.com"
@@ -36,13 +35,9 @@ jobs:
           git diff --cached --quiet || git commit -m "Verified reset schedule"
           git push
 
-      # Dates changed or something looks odd: open a PR for you to approve
-      - name: Open pull request
+      # Anything the bot couldn't confirm becomes an issue for you to look at
+      - name: Open issue for review
         if: steps.verify.outputs.needs_review == 'true'
-        uses: peter-evans/create-pull-request@v8
-        with:
-          add-paths: resets.json
-          branch: bot/reset-schedule
-          title: Reset schedule update
-          body-path: verify-summary.md
-          commit-message: Update reset schedule
+        run: gh issue create --title "Reset schedule needs review ($(date +%F))" --body-file verify-summary.md
+        env:
+          GH_TOKEN: ${{ github.token }}
