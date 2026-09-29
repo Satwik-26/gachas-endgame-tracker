@@ -38,6 +38,12 @@ jobs:
       # Anything the bot couldn't confirm becomes an issue for you to look at
       - name: Open issue for review
         if: steps.verify.outputs.needs_review == 'true'
-        run: gh issue create --title "Reset schedule needs review ($(date +%F))" --body-file verify-summary.md
+        run: |
+          open=$(gh issue list --state open --search "Reset schedule needs review in:title" --json number --jq '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body-file verify-summary.md
+          else
+            gh issue create --title "Reset schedule needs review" --body-file verify-summary.md
+          fi
         env:
           GH_TOKEN: ${{ github.token }}
