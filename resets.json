@@ -2,18 +2,85 @@
   "lastVerified": "2026-09-29",
   "notes": "Anchor times are SERVER-LOCAL time (e.g. 04:00 means 04:00 on whichever server the visitor picks). For 'cycle' modes, anchor is any confirmed past or upcoming reset; the page repeats it every `days` days.",
   "modes": [
-    { "id": "sa",  "name": "Spiral Abyss",         "gameId": "genshin", "type": "monthly", "day": 16, "hour": 4 },
-    { "id": "it",  "name": "Imaginarium Theater",  "gameId": "genshin", "type": "monthly", "day": 1,  "hour": 4 },
-    { "id": "so",  "name": "Stygian Onslaught",    "gameId": "genshin", "type": "cycle", "anchor": "2026-09-30T10:00", "days": 42 },
-
-    { "id": "moc", "name": "Memory of Chaos",      "gameId": "hsr", "type": "cycle", "anchor": "2026-09-28T04:00", "days": 42 },
-    { "id": "as",  "name": "Apocalyptic Shadow",   "gameId": "hsr", "type": "cycle", "anchor": "2026-10-05T04:00", "days": 42 },
-    { "id": "pf",  "name": "Pure Fiction",         "gameId": "hsr", "type": "cycle", "anchor": "2026-10-19T04:00", "days": 42 },
-
-    { "id": "sd",  "name": "Shiyu Defense",        "gameId": "zzz", "type": "cycle", "anchor": "2026-10-02T04:00", "days": 14 },
-    { "id": "da",  "name": "Deadly Assault",       "gameId": "zzz", "type": "cycle", "anchor": "2026-10-09T04:00", "days": 14 },
-
-    { "id": "toa", "name": "Tower of Adversity",   "gameId": "wuwa", "type": "cycle", "anchor": "2026-10-12T04:00", "days": 28 },
-    { "id": "ww",  "name": "Whimpering Wastes",    "gameId": "wuwa", "type": "cycle", "anchor": "2026-10-26T04:00", "days": 28 }
+    {
+      "id": "sa",
+      "name": "Spiral Abyss",
+      "gameId": "genshin",
+      "type": "monthly",
+      "day": 16,
+      "hour": 4
+    },
+    {
+      "id": "it",
+      "name": "Imaginarium Theater",
+      "gameId": "genshin",
+      "type": "monthly",
+      "day": 1,
+      "hour": 4
+    },
+    {
+      "id": "so",
+      "name": "Stygian Onslaught",
+      "gameId": "genshin",
+      "type": "cycle",
+      "anchor": "2026-09-30T10:00",
+      "days": 42
+    },
+    {
+      "id": "moc",
+      "name": "Memory of Chaos",
+      "gameId": "hsr",
+      "type": "cycle",
+      "anchor": "2026-09-28T04:00",
+      "days": 42
+    },
+    {
+      "id": "as",
+      "name": "Apocalyptic Shadow",
+      "gameId": "hsr",
+      "type": "cycle",
+      "anchor": "2026-10-05T04:00",
+      "days": 42
+    },
+    {
+      "id": "pf",
+      "name": "Pure Fiction",
+      "gameId": "hsr",
+      "type": "cycle",
+      "anchor": "2026-10-19T04:00",
+      "days": 42
+    },
+    {
+      "id": "sd",
+      "name": "Shiyu Defense",
+      "gameId": "zzz",
+      "type": "cycle",
+      "anchor": "2026-10-02T04:00",
+      "days": 14
+    },
+    {
+      "id": "da",
+      "name": "Deadly Assault",
+      "gameId": "zzz",
+      "type": "cycle",
+      "anchor": "2026-10-09T04:00",
+      "days": 14
+    },
+    {
+      "id": "toa",
+      "name": "Tower of Adversity",
+      "gameId": "wuwa",
+      "type": "cycle",
+      "anchor": "2026-10-12T04:00",
+      "days": 28
+    },
+    {
+      "id": "ww",
+      "name": "Whimpering Wastes",
+      "gameId": "wuwa",
+      "type": "cycle",
+      "anchor": "2026-10-26T04:00",
+      "days": 28
+    }
   ]
 }
