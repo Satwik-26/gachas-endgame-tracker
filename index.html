@@ -13,11 +13,9 @@
         :root {
             --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
             --font-mono: "SF Mono", ui-monospace, Menlo, Monaco, Consolas, monospace;
-            
             --glass-bg: rgba(20, 20, 25, 0.45);
             --glass-border: rgba(255, 255, 255, 0.1);
             --box-bg: rgba(0, 0, 0, 0.4);
-            
             --hsr-accent: #b388ff;
             --hsr-glow: rgba(179, 136, 255, 0.4);
             --genshin-accent: #00d2ff;
@@ -27,268 +25,42 @@
             --wuwa-accent: #fbbf24;
             --wuwa-glow: rgba(251, 191, 36, 0.4);
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: var(--font-display);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        @keyframes gradientMove {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        body {
-            background: linear-gradient(-45deg, #07090e, #13111c, #0d1a20, #0a0a0a);
-            background-size: 400% 400%;
-            animation: gradientMove 20s ease infinite;
-            color: #ffffff;
-            min-height: 100vh;
-            padding: 4rem 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: clamp(2.2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-            text-align: center;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
-        }
-
-        .controls {
-            margin-bottom: 4rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.75rem 1.5rem;
-            border-radius: 99px;
-            border: 1px solid var(--glass-border);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        .controls label {
-            font-size: 0.9rem;
-            color: #a1a1aa;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        select {
-            background: transparent;
-            color: #fff;
-            border: none;
-            font-size: 1rem;
-            font-weight: 700;
-            outline: none;
-            cursor: pointer;
-            appearance: none;
-            padding-right: 1.5rem;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right center;
-        }
-
-        #tracker-container {
-            width: 100%;
-            max-width: 1350px;
-            display: flex;
-            flex-direction: column;
-            gap: 5rem;
-        }
-
-        .game-section {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .game-header {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 1.25rem;
-        }
-
-        .game-header img {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            box-shadow: 0 0 16px var(--card-glow);
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .game-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            text-transform: uppercase;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .card {
-            position: relative;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 1.75rem;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: var(--card-accent);
-            box-shadow: 0 0 20px var(--card-glow);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-5px) scale(1.01);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow);
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-display); -webkit-font-smoothing: antialiased; }
+        @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        body { background: linear-gradient(-45deg, #07090e, #13111c, #0d1a20, #0a0a0a); background-size: 400% 400%; animation: gradientMove 20s ease infinite; color: #ffffff; min-height: 100vh; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; text-align: center; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .controls { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.05); padding: 0.75rem 1.5rem; border-radius: 99px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
+        .controls label { font-size: 0.9rem; color: #a1a1aa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+        select { background: transparent; color: #fff; border: none; font-size: 1rem; font-weight: 700; outline: none; cursor: pointer; appearance: none; padding-right: 1.5rem; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right center; }
+        select option { color: #000; }
+        .verified { font-size: 0.8rem; color: #71717a; margin-bottom: 4rem; text-align: center; }
+        #tracker-container { width: 100%; max-width: 1350px; display: flex; flex-direction: column; gap: 5rem; }
+        .game-section { display: flex; flex-direction: column; gap: 2rem; }
+        .game-header { display: flex; align-items: center; gap: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; }
+        .game-header img { width: 44px; height: 44px; border-radius: 10px; box-shadow: 0 0 16px var(--card-glow); border: 1px solid rgba(255,255,255,0.1); }
+        .game-header h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+        .card { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.75rem; display: flex; flex-direction: column; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); box-shadow: 0 0 20px var(--card-glow); opacity: 0.8; transition: opacity 0.3s ease; }
+        .card:hover { transform: translateY(-5px) scale(1.01); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow); }
         .card:hover::before { opacity: 1; }
-
-        .mode-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-        }
-
-        .title-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .mode-title {
-            font-size: 1.45rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.01em;
-        }
-
-        .next-badge {
-            display: inline-flex;
-            align-items: center;
-            background: var(--card-accent);
-            color: #000;
-            padding: 0.25rem 0.85rem;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            box-shadow: 0 0 12px var(--card-glow);
-            width: fit-content;
-            opacity: 0;
-            transform: translateY(-5px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .next-badge.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: var(--card-accent);
-            box-shadow: 0 0 12px var(--card-accent);
-            animation: pulse 2s infinite;
-            margin-top: 0.6rem;
-        }
-
-        .timer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .time-box {
-            background: var(--box-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 14px;
-            padding: 1rem 0.25rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.02);
-        }
-
-        .time-val {
-            font-family: var(--font-mono);
-            font-size: 1.6rem;
-            font-weight: 700;
-            line-height: 1;
-            font-variant-numeric: tabular-nums;
-            color: var(--card-accent);
-            text-shadow: 0 0 15px var(--card-glow);
-            margin-bottom: 0.4rem;
-        }
-
-        .time-label {
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            color: #a1a1aa;
-            text-transform: uppercase;
-        }
-
-        .date-display {
-            font-size: 0.8rem;
-            color: #a1a1aa;
-            text-align: center;
-            margin-top: auto;
-            font-weight: 600;
-            background: rgba(0,0,0,0.2);
-            padding: 0.75rem;
-            border-radius: 10px;
-        }
-
+        .mode-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
+        .title-group { display: flex; flex-direction: column; gap: 0.6rem; }
+        .mode-title { font-size: 1.45rem; font-weight: 700; color: #ffffff; letter-spacing: -0.01em; }
+        .next-badge { display: inline-flex; align-items: center; background: var(--card-accent); color: #000; padding: 0.25rem 0.85rem; border-radius: 99px; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; box-shadow: 0 0 12px var(--card-glow); width: fit-content; opacity: 0; transform: translateY(-5px); transition: opacity 0.3s ease, transform 0.3s ease; }
+        .next-badge.active { opacity: 1; transform: translateY(0); }
+        @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.5); opacity: 0.5; } 100% { transform: scale(1); opacity: 1; } }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; background-color: var(--card-accent); box-shadow: 0 0 12px var(--card-accent); animation: pulse 2s infinite; margin-top: 0.6rem; }
+        .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; margin-bottom: 1.5rem; }
+        .time-box { background: var(--box-bg); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 14px; padding: 1rem 0.25rem; display: flex; flex-direction: column; align-items: center; justify-content: center; box-shadow: inset 0 2px 10px rgba(255, 255, 255, 0.02); }
+        .time-val { font-family: var(--font-mono); font-size: 1.6rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; color: var(--card-accent); text-shadow: 0 0 15px var(--card-glow); margin-bottom: 0.4rem; }
+        .time-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: #a1a1aa; text-transform: uppercase; }
+        .date-display { font-size: 0.8rem; color: #a1a1aa; text-align: center; margin-top: auto; font-weight: 600; background: rgba(0,0,0,0.2); padding: 0.75rem; border-radius: 10px; }
         .hsr { --card-accent: var(--hsr-accent); --card-glow: var(--hsr-glow); }
         .genshin { --card-accent: var(--genshin-accent); --card-glow: var(--genshin-glow); }
         .zzz { --card-accent: var(--zzz-accent); --card-glow: var(--zzz-glow); }
         .wuwa { --card-accent: var(--wuwa-accent); --card-glow: var(--wuwa-glow); }
+        @media (prefers-reduced-motion: reduce) { body, .status-dot { animation: none; } .card { transition: none; } }
 
         .feedback-btn { position: fixed; bottom: 2rem; right: 2rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.75rem 1.5rem; border-radius: 99px; font-size: 0.9rem; font-weight: 700; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 100; display: flex; align-items: center; gap: 0.5rem; }
         .feedback-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
@@ -314,7 +86,7 @@
 <body>
 
     <h1>Endgame Resets</h1>
-    
+
     <div class="controls">
         <label for="region-select">Server</label>
         <select id="region-select">
@@ -323,6 +95,7 @@
             <option value="1">Europe (UTC+1)</option>
         </select>
     </div>
+    <p class="verified" id="verified"></p>
 
     <div id="tracker-container"></div>
 
@@ -354,205 +127,159 @@
 
     <script>
         const games = [
-            { 
-                id: 'genshin', 
-                name: 'Genshin Impact', 
-                icon: '<img src="genshin.png" alt="Genshin Impact">'
-            },
-            { 
-                id: 'hsr', 
-                name: 'Honkai: Star Rail', 
-                icon: '<img src="hsr.png" alt="Honkai Star Rail">'
-            },
-            { 
-                id: 'zzz', 
-                name: 'Zenless Zone Zero', 
-                icon: '<img src="zzz.png" alt="Zenless Zone Zero">'
-            },
-            { 
-                id: 'wuwa', 
-                name: 'Wuthering Waves', 
-                icon: '<img src="wuwa.png" alt="Wuthering Waves">'
-            }
+            { id: 'genshin', name: 'Genshin Impact',    icon: '<img src="genshin.png" alt="Genshin Impact">' },
+            { id: 'hsr',     name: 'Honkai: Star Rail', icon: '<img src="hsr.png" alt="Honkai Star Rail">' },
+            { id: 'zzz',     name: 'Zenless Zone Zero', icon: '<img src="zzz.png" alt="Zenless Zone Zero">' },
+            { id: 'wuwa',    name: 'Wuthering Waves',   icon: '<img src="wuwa.png" alt="Wuthering Waves">' }
         ]
 
-        const modes = [
-            { id: 'sa', name: 'Spiral Abyss', gameId: 'genshin', type: 'monthly', resetDay: 16 },
-            { id: 'it', name: 'Imaginarium Theater', gameId: 'genshin', type: 'monthly', resetDay: 1 },
-            { id: 'so', name: 'Stygian Onslaught', gameId: 'genshin', type: 'monthly', resetDay: 30 },
-            { id: 'moc', name: 'Memory of Chaos', gameId: 'hsr', anchorUTC: Date.UTC(2026, 8, 27, 20, 0, 0), days: 42 },
-            { id: 'pf', name: 'Pure Fiction', gameId: 'hsr', anchorUTC: Date.UTC(2026, 9, 18, 20, 0, 0), days: 42 },
-            { id: 'as', name: 'Apocalyptic Shadow', gameId: 'hsr', anchorUTC: Date.UTC(2026, 9, 4, 20, 0, 0), days: 42 },
-            { id: 'sd', name: 'Shiyu Defense', gameId: 'zzz', anchorUTC: Date.UTC(2026, 9, 1, 20, 0, 0), days: 14 },
-            { id: 'da', name: 'Deadly Assault', gameId: 'zzz', anchorUTC: Date.UTC(2026, 8, 24, 20, 0, 0), days: 14 },
-            { id: 'toa', name: 'Tower of Adversity', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 9, 11, 20, 0, 0), days: 14 },
-            { id: 'ww', name: 'Whimpering Wastes', gameId: 'wuwa', anchorUTC: Date.UTC(2026, 8, 27, 20, 0, 0), days: 14 }
-        ]
+        // Used only if resets.json can't be loaded (e.g. opening the file directly from disk).
+        const FALLBACK = {
+            lastVerified: null,
+            modes: [
+                { id: 'sa',  name: 'Spiral Abyss',        gameId: 'genshin', type: 'monthly', day: 16, hour: 4 },
+                { id: 'it',  name: 'Imaginarium Theater', gameId: 'genshin', type: 'monthly', day: 1,  hour: 4 },
+                { id: 'so',  name: 'Stygian Onslaught',   gameId: 'genshin', type: 'cycle', anchor: '2026-09-30T10:00', days: 42 },
+                { id: 'moc', name: 'Memory of Chaos',     gameId: 'hsr',  type: 'cycle', anchor: '2026-09-28T04:00', days: 42 },
+                { id: 'as',  name: 'Apocalyptic Shadow',  gameId: 'hsr',  type: 'cycle', anchor: '2026-10-05T04:00', days: 42 },
+                { id: 'pf',  name: 'Pure Fiction',        gameId: 'hsr',  type: 'cycle', anchor: '2026-10-19T04:00', days: 42 },
+                { id: 'sd',  name: 'Shiyu Defense',       gameId: 'zzz',  type: 'cycle', anchor: '2026-10-02T04:00', days: 14 },
+                { id: 'da',  name: 'Deadly Assault',      gameId: 'zzz',  type: 'cycle', anchor: '2026-10-09T04:00', days: 14 },
+                { id: 'toa', name: 'Tower of Adversity',  gameId: 'wuwa', type: 'cycle', anchor: '2026-10-12T04:00', days: 28 },
+                { id: 'ww',  name: 'Whimpering Wastes',   gameId: 'wuwa', type: 'cycle', anchor: '2026-10-26T04:00', days: 28 }
+            ]
+        }
 
+        const HOUR = 3600000
+        const DAY = 24 * HOUR
         const container = document.getElementById('tracker-container')
         const regionSelect = document.getElementById('region-select')
+        let modes = []
 
-        games.forEach(game => {
-            const gameModes = modes.filter(m => m.gameId === game.id)
-            if (gameModes.length === 0) return
+        // "2026-09-28T04:00" in server-local time -> real UTC ms for a server at `offset` hours
+        function serverLocalToUTC(str, offset) {
+            return Date.parse(str + ':00Z') - offset * HOUR
+        }
 
-            const section = document.createElement('div')
-            section.className = `game-section ${game.id}`
-            section.innerHTML = `
-                <div class="game-header">
-                    ${game.icon}
-                    <h2>${game.name}</h2>
-                </div>
-                <div class="grid" id="grid-${game.id}"></div>
-            `
-            container.appendChild(section)
-
-            const grid = document.getElementById(`grid-${game.id}`)
-
-            gameModes.forEach(mode => {
-                const card = document.createElement('div')
-                card.className = `card`
-                card.id = `card-${mode.id}`
-                card.innerHTML = `
-                    <div class="mode-header">
-                        <div class="title-group">
-                            <span class="next-badge" id="badge-${mode.id}">🔥 Next Up</span>
-                            <div class="mode-title">${mode.name}</div>
-                        </div>
-                        <div class="status-dot"></div>
-                    </div>
-                    <div class="timer-grid">
-                        <div class="time-box">
-                            <span class="time-val" id="d-${mode.id}">00</span>
-                            <span class="time-label">Days</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="time-val" id="h-${mode.id}">00</span>
-                            <span class="time-label">Hours</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="time-val" id="m-${mode.id}">00</span>
-                            <span class="time-label">Mins</span>
-                        </div>
-                        <div class="time-box">
-                            <span class="time-val" id="s-${mode.id}">00</span>
-                            <span class="time-label">Secs</span>
-                        </div>
-                    </div>
-                    <div class="date-display" id="date-${mode.id}"></div>
-                `
-                grid.appendChild(card)
-            })
-        })
-
-        function calculateMonthlyReset(day, offset) {
-            const nowLocal = new Date().getTime() + (offset * 3600000)
-            const d = new Date(nowLocal)
-            let targetMonth = d.getUTCMonth()
-            let targetYear = d.getUTCFullYear()
-            
-            if (d.getUTCDate() > day || (d.getUTCDate() === day && d.getUTCHours() >= 4)) {
-                targetMonth++
-                if (targetMonth > 11) {
-                    targetMonth = 0
-                    targetYear++
-                }
-            }
-            const targetUTC = Date.UTC(targetYear, targetMonth, day, 4, 0, 0)
-            return targetUTC - (offset * 3600000)
+        function calculateMonthlyReset(day, hour, offset) {
+            const shifted = new Date(Date.now() + offset * HOUR)
+            let y = shifted.getUTCFullYear()
+            let m = shifted.getUTCMonth()
+            const thisMonth = Date.UTC(y, m, day, hour) - offset * HOUR
+            if (Date.now() < thisMonth) return thisMonth
+            m++
+            if (m > 11) { m = 0; y++ }
+            return Date.UTC(y, m, day, hour) - offset * HOUR
         }
 
         function calculateCycleReset(anchor, days, offset) {
-            const now = new Date().getTime()
-            const regionShift = (8 - offset) * 3600000
-            const regionAnchor = anchor + regionShift
-            const cycleMs = days * 24 * 3600000
-            const elapsed = now - regionAnchor
-            let remaining = cycleMs - (elapsed % cycleMs)
-            if (remaining === cycleMs) remaining = 0
-            if (elapsed < 0) return regionAnchor
-            return now + remaining
+            const now = Date.now()
+            const start = serverLocalToUTC(anchor, offset)
+            if (now < start) return start
+            const cycle = days * DAY
+            const passed = Math.floor((now - start) / cycle) + 1
+            return start + passed * cycle
+        }
+
+        function render() {
+            container.innerHTML = ''
+            games.forEach(game => {
+                const gameModes = modes.filter(m => m.gameId === game.id)
+                if (gameModes.length === 0) return
+
+                const section = document.createElement('div')
+                section.className = `game-section ${game.id}`
+                section.innerHTML = `
+                    <div class="game-header">${game.icon}<h2>${game.name}</h2></div>
+                    <div class="grid" id="grid-${game.id}"></div>`
+                container.appendChild(section)
+                const grid = section.querySelector('.grid')
+
+                gameModes.forEach(mode => {
+                    const card = document.createElement('div')
+                    card.className = 'card'
+                    card.id = `card-${mode.id}`
+                    card.innerHTML = `
+                        <div class="mode-header">
+                            <div class="title-group">
+                                <span class="next-badge" id="badge-${mode.id}">🔥 Next Up</span>
+                                <div class="mode-title">${mode.name}</div>
+                            </div>
+                            <div class="status-dot"></div>
+                        </div>
+                        <div class="timer-grid">
+                            <div class="time-box"><span class="time-val" id="d-${mode.id}">00</span><span class="time-label">Days</span></div>
+                            <div class="time-box"><span class="time-val" id="h-${mode.id}">00</span><span class="time-label">Hours</span></div>
+                            <div class="time-box"><span class="time-val" id="m-${mode.id}">00</span><span class="time-label">Mins</span></div>
+                            <div class="time-box"><span class="time-val" id="s-${mode.id}">00</span><span class="time-label">Secs</span></div>
+                        </div>
+                        <div class="date-display" id="date-${mode.id}"></div>`
+                    grid.appendChild(card)
+                })
+            })
         }
 
         function updateTimers() {
             const offset = parseFloat(regionSelect.value)
-            const now = new Date().getTime()
+            const now = Date.now()
 
             modes.forEach(mode => {
-                let targetMs
-                if (mode.type === 'monthly') {
-                    targetMs = calculateMonthlyReset(mode.resetDay, offset)
-                } else {
-                    targetMs = calculateCycleReset(mode.anchorUTC, mode.days, offset)
-                }
-
-                mode.targetMs = targetMs
-                mode.currentDiff = targetMs - now
+                mode.targetMs = mode.type === 'monthly'
+                    ? calculateMonthlyReset(mode.day, mode.hour ?? 4, offset)
+                    : calculateCycleReset(mode.anchor, mode.days, offset)
+                mode.currentDiff = mode.targetMs - now
             })
 
             games.forEach(game => {
-                const gameModes = modes.filter(m => m.gameId === game.id)
-                gameModes.sort((a, b) => a.currentDiff - b.currentDiff)
-                
-                gameModes.forEach((mode, index) => {
-                    const card = document.getElementById(`card-${mode.id}`)
-                    const badge = document.getElementById(`badge-${mode.id}`)
-                    
-                    if (card) card.style.order = index
-                    
-                    if (badge) {
-                        if (index === 0) badge.classList.add('active')
-                        else badge.classList.remove('active')
-                    }
-                })
+                modes.filter(m => m.gameId === game.id)
+                    .sort((a, b) => a.currentDiff - b.currentDiff)
+                    .forEach((mode, index) => {
+                        const card = document.getElementById(`card-${mode.id}`)
+                        const badge = document.getElementById(`badge-${mode.id}`)
+                        if (card) card.style.order = index
+                        if (badge) badge.classList.toggle('active', index === 0)
+                    })
             })
 
             modes.forEach(mode => {
-                const diff = mode.currentDiff
-                const dEl = document.getElementById(`d-${mode.id}`)
-                const hEl = document.getElementById(`h-${mode.id}`)
-                const mEl = document.getElementById(`m-${mode.id}`)
-                const sEl = document.getElementById(`s-${mode.id}`)
+                const diff = Math.max(0, mode.currentDiff)
+                const set = (p, v) => { const el = document.getElementById(`${p}-${mode.id}`); if (el) el.innerText = String(v).padStart(2, '0') }
+                set('d', Math.floor(diff / DAY))
+                set('h', Math.floor(diff / HOUR) % 24)
+                set('m', Math.floor(diff / 60000) % 60)
+                set('s', Math.floor(diff / 1000) % 60)
+
                 const dateEl = document.getElementById(`date-${mode.id}`)
-
-                if (diff <= 0) {
-                    dEl.innerText = "00"
-                    hEl.innerText = "00"
-                    mEl.innerText = "00"
-                    sEl.innerText = "00"
-                    return
+                if (dateEl) {
+                    const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+                    dateEl.innerText = 'Local Time: ' + new Date(mode.targetMs).toLocaleDateString(undefined, options)
                 }
-
-                const d = Math.floor(diff / (1000 * 60 * 60 * 24))
-                const h = Math.floor((diff / (1000 * 60 * 60)) % 24)
-                const m = Math.floor((diff / 1000 / 60) % 60)
-                const s = Math.floor((diff / 1000) % 60)
-
-                dEl.innerText = d.toString().padStart(2, '0')
-                hEl.innerText = h.toString().padStart(2, '0')
-                mEl.innerText = m.toString().padStart(2, '0')
-                sEl.innerText = s.toString().padStart(2, '0')
-                
-                const resetDate = new Date(mode.targetMs)
-                const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
-                dateEl.innerText = "Local Time: " + resetDate.toLocaleDateString(undefined, options)
             })
         }
 
-        setInterval(updateTimers, 1000)
-        regionSelect.addEventListener('change', updateTimers)
-        updateTimers()
+        async function init() {
+            let data = FALLBACK
+            try {
+                const res = await fetch('resets.json', { cache: 'no-store' })
+                if (res.ok) data = await res.json()
+            } catch (e) {
+                console.warn('Using built-in schedule; resets.json not reachable.', e)
+            }
+            modes = data.modes
+            document.getElementById('verified').innerText = data.lastVerified
+                ? `Schedule last verified ${new Date(data.lastVerified + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}`
+                : ''
+            render()
+            updateTimers()
+            setInterval(updateTimers, 1000)
+            regionSelect.addEventListener('change', updateTimers)
+        }
+        init()
 
         const overlay = document.getElementById('feedback-overlay')
-        const openBtn = document.getElementById('open-feedback')
-        const closeBtn = document.getElementById('close-feedback')
-
-        openBtn.addEventListener('click', () => overlay.classList.add('active'))
-        closeBtn.addEventListener('click', () => overlay.classList.remove('active'))
-        
-        overlay.addEventListener('click', (e) => {
-            if (e.target === overlay) overlay.classList.remove('active')
-        })
+        document.getElementById('open-feedback').addEventListener('click', () => overlay.classList.add('active'))
+        document.getElementById('close-feedback').addEventListener('click', () => overlay.classList.remove('active'))
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active') })
 
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments) }
         formspree('initForm', { formElement: '#feedback-form', formId: 'xaenbozz' })
