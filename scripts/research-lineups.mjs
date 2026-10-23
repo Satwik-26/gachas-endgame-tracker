@@ -5,7 +5,8 @@
 //   export default { wiki, wikiName, images?, modes: { <mode id>: { find(periodStart, periodEnd), prepare?(period), read(period), endsEarly? } } }
 //   find() returns the wiki period matching resets.json ({ page, title, start?, end?, ... }) or null;
 //   prepare() can do extra async lookups; read() turns the period into { title, effects, choices, difficulties }.
-//   images says how the wiki names enemy pictures (see enemyImages in lib/wiki.mjs).
+//   images says how the wiki names enemy pictures (see enemyImages in lib/wiki.mjs); false if the reader supplies them.
+//   A reader can also return period.source = { name, url } when its data doesn't come from the game's wiki.
 //   endsEarly marks modes that close before the next one starts (the wiki's end date is then shown, not flagged).
 //   missingNote is shown on the site (and in the issue) when the wiki has no page for the current period.
 //
@@ -81,9 +82,15 @@ for (const [id, { game, reader }] of Object.entries(MODES)) {
   }
 
   const lineup = reader.read(period)
-  const pageUrl = game.wiki.pageUrl(period.page)
+  const pageUrl = period.source?.url || game.wiki.pageUrl(period.page)
+  // A source that suddenly returns nothing shouldn't wipe a lineup already saved for this period
+  if (!lineup.difficulties.length && samePeriod && existing.difficulties?.length) {
+    console.warn(`${mode.name}: the source returned no lineup this time; keeping the saved one`)
+    skipped.push(mode.name)
+    continue
+  }
   // Boss pictures are a nice extra: if looking them up fails, the lineup is still saved without them
-  try {
+  if (game.images !== false) try {
     const parts = lineup.difficulties.flatMap(d => d.parts)
     const images = await game.wiki.enemyImages(parts.map(p => p.boss.split(' + ')[0]), game.images)
     for (const p of parts) { const url = images.get(p.boss.split(' + ')[0]); if (url) p.image = url }
@@ -96,7 +103,7 @@ for (const [id, { game, reader }] of Object.entries(MODES)) {
     periodStart, periodEnd,
     ...lineup,
     ...(reader.endsEarly && period.end ? { closesAt: period.end } : {}),
-    source: { name: game.wikiName, page: period.page, url: pageUrl },
+    source: { name: period.source?.name || game.wikiName, page: period.page, url: pageUrl },
     updatedAt: samePeriod ? existing.updatedAt : today
   }
   // Same content as before? Keep the old date so lineups.json doesn't change every day

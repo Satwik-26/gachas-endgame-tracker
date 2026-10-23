@@ -455,8 +455,8 @@
                 const ownLevel = part.level && part.level !== active.level ? ` · Lv. ${part.level}` : ''
                 node.append(el('div', 'node-label', part.label + ownLevel))
                 const nodeHead = el('div', 'node-head')
-                // Boss portrait, hotlinked from the wiki's image server only
-                if (/^https:\/\/static\.wikia\.nocookie\.net\//.test(part.image || '')) {
+                // Boss portrait, hotlinked only from the wiki's image server or encore.moe (WuWa)
+                if (/^https:\/\/(static\.wikia\.nocookie\.net|api(-v2)?\.encore\.moe)\//.test(part.image || '')) {
                     const img = el('img', 'node-img')
                     img.src = part.image
                     img.alt = ''
@@ -503,12 +503,12 @@
 
             const foot = el('p', 'lineup-foot', l.locked ? 'Checked by hand. ' : '')
             if (l.source?.url && /^https:\/\//.test(l.source.url)) {
-                foot.append('From the ')
+                foot.append(/wiki/i.test(l.source.name || '') ? 'From the ' : 'From ')
                 const a = el('a', '', l.source.name || 'wiki')
                 a.href = l.source.url
                 a.target = '_blank'
                 a.rel = 'noopener noreferrer'
-                foot.append(a, ` (community-edited)${l.updatedAt ? `, updated ${new Date(l.updatedAt + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}` : ''}.`)
+                foot.append(a, ` (${/wiki/i.test(l.source.name || '') ? 'community-edited' : 'fan database'})${l.updatedAt ? `, updated ${new Date(l.updatedAt + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}` : ''}.`)
             }
             panel.append(foot)
             return panel

@@ -853,11 +853,314 @@
     "toa": {
       "periodStart": "2026-10-12T04:00",
       "periodEnd": "2026-11-09T04:00",
-      "notFound": true,
-      "note": "The Wuthering Waves wiki stopped adding Tower of Adversity rotations in early 2026, so there is no lineup to show until its editors catch up.",
-      "flagged": [
-        "**Tower of Adversity**: the wiki still has no page for the period that started 2026-10-12T04:00 (11 days ago). The Wuthering Waves wiki stopped adding Tower of Adversity rotations in early 2026, so there is no lineup to show until its editors catch up."
-      ]
+      "title": "Hazard Zone",
+      "typesLabel": "Recommended",
+      "effects": [],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "hazard-tower",
+          "name": "Hazard Tower",
+          "level": 100,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Floor 1",
+              "boss": "Lampylumen Myriad",
+              "types": [
+                "Electro",
+                "Fusion"
+              ],
+              "level": 100,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_994_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Electro RES and Fusion RES are decreased by 10%, and their Spectro RES and Glacio RES are increased by 10%."
+                },
+                {
+                  "name": "",
+                  "desc": "Grants 30% Electro and Fusion DMG Bonus. Inflicting Negative Statuses increases Crit. DMG by 25% for 20s."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            },
+            {
+              "label": "Floor 2",
+              "boss": "Fallacy of No Return",
+              "types": [
+                "Electro",
+                "Fusion"
+              ],
+              "level": 100,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_350_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Electro RES and Fusion RES are decreased by 10%, and their Spectro RES and Glacio RES are increased by 10%."
+                },
+                {
+                  "name": "",
+                  "desc": "Grants 30% Electro and Fusion DMG Bonus. Inflicting Negative Statuses increases Crit. DMG by 25% for 20s."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Rocksteady Guardian",
+                "Exile Technician"
+              ]
+            },
+            {
+              "label": "Floor 3",
+              "boss": "Impermanence Heron",
+              "types": [],
+              "level": 100,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_995_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "60s after the battle starts, after a Resonator's attacks hit an enemy, that enemy takes 5% more total DMG. This value increases by 5% every 5s, up to a maximum of 60%."
+                },
+                {
+                  "name": "",
+                  "desc": "Enemies' All-Attribute RES is increased by 15%. This effect does not affect the Electro DMG and Spectro DMG they take."
+                },
+                {
+                  "name": "",
+                  "desc": "Casting Intro Skill increases the total DMG dealt by all Resonators in the team by 15% for 20s. When a Resonator inflicts Electro Flare, they deal 55% more total DMG for 20s. When a Resonator triggers Unison Response, they deal 50% more total Electro DMG for 20s."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Chasm Guardian",
+                "Havoc Warrior",
+                "Fractsidus Milliner",
+                "Nocturnus Knight"
+              ]
+            },
+            {
+              "label": "Floor 4",
+              "boss": "Sentry Construct + Crownless",
+              "types": [],
+              "level": 100,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33012_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "60s after the battle starts, after a Resonator's attacks hit an enemy, that enemy takes 5% more total DMG. This value increases by 5% every 5s, up to a maximum of 60%."
+                },
+                {
+                  "name": "",
+                  "desc": "Enemies' All-Attribute RES is increased by 15%. This effect does not affect the Electro DMG and Spectro DMG they take."
+                },
+                {
+                  "name": "",
+                  "desc": "Casting Intro Skill increases the total DMG dealt by all Resonators in the team by 15% for 20s. When a Resonator inflicts Electro Flare, they deal 55% more total DMG for 20s. When a Resonator triggers Unison Response, they deal 50% more total Electro DMG for 20s."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            }
+          ]
+        },
+        {
+          "key": "resonant-tower",
+          "name": "Resonant Tower",
+          "level": 90,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Floor 1",
+              "boss": "Viridblaze Saurian",
+              "types": [
+                "Havoc"
+              ],
+              "level": 70,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_295_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Havoc RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "Casting an Echo Skill increases Attribute DMG by 6% for all Resonators in the team, stacking up to 4 times. The same Resonator with identical Echoes cannot trigger this effect multiple times. At 4 stacks, Crit. DMG of all Resonators in the team is increased by 36%."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Baby Viridblaze Saurian"
+              ]
+            },
+            {
+              "label": "Floor 2",
+              "boss": "Chop Chop: Rightless",
+              "types": [
+                "Havoc"
+              ],
+              "level": 75,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31042_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Havoc RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "Casting an Echo Skill increases Attribute DMG by 6% for all Resonators in the team, stacking up to 4 times. The same Resonator with identical Echoes cannot trigger this effect multiple times. At 4 stacks, Crit. DMG of all Resonators in the team is increased by 36%."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Fusion Dreadmane",
+                "Chop Chop: Headless",
+                "Chop Chop: Leftless"
+              ]
+            },
+            {
+              "label": "Floor 3",
+              "boss": "Spearback",
+              "types": [
+                "Havoc"
+              ],
+              "level": 80,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_986_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Havoc RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "Casting an Echo Skill increases Attribute DMG by 6% for all Resonators in the team, stacking up to 4 times. The same Resonator with identical Echoes cannot trigger this effect multiple times. At 4 stacks, Crit. DMG of all Resonators in the team is increased by 36%."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Snip Snap",
+                "Stonewall Bracer",
+                "Fusion Warrior"
+              ]
+            },
+            {
+              "label": "Floor 4",
+              "boss": "Dragon of Dirge",
+              "types": [
+                "Havoc"
+              ],
+              "level": 90,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33013_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Havoc RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "Casting an Echo Skill increases Attribute DMG by 6% for all Resonators in the team, stacking up to 4 times. The same Resonator with identical Echoes cannot trigger this effect multiple times. At 4 stacks, Crit. DMG of all Resonators in the team is increased by 36%."
+                }
+              ],
+              "traitsLabel": "Floor effects",
+              "others": [
+                "Chop Chop"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "echoing-tower",
+          "name": "Echoing Tower",
+          "level": 90,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Floor 1",
+              "boss": "Aero Drake",
+              "types": [
+                "Glacio"
+              ],
+              "level": 70,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31055_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Glacio RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "When Resonators cast Intro Skill, their ATK is increased by 5% per second, stacking up to 4 times. At max stack, they gain 40% Resonance Skill DMG Bonus. The effect ends when the Resonator is switched off the field."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            },
+            {
+              "label": "Floor 2",
+              "boss": "Cyan-Feathered Heron",
+              "types": [
+                "Glacio"
+              ],
+              "level": 75,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_135_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Glacio RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "When Resonators cast Intro Skill, their ATK is increased by 5% per second, stacking up to 4 times. At max stack, they gain 40% Resonance Skill DMG Bonus. The effect ends when the Resonator is switched off the field."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            },
+            {
+              "label": "Floor 3",
+              "boss": "Hurriclaw",
+              "types": [
+                "Glacio"
+              ],
+              "level": 80,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32032_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Glacio RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "When Resonators cast Intro Skill, their ATK is increased by 5% per second, stacking up to 4 times. At max stack, they gain 40% Resonance Skill DMG Bonus. The effect ends when the Resonator is switched off the field."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            },
+            {
+              "label": "Floor 4",
+              "boss": "Fleurdelys",
+              "types": [
+                "Glacio"
+              ],
+              "level": 90,
+              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_34012_UI.webp",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Enemy Glacio RES decreases by 10%"
+                },
+                {
+                  "name": "",
+                  "desc": "When Resonators cast Intro Skill, their ATK is increased by 5% per second, stacking up to 4 times. At max stack, they gain 40% Resonance Skill DMG Bonus. The effect ends when the Resonator is switched off the field."
+                }
+              ],
+              "traitsLabel": "Floor effects"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "encore.moe",
+        "page": "Season 41",
+        "url": "https://encore.moe/toa"
+      },
+      "updatedAt": "2026-10-23"
     }
   },
   "tracked": [
