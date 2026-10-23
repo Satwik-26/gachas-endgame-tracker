@@ -1,5 +1,93 @@
 {
-  "modes": {},
+  "modes": {
+    "as": {
+      "periodStart": "2026-10-05T04:00",
+      "periodEnd": "2026-11-16T04:00",
+      "title": "Dominance of Oblivion",
+      "buff": "When an enemy target with \"Steadfast Safeguard\" is inflicted with Weakness Break, dispels control states from all allies, action advances, and grants Aha an extra turn (this turn will count as 10 fixed Punchline points). Increases Ultimate DMG dealt to all enemies by 25% and Elation DMG by 10%.",
+      "difficulties": [
+        {
+          "key": "starward",
+          "name": "Starward Mode",
+          "confirmed": false,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "Kafka",
+              "types": [
+                "Imaginary",
+                "Fire",
+                "Wind",
+                "Physical"
+              ]
+            },
+            {
+              "label": "Node 2",
+              "boss": "Ichor Memosprite – Judge of Oblivion",
+              "types": [
+                "Fire",
+                "Lightning",
+                "Imaginary",
+                "Physical"
+              ]
+            },
+            {
+              "label": "Node 3",
+              "boss": "Hoolay",
+              "types": [
+                "Quantum",
+                "Physical",
+                "Fire",
+                "Wind"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "normal",
+          "name": "Normal Mode · Stage 4",
+          "confirmed": false,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "Soulhook Sovereign",
+              "types": [
+                "Physical",
+                "Fire",
+                "Wind",
+                "Imaginary"
+              ]
+            },
+            {
+              "label": "Node 2",
+              "boss": "Arbiter of the Lost Abyss",
+              "types": [
+                "Physical",
+                "Fire",
+                "Lightning",
+                "Imaginary"
+              ]
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "name": "fandom.com",
+          "url": "https://honkai-star-rail.fandom.com/wiki/Apocalyptic_Shadow/Stages/4.6"
+        },
+        {
+          "name": "sportskeeda.com",
+          "url": "https://sportskeeda.com"
+        },
+        {
+          "name": "hoyolab.com",
+          "url": "https://hoyolab.com"
+        }
+      ],
+      "checkedAt": "2026-10-23"
+    }
+  },
   "tracked": [
     "moc",
     "pf",
