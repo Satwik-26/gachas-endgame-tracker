@@ -97,7 +97,8 @@
                   "name": "Turn Back the Tide",
                   "desc": "When the Boss Mirage uses \"Puppet Understudy\" in its second phase, it will apply Enhancement effects to all summons."
                 }
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/4/40/Enemy_Stellaron_Hunter_Kafka.png/revision/latest/scale-to-width-down/240?cb=20260725083158"
             },
             {
               "label": "Node 2",
@@ -125,7 +126,8 @@
                   "name": "Economies of Scale",
                   "desc": "For every unit on the enemy's side of the field that is not in the \"Feigned Death\" state aside from Boss Mirage, all enemies receive less DMG and deal more DMG."
                 }
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/e/ea/Enemy_Ichor_Memosprite_Judge_of_Oblivion.png/revision/latest/scale-to-width-down/240?cb=20260725081817"
             },
             {
               "label": "Node 3",
@@ -153,7 +155,8 @@
                   "name": "Till Death",
                   "desc": "After Boss Mirage enters \"Going Solo,\" reduces its DMG taken by an additional 60%."
                 }
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/b/b5/Enemy_Borisin_Warhead_Hoolay.png/revision/latest/scale-to-width-down/240?cb=20240910015333"
             }
           ]
         },
@@ -190,7 +193,8 @@
                   "name": "Turn Back the Tide",
                   "desc": "When the Boss Mirage uses \"Puppet Understudy\" in its second phase, it will apply Enhancement effects to all summons."
                 }
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/4/40/Enemy_Stellaron_Hunter_Kafka.png/revision/latest/scale-to-width-down/240?cb=20260725083158"
             },
             {
               "label": "Node 2",
@@ -218,7 +222,8 @@
                   "name": "Economies of Scale",
                   "desc": "For every unit on the enemy's side of the field that is not in the \"Feigned Death\" state aside from Boss Mirage, all enemies receive less DMG and deal more DMG."
                 }
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/e/ea/Enemy_Ichor_Memosprite_Judge_of_Oblivion.png/revision/latest/scale-to-width-down/240?cb=20260725081817"
             }
           ]
         }
@@ -255,7 +260,8 @@
                 "Fire",
                 "Quantum"
               ],
-              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f8/Enemy_SparxiConOfficial.png/revision/latest/scale-to-width-down/240?cb=20260725083108"
             },
             {
               "label": "Node 2",
@@ -263,14 +269,16 @@
               "types": [
                 "Physical",
                 "Ice"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1e/Enemy_First_Genius%2C_Entelechy%2C_Zandar.png/revision/latest/scale-to-width-down/240?cb=20260725081236"
             },
             {
               "label": "Node 3",
               "boss": "Murata Graphia, Founding Artist",
               "types": [
                 "Fire"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/3/38/Enemy_Murata_Graphia%2C_Founding_Artist.png/revision/latest/scale-to-width-down/240?cb=20260725082536"
             }
           ]
         },
@@ -287,7 +295,8 @@
                 "Fire",
                 "Quantum"
               ],
-              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f8/Enemy_SparxiConOfficial.png/revision/latest/scale-to-width-down/240?cb=20260725083108"
             },
             {
               "label": "Node 2",
@@ -295,7 +304,8 @@
               "types": [
                 "Physical",
                 "Ice"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/1/1e/Enemy_First_Genius%2C_Entelechy%2C_Zandar.png/revision/latest/scale-to-width-down/240?cb=20260725081236"
             }
           ]
         }
@@ -357,7 +367,8 @@
               "types": [
                 "Ice",
                 "Imaginary"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f5/Enemy_Flame_Reaver_of_the_Deepest_Dark.png/revision/latest/scale-to-width-down/240?cb=20260725081300"
             },
             {
               "label": "Node 2",
@@ -366,7 +377,8 @@
                 "Fire",
                 "Imaginary"
               ],
-              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a3/Enemy_Alloy_Mechatron_King_Pom-Pom.png/revision/latest/scale-to-width-down/240?cb=20260725075840"
             },
             {
               "label": "Node 3",
@@ -374,7 +386,8 @@
               "types": [
                 "Physical",
                 "Ice"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/9/9c/Enemy_Argenti.png/revision/latest/scale-to-width-down/240?cb=20260725075922"
             }
           ]
         },
@@ -390,7 +403,8 @@
               "types": [
                 "Ice",
                 "Imaginary"
-              ]
+              ],
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/f/f5/Enemy_Flame_Reaver_of_the_Deepest_Dark.png/revision/latest/scale-to-width-down/240?cb=20260725081300"
             },
             {
               "label": "Node 2",
@@ -399,7 +413,8 @@
                 "Fire",
                 "Imaginary"
               ],
-              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "image": "https://static.wikia.nocookie.net/houkai-star-rail/images/a/a3/Enemy_Alloy_Mechatron_King_Pom-Pom.png/revision/latest/scale-to-width-down/240?cb=20260725075840"
             }
           ]
         }

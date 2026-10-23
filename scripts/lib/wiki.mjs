@@ -29,6 +29,27 @@ export function createWiki(host) {
     async wikitext(title) {
       const d = await call({ action: 'parse', page: title, prop: 'wikitext' })
       return d.parse?.wikitext || ''
+    },
+    // Picture for each enemy name: its "Enemy <name>.png" icon if the wiki has one, otherwise the
+    // picture on its wiki page (e.g. "Fulminating Wolflord" uses Enemy_Borisin_Warhead_Hoolay.png)
+    async enemyImages(names, size = 240) {
+      const out = new Map(), todo = [...new Set(names.filter(Boolean))].slice(0, 50)
+      if (!todo.length) return out
+      const files = await call({ action: 'query', titles: todo.map(n => `File:Enemy ${n}.png`).join('|'), prop: 'imageinfo', iiprop: 'url', iiurlwidth: String(size) })
+      for (const p of files.query?.pages || []) {
+        const url = p.imageinfo?.[0]?.thumburl || p.imageinfo?.[0]?.url
+        const name = todo.find(n => `File:Enemy ${n}.png`.replace(/_/g, ' ') === p.title.replace(/_/g, ' '))
+        if (url && name) out.set(name, url)
+      }
+      const rest = todo.filter(n => !out.has(n))
+      if (rest.length) {
+        const pages = await call({ action: 'query', titles: rest.join('|'), prop: 'pageimages', piprop: 'thumbnail', pithumbsize: String(size), redirects: '1' })
+        // Titles can come back normalised or redirected, so map them back to the names asked for
+        const back = new Map(rest.map(n => [n, n]))
+        for (const r of [...(pages.query?.normalized || []), ...(pages.query?.redirects || [])]) back.set(r.to, back.get(r.from) || r.from)
+        for (const p of pages.query?.pages || []) if (p.thumbnail?.source && back.has(p.title)) out.set(back.get(p.title), p.thumbnail.source)
+      }
+      return out
     }
   }
 }

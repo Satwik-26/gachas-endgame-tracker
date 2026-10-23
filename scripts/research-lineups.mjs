@@ -221,6 +221,16 @@ for (const [id, cfg] of Object.entries(MODES)) {
 
   const lineup = readLineup(period, game, cfg)
   const pageUrl = game.wiki.pageUrl(period.page)
+  // Boss pictures are a nice extra: if looking them up fails, the lineup is still saved without them
+  try {
+    const parts = lineup.difficulties.flatMap(d => d.parts)
+    const images = await game.wiki.enemyImages(parts.map(p => p.boss.split(' + ')[0]))
+    for (const p of parts) { const url = images.get(p.boss.split(' + ')[0]); if (url) p.image = url }
+  } catch (e) {
+    console.warn(`${mode.name}: couldn't look up boss pictures (${e.message}); keeping the saved ones`)
+    const saved = new Map((existing?.difficulties || []).flatMap(d => d.parts || []).filter(p => p.image).map(p => [p.boss, p.image]))
+    for (const p of lineup.difficulties.flatMap(d => d.parts)) if (saved.has(p.boss)) p.image = saved.get(p.boss)
+  }
   const entry = {
     periodStart, periodEnd,
     ...lineup,

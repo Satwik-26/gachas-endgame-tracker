@@ -128,6 +128,9 @@
         .tab[aria-selected="true"] { color: #fff; border-bottom-color: var(--card-accent); }
         .nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0.9rem; }
         .node { background: rgba(0, 0, 0, 0.28); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+        .node-head { display: flex; align-items: center; gap: 0.85rem; }
+        .node-img { width: 72px; height: 72px; flex-shrink: 0; border-radius: 14px; object-fit: cover; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .node-head .node-label { margin-bottom: 0.3rem; }
         .node-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-accent); }
         .node-boss { font-size: 1.05rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
         .detail-head h2:focus { outline: none; }
@@ -440,7 +443,22 @@
             nodes.setAttribute('role', 'tabpanel')
             for (const part of active.parts) {
                 const node = el('div', 'node')
-                node.append(el('div', 'node-label', part.label), el('div', 'node-boss', part.boss || 'Unknown boss'))
+                const nodeHead = el('div', 'node-head')
+                // Boss portrait, hotlinked from the wiki's image server only
+                if (/^https:\/\/static\.wikia\.nocookie\.net\//.test(part.image || '')) {
+                    const img = el('img', 'node-img')
+                    img.src = part.image
+                    img.alt = ''
+                    img.loading = 'lazy'
+                    img.referrerPolicy = 'no-referrer'
+                    img.width = img.height = 72
+                    img.addEventListener('error', () => img.remove())
+                    nodeHead.append(img)
+                }
+                const nodeTitle = el('div')
+                nodeTitle.append(el('div', 'node-label', part.label), el('div', 'node-boss', part.boss || 'Unknown boss'))
+                nodeHead.append(nodeTitle)
+                node.append(nodeHead)
                 if (part.corruption) node.append(el('div', 'node-corruption', part.corruption))
                 if (part.types?.length) node.append(el('div', 'node-types-label', 'Recommended types'), typeChips(part.types))
                 if (part.traits?.length) {
