@@ -10,89 +10,17 @@
 // Provider: GEMINI_API_KEY (Google Search) or ANTHROPIC_API_KEY (Claude web search). Node 20+.
 
 import { readFile, writeFile } from 'node:fs/promises'
+import { ask, usage, PROVIDER, MODEL } from './lib/ai.mjs'
+import { DAY, toMs, toStr, nextOnSchedule } from './lib/schedule.mjs'
 
-const GEMINI_KEY = process.env.GEMINI_API_KEY
-const CLAUDE_KEY = process.env.ANTHROPIC_API_KEY
-const PROVIDER = GEMINI_KEY ? 'gemini' : CLAUDE_KEY ? 'claude' : null
-const MODEL = process.env.AI_MODEL || (PROVIDER === 'gemini' ? 'gemini-2.5-flash' : 'claude-haiku-4-5')
 const FILE = 'resets.json'
 const CONFIRM_RUNS = 3
 const MIN_DOMAINS = 2
-const IGNORED_DOMAINS = ['github.com', 'github.io', 'youtube.com', 'reddit.com']
-const HOUR = 3600000, DAY = 24 * HOUR
 
 if (!PROVIDER) { console.error('Set GEMINI_API_KEY or ANTHROPIC_API_KEY'); process.exit(1) }
 
 const data = JSON.parse(await readFile(FILE, 'utf8'))
 const today = new Date().toISOString().slice(0, 10)
-const usage = { calls: 0, searches: 0 }
-
-// ---------- AI calls (both return text + the websites actually used) ----------
-const domainOf = s => { try { return new URL(s.startsWith('http') ? s : 'https://' + s).hostname.replace(/^www\./, '') } catch { return (s || '').toLowerCase() } }
-
-async function askGemini(prompt) {
-  const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`, {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-goog-api-key': GEMINI_KEY },
-    body: JSON.stringify({ contents: [{ role: 'user', parts: [{ text: prompt }] }], tools: [{ google_search: {} }] })
-  })
-  if (!res.ok) throw new Error(`Gemini ${res.status}: ${await res.text()}`)
-  const cand = (await res.json()).candidates?.[0]
-  const meta = cand?.groundingMetadata
-  return {
-    text: (cand?.content?.parts || []).map(p => p.text || '').join('\n'),
-    searches: meta?.webSearchQueries?.length || 0,
-    // Gemini hides real URLs behind redirects; the chunk title is the site's domain
-    domains: (meta?.groundingChunks || []).map(c => domainOf(c.web?.title || ''))
-  }
-}
-
-async function askClaude(prompt) {
-  const res = await fetch('https://api.anthropic.com/v1/messages', {
-    method: 'POST',
-    headers: { 'content-type': 'application/json', 'x-api-key': CLAUDE_KEY, 'anthropic-version': '2023-06-01' },
-    body: JSON.stringify({
-      model: MODEL, max_tokens: 4000,
-      tools: [{ type: 'web_search_20250305', name: 'web_search', max_uses: 8 }],
-      messages: [{ role: 'user', content: prompt }]
-    })
-  })
-  if (!res.ok) throw new Error(`Claude ${res.status}: ${await res.text()}`)
-  const body = await res.json()
-  const cited = body.content.flatMap(b => (b.citations || []).map(c => domainOf(c.url || '')))
-  return {
-    text: body.content.filter(b => b.type === 'text').map(b => b.text).join('\n'),
-    searches: body.usage?.server_tool_use?.web_search_requests || 0,
-    domains: cited
-  }
-}
-
-async function ask(prompt) {
-  const r = PROVIDER === 'gemini' ? await askGemini(prompt) : await askClaude(prompt)
-  usage.calls++; usage.searches += r.searches
-  const match = r.text.replace(/```json|```/g, '').match(/\{[\s\S]*\}/)
-  let json = null
-  try { json = match ? JSON.parse(match[0]) : null } catch {}
-  const domains = [...new Set(r.domains.filter(d => d && !IGNORED_DOMAINS.some(x => d.endsWith(x))))]
-  return { json, searched: r.searches > 0, domains, raw: r.text }
-}
-
-// ---------- Schedule math ----------
-const toMs = s => Date.parse(s + ':00Z')              // server-local string -> comparable ms
-const toStr = ms => new Date(ms).toISOString().slice(0, 16)
-// Same rule as the page: an override replaces the regular reset nearest to it,
-// and the cycle carries on from the latest override that has passed.
-function nextOnSchedule(mode) {
-  const now = Date.now() + 8 * HOUR, cycle = mode.days * DAY
-  const points = [mode.anchor, ...(mode.overrides || []).map(o => o.date)].map(toMs).sort((a, b) => a - b)
-  const past = points.filter(p => p <= now)
-  const upcoming = points.find(p => p > now)
-  if (!past.length) return upcoming
-  const base = past[past.length - 1]
-  const next = base + (Math.floor((now - base) / cycle) + 1) * cycle
-  if (upcoming !== undefined && next >= base + Math.max(1, Math.round((upcoming - base) / cycle)) * cycle) return upcoming
-  return next
-}
 
 // ---------- Pass 1: look for anything that differs from the schedule ----------
 const cycleModes = data.modes.filter(m => m.type === 'cycle')

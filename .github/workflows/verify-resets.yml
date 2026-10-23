@@ -9,6 +9,11 @@ permissions:
   contents: write
   issues: write
 
+# Both bots commit to main, so never let them run at the same time
+concurrency:
+  group: data-commits
+  cancel-in-progress: false
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -32,7 +37,9 @@ jobs:
           git config user.name "reset-bot"
           git config user.email "reset-bot@users.noreply.github.com"
           git add resets.json
-          git diff --cached --quiet || git commit -m "Verified reset schedule"
+          git diff --cached --quiet && exit 0
+          git commit -m "Verified reset schedule"
+          git pull --rebase
           git push
 
       # Anything the bot couldn't confirm becomes an issue for you to look at

@@ -55,7 +55,7 @@
         .game-header { display: flex; align-items: center; gap: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; }
         .game-header img { width: 44px; height: 44px; border-radius: 10px; box-shadow: 0 0 16px var(--card-glow); border: 1px solid rgba(255,255,255,0.1); }
         .game-header h2 { font-size: clamp(1.4rem, 6vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; align-items: start; }
         .card { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.75rem; display: flex; flex-direction: column; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); box-shadow: 0 0 20px var(--card-glow); opacity: 0.8; transition: opacity 0.3s ease; }
         @media (hover: hover) {
@@ -95,6 +95,36 @@
         .card.ending .ending-label { visibility: visible; }
         .card.ending .progress-fill { background: var(--warn); box-shadow: 0 0 10px var(--warn-glow); }
         .override-note { font-size: 0.8rem; line-height: 1.45; color: #e4e4e7; background: rgba(255, 255, 255, 0.06); border-left: 3px solid var(--card-accent); padding: 0.6rem 0.75rem; border-radius: 8px; margin-bottom: 1rem; }
+
+        .lineup { margin-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.9rem; }
+        .lineup summary { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; cursor: pointer; list-style: none; font-size: 0.85rem; font-weight: 700; color: #e4e4e7; }
+        .lineup summary::-webkit-details-marker { display: none; }
+        .lineup summary::before { content: ''; width: 0.45rem; height: 0.45rem; border-right: 2px solid #a1a1aa; border-bottom: 2px solid #a1a1aa; transform: rotate(-45deg); transition: transform 0.2s ease; margin-right: 0.15rem; }
+        .lineup[open] summary::before { transform: rotate(45deg); }
+        .lineup summary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
+        .lineup-title { color: var(--card-accent); }
+        .tag-unconfirmed { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.5); border-radius: 99px; padding: 0.1rem 0.5rem; }
+        .lineup-body { padding-top: 0.9rem; display: flex; flex-direction: column; gap: 0.9rem; }
+        .lineup-buff { font-size: 0.82rem; line-height: 1.5; color: #d4d4d8; }
+        .lineup-stage { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; }
+        .half { background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 0.75rem 0.85rem; }
+        .half-name { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-bottom: 0.5rem; }
+        .half ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .half li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.4rem 0.75rem; font-size: 0.88rem; font-weight: 600; }
+        .weak { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+        .el { --el: #d4d4d8; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.03em; color: var(--el); border: 1px solid color-mix(in srgb, var(--el) 55%, transparent); background: color-mix(in srgb, var(--el) 12%, transparent); border-radius: 99px; padding: 0.12rem 0.5rem; }
+        .el[data-el="Fire"], .el[data-el="Pyro"], .el[data-el="Fusion"] { --el: #ff7b5c; }
+        .el[data-el="Ice"], .el[data-el="Cryo"], .el[data-el="Glacio"] { --el: #86dcff; }
+        .el[data-el="Lightning"], .el[data-el="Electro"] { --el: #c99bff; }
+        .el[data-el="Electric"] { --el: #5cbcff; }
+        .el[data-el="Wind"], .el[data-el="Anemo"], .el[data-el="Aero"] { --el: #62e3ab; }
+        .el[data-el="Quantum"] { --el: #9d93ff; }
+        .el[data-el="Imaginary"], .el[data-el="Geo"], .el[data-el="Spectro"] { --el: #ffd95c; }
+        .el[data-el="Hydro"] { --el: #5aa9ff; }
+        .el[data-el="Dendro"] { --el: #a6e05a; }
+        .el[data-el="Ether"], .el[data-el="Havoc"] { --el: #ff6fb8; }
+        .lineup-foot { font-size: 0.72rem; line-height: 1.5; color: #8b8b94; }
+        .lineup-foot a { color: #c4c4cc; }
 
         @media (max-width: 600px) {
             body { padding: 2.5rem 1rem 6rem; }
@@ -191,6 +221,7 @@
         const regionSelect = document.getElementById('region-select')
         const filterBar = document.getElementById('game-filter')
         let modes = []
+        let lineups = {}
 
         // Saved per browser; storage can be blocked (private mode), so failures fall back to defaults
         function load(key, fallback) {
@@ -243,6 +274,72 @@
                 if (prev + cycle >= replaced) return { prev: replaced - cycle, next: upcoming.at, reason: upcoming.reason }
             }
             return { prev, next: prev + cycle }
+        }
+
+        // Lineups come from a bot that researches the web, so every value goes in as text, never as HTML
+        function el(tag, className, text) {
+            const node = document.createElement(tag)
+            if (className) node.className = className
+            if (text !== undefined) node.textContent = text
+            return node
+        }
+
+        // Shown only when the saved lineup is for the period that is live right now
+        function renderLineup(mode, offset) {
+            const slot = document.getElementById(`lineup-${mode.id}`)
+            if (!slot) return
+            const start = new Date(mode.period.prev + offset * HOUR).toISOString().slice(0, 16)
+            if (slot.dataset.period === start) return
+            slot.dataset.period = start
+            slot.replaceChildren()
+            const l = lineups[mode.id]
+            if (!l || l.periodStart !== start || !Array.isArray(l.halves) || !l.halves.length) return
+
+            const details = el('details', 'lineup')
+            const summary = el('summary')
+            summary.append(el('span', '', 'Lineup'))
+            if (l.title) summary.append(el('span', 'lineup-title', l.title))
+            if (!l.confirmed) summary.append(el('span', 'tag-unconfirmed', 'Unconfirmed'))
+
+            const body = el('div', 'lineup-body')
+            if (l.buff) body.append(el('p', 'lineup-buff', l.buff))
+            if (l.stage) body.append(el('div', 'lineup-stage', l.stage))
+            for (const half of l.halves) {
+                const box = el('div', 'half')
+                const list = el('ul')
+                box.append(el('div', 'half-name', half.name), list)
+                for (const enemy of half.enemies || []) {
+                    const item = el('li')
+                    const weak = el('span', 'weak')
+                    const weaknesses = enemy.weaknesses || []
+                    if (weaknesses.length) weak.setAttribute('aria-label', `Weak to ${weaknesses.join(', ')}`)
+                    for (const w of weaknesses) {
+                        const chip = el('span', 'el', w)
+                        chip.dataset.el = w
+                        chip.setAttribute('aria-hidden', 'true')
+                        weak.append(chip)
+                    }
+                    item.append(el('span', '', enemy.name), weak)
+                    list.append(item)
+                }
+                body.append(box)
+            }
+
+            const sources = (l.sources || []).filter(s => /^https:\/\//.test(s.url || ''))
+            const foot = el('p', 'lineup-foot', (l.confirmed
+                ? 'Researched by AI and cross-checked across sites'
+                : 'Researched by AI but not cross-checked yet, so double-check in-game') + (sources.length ? '. Sources: ' : '.'))
+            sources.forEach((s, i) => {
+                if (i) foot.append(', ')
+                const a = el('a', '', s.name)
+                a.href = s.url
+                a.target = '_blank'
+                a.rel = 'noopener noreferrer'
+                foot.append(a)
+            })
+            body.append(foot)
+            details.append(summary, body)
+            slot.append(details)
         }
 
         function renderFilter() {
@@ -306,7 +403,8 @@
                         <div class="progress"><div class="progress-fill" id="bar-${mode.id}"></div></div>
                         <div class="progress-meta"><span id="day-${mode.id}"></span><span class="ending-label">Ending soon</span></div>
                         <div class="override-note" id="note-${mode.id}" hidden></div>
-                        <div class="date-display" id="date-${mode.id}"></div>`
+                        <div class="date-display" id="date-${mode.id}"></div>
+                        <div id="lineup-${mode.id}"></div>`
                     grid.appendChild(card)
                 })
             })
@@ -355,6 +453,7 @@
                     note.hidden = !reason
                     note.innerText = reason ? `Irregular period: ${reason}` : ''
                 }
+                renderLineup(mode, offset)
 
                 const dateEl = document.getElementById(`date-${mode.id}`)
                 if (dateEl) {
@@ -365,6 +464,8 @@
         }
 
         async function init() {
+            // Lineups are optional extras: if they fail to load, the timers still work
+            const lineupsReq = fetch('lineups.json', { cache: 'no-store' }).then(r => r.ok ? r.json() : null).catch(() => null)
             let data
             try {
                 const res = await fetch('resets.json', { cache: 'no-store' })
@@ -378,6 +479,7 @@
                 return
             }
             modes = data.modes
+            lineups = (await lineupsReq)?.modes || {}
             document.getElementById('verified').innerText = data.lastVerified
                 ? `Schedule last verified ${new Date(data.lastVerified + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}`
                 : ''
