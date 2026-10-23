@@ -4,49 +4,71 @@
       "periodStart": "2026-10-05T04:00",
       "periodEnd": "2026-11-16T04:00",
       "title": "Dominance of Oblivion",
-      "buff": "When an enemy target with \"Steadfast Safeguard\" is inflicted with Weakness Break, dispels control states from all allies, action advances, and grants Aha an extra turn (this turn will count as 10 fixed Punchline points). Increases Ultimate DMG dealt to all enemies by 25% and Elation DMG by 10%.",
-      "difficulties": [
+      "effects": [
         {
-          "key": "starward",
-          "name": "Starward Mode",
-          "confirmed": false,
-          "parts": [
+          "name": "Ruinous Embers",
+          "desc": "When an enemy target with \"Steadfast Safeguard\" is inflicted with Weakness Break, dispels control states from all allies, action advances, and grants Aha an extra turn (this turn will count as 10 fixed Punchline points).\nIncreases Ultimate DMG dealt to all enemies by 25% and Elation DMG by 10%."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Node 1 buff",
+          "options": [
             {
-              "label": "Node 1",
-              "boss": "Kafka",
-              "types": [
-                "Imaginary",
-                "Fire",
-                "Wind",
-                "Physical"
-              ]
+              "name": "Magic Time",
+              "desc": "At the start of battle, when there are 1/2/3/4 Elation character(s) in the team, increases the Elation of all allies by 10%/20%/30%/40%."
             },
             {
-              "label": "Node 2",
-              "boss": "Ichor Memosprite – Judge of Oblivion",
-              "types": [
-                "Fire",
-                "Lightning",
-                "Imaginary",
-                "Physical"
-              ]
+              "name": "Collapse on Sight",
+              "desc": "Increases all enemies' Break DMG taken by 10%. After Breaking an enemy's Weakness, increases all allies' SPD by 15% for 2 turn(s)."
             },
             {
-              "label": "Node 3",
-              "boss": "Hoolay",
-              "types": [
-                "Quantum",
-                "Physical",
-                "Fire",
-                "Wind"
-              ]
+              "name": "Moment of Opportunity",
+              "desc": "Increases Follow-Up ATK and Ultimate DMG dealt by all allies by 50%, and additionally increases by 50% against enemy targets in Weakness Broken state."
             }
           ]
         },
         {
-          "key": "normal",
-          "name": "Normal Mode · Stage 4",
-          "confirmed": false,
+          "label": "Node 2 buff",
+          "options": [
+            {
+              "name": "Comic Relief",
+              "desc": "After an ally target uses an attack that deals Elation DMG, inflicts Vulnerability on the target receiving Elation DMG, increasing the DMG they take by 15% for 2 turn(s). This effect can trigger up to 1 time per enemy target per attack."
+            },
+            {
+              "name": "Exploit Opening",
+              "desc": "After any ally target inflicts a debuff to an enemy target, increases their CRIT DMG by 75% for 2 turn(s)."
+            },
+            {
+              "name": "Land of Fertility",
+              "desc": "Increases Skill and Ultimate DMG dealt by all allies by 30%, and additionally increases Skill and Ultimate DMG dealt by the 1st character in the lineup by 30%."
+            }
+          ]
+        },
+        {
+          "label": "Node 3 buff",
+          "options": [
+            {
+              "name": "Unstoppable Force",
+              "desc": "DMG dealt by memosprites ignores 20% of the target's DEF."
+            },
+            {
+              "name": "Heroic Vanguard",
+              "desc": "After the character in position 1 in the team uses Ultimate, their Weakness Break Efficiency increases by 50% and increases CRIT DMG by 50%, lasting for 1 turn(s)."
+            },
+            {
+              "name": "Unto Apotheosis",
+              "desc": "When ally targets consume Skill Points, increases their CRIT DMG by 6%, stacking up to 10 times."
+            }
+          ]
+        }
+      ],
+      "difficulties": [
+        {
+          "key": "starward",
+          "name": "Starward Mode",
+          "level": 90,
+          "confirmed": true,
           "parts": [
             {
               "label": "Node 1",
@@ -56,6 +78,25 @@
                 "Fire",
                 "Wind",
                 "Imaginary"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "traits": [
+                {
+                  "name": "Steadfast Safeguard",
+                  "desc": "Boss Mirage takes 50% less DMG. After Weakness is broken, action gets additionally delayed and DMG taken increases by 100%."
+                },
+                {
+                  "name": "Battlefield Transfer",
+                  "desc": "Boss Mirage summons 2 Elite Enemies to assist in battle. Boss Mirage will transmit its own Weakness Type to summons, but when those summons are defeated, Boss Mirage's Toughness will be additionally reduced."
+                },
+                {
+                  "name": "Stellar Aegis",
+                  "desc": "For every unit on the enemy's side of the field aside from Boss Mirage, all enemies receive less DMG."
+                },
+                {
+                  "name": "Turn Back the Tide",
+                  "desc": "When the Boss Mirage uses \"Puppet Understudy\" in its second phase, it will apply Enhancement effects to all summons."
+                }
               ]
             },
             {
@@ -66,26 +107,309 @@
                 "Fire",
                 "Lightning",
                 "Imaginary"
+              ],
+              "traits": [
+                {
+                  "name": "Steadfast Safeguard",
+                  "desc": "Boss Mirage takes 50% less DMG. After Weakness is Broken, action gets additionally delayed and DMG taken increases by 100%."
+                },
+                {
+                  "name": "Singularity Split",
+                  "desc": "At the start of combat and during phase transitions, the Boss Mirage splits into 5 \"ichor memosprites\" and applies \"Monoform Merger\" to these summons. When all \"ichor memosprites\" with \"Monoform Merger\" enter the \"Feigned Death\" state, they merge back into the Boss Mirage."
+                },
+                {
+                  "name": "Mutual Complement",
+                  "desc": "Increases the Max HP of the \"ichor memosprites\" summoned after the Boss Mirage's split, and the \"ichor memosprites\" summoned after the split in the second phase have Shared HP."
+                },
+                {
+                  "name": "Economies of Scale",
+                  "desc": "For every unit on the enemy's side of the field that is not in the \"Feigned Death\" state aside from Boss Mirage, all enemies receive less DMG and deal more DMG."
+                }
+              ]
+            },
+            {
+              "label": "Node 3",
+              "boss": "Fulminating Wolflord",
+              "types": [
+                "Physical",
+                "Fire",
+                "Wind",
+                "Quantum"
+              ],
+              "traits": [
+                {
+                  "name": "Steadfast Safeguard",
+                  "desc": "Decreases DMG taken by Boss Mirage by 50%. After its Weakness is broken, its action is additionally delayed and increases its DMG taken by 100%."
+                },
+                {
+                  "name": "Better Safe Than Sorry",
+                  "desc": "When the Boss Mirage uses \"Barrenness of Earth Gouged,\" all other Wolftroopers will be eliminated."
+                },
+                {
+                  "name": "Apex Predator",
+                  "desc": "After Boss Mirage enters Phase II, it gains extra action per turn during \"Going Solo.\""
+                },
+                {
+                  "name": "Till Death",
+                  "desc": "After Boss Mirage enters \"Going Solo,\" reduces its DMG taken by an additional 60%."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "key": "normal",
+          "name": "Normal Mode · Difficulty 4",
+          "level": 90,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "Soulhook Sovereign",
+              "types": [
+                "Physical",
+                "Fire",
+                "Wind",
+                "Imaginary"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)",
+              "traits": [
+                {
+                  "name": "Steadfast Safeguard",
+                  "desc": "Boss Mirage takes 50% less DMG. After Weakness is broken, action gets additionally delayed and DMG taken increases by 100%."
+                },
+                {
+                  "name": "Battlefield Transfer",
+                  "desc": "Boss Mirage summons 2 Elite Enemies to assist in battle. Boss Mirage will transmit its own Weakness Type to summons, but when those summons are defeated, Boss Mirage's Toughness will be additionally reduced."
+                },
+                {
+                  "name": "Stellar Aegis",
+                  "desc": "For every unit on the enemy's side of the field aside from Boss Mirage, all enemies receive less DMG."
+                },
+                {
+                  "name": "Turn Back the Tide",
+                  "desc": "When the Boss Mirage uses \"Puppet Understudy\" in its second phase, it will apply Enhancement effects to all summons."
+                }
+              ]
+            },
+            {
+              "label": "Node 2",
+              "boss": "Arbiter of the Lost Abyss",
+              "types": [
+                "Physical",
+                "Fire",
+                "Lightning",
+                "Imaginary"
+              ],
+              "traits": [
+                {
+                  "name": "Steadfast Safeguard",
+                  "desc": "Boss Mirage takes 50% less DMG. After Weakness is Broken, action gets additionally delayed and DMG taken increases by 100%."
+                },
+                {
+                  "name": "Singularity Split",
+                  "desc": "At the start of combat and during phase transitions, the Boss Mirage splits into 5 \"ichor memosprites\" and applies \"Monoform Merger\" to these summons. When all \"ichor memosprites\" with \"Monoform Merger\" enter the \"Feigned Death\" state, they merge back into the Boss Mirage."
+                },
+                {
+                  "name": "Mutual Complement",
+                  "desc": "Increases the Max HP of the \"ichor memosprites\" summoned after the Boss Mirage's split, and the \"ichor memosprites\" summoned after the split in the second phase have Shared HP."
+                },
+                {
+                  "name": "Economies of Scale",
+                  "desc": "For every unit on the enemy's side of the field that is not in the \"Feigned Death\" state aside from Boss Mirage, all enemies receive less DMG and deal more DMG."
+                }
               ]
             }
           ]
         }
       ],
-      "sources": [
+      "source": {
+        "name": "Honkai: Star Rail Wiki",
+        "page": "Apocalyptic Shadow/Stages/4.6",
+        "url": "https://honkai-star-rail.fandom.com/wiki/Apocalyptic_Shadow/Stages/4.6"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "moc": {
+      "periodStart": "2026-09-28T04:00",
+      "periodEnd": "2026-11-02T04:00",
+      "title": "Crossing the Afterlife",
+      "effects": [
         {
-          "name": "fandom.com",
-          "url": "https://honkai-star-rail.fandom.com/wiki/Apocalyptic_Shadow/Stages/4.6"
-        },
-        {
-          "name": "sportskeeda.com",
-          "url": "https://sportskeeda.com"
-        },
-        {
-          "name": "hoyolab.com",
-          "url": "https://hoyolab.com"
+          "name": "Memory Turbulence",
+          "desc": "The character in position 1 of the ally lineup gains the Elation Skill \"Euphoric Maelstrom,\" dealing 100% Elation DMG of the character's Type to all enemies.\nAt the start of each cycle, Aha immediately gains 1 extra turn, taking into account a fixed 20 Punchlines. This turn does not consume Punchlines."
         }
       ],
-      "checkedAt": "2026-10-23"
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "starward",
+          "name": "Starward Mode",
+          "level": 95,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "@SparxiConOfficial",
+              "types": [
+                "Fire",
+                "Quantum"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+            },
+            {
+              "label": "Node 2",
+              "boss": "First Genius, Entelechy, Zandar",
+              "types": [
+                "Physical",
+                "Ice"
+              ]
+            },
+            {
+              "label": "Node 3",
+              "boss": "Murata Graphia, Founding Artist",
+              "types": [
+                "Fire"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "normal",
+          "name": "Normal Mode · Stage 12",
+          "level": 95,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "@SparxiConOfficial",
+              "types": [
+                "Fire",
+                "Quantum"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+            },
+            {
+              "label": "Node 2",
+              "boss": "First Genius, Entelechy, Zandar",
+              "types": [
+                "Physical",
+                "Ice"
+              ]
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Honkai: Star Rail Wiki",
+        "page": "Forgotten Hall/Stages/4.6",
+        "url": "https://honkai-star-rail.fandom.com/wiki/Forgotten_Hall/Stages/4.6"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "pf": {
+      "periodStart": "2026-10-19T04:00",
+      "periodEnd": "2026-11-30T04:00",
+      "title": "Imagined Words",
+      "effects": [
+        {
+          "name": "Debuff Application",
+          "desc": "When an ally target inflicts a debuff on an enemy target, allies additionally accumulate 1 Grit Value. This effect can be triggered up to 10 time(s) per enemy target."
+        },
+        {
+          "name": "Concordant Truce",
+          "desc": "Decreases enemy targets' Effect RES by 30%. Increases DMG taken by enemy targets afflicted with 4 or more debuffs by 20%."
+        },
+        {
+          "name": "Surging Grit",
+          "desc": "Upon entering \"Surging Grit,\" deals a set amount of DMG to enemy targets 1 time for every debuff they are inflicted with. During \"Surging Grit,\" DMG received by enemy targets increases by 50%. After each time an enemy target is inflicted with a debuff, inflicts 1 stack of \"Dejection\" on them, decreasing their All-Type RES by 1% for 2 turn(s). This effect can stack up to 20 time(s)."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Cacophony",
+          "options": [
+            {
+              "name": "Toccata",
+              "desc": "Increases Ultimate and Follow-Up ATK DMG dealt by ally targets by 40%. During \"Surging Grit,\" each time an enemy target is inflicted with the \"Dejection\" effect, it changes to stacking 2 stack(s) of this effect instead. The max stacking limit of the \"Dejection\" effect increases to 5 stacks.\nEvery enemy target hit with ally targets' Ultimate or Follow-Up ATK additionally accumulates 1 Grit Value for allies."
+            },
+            {
+              "name": "Mirthful Cadence",
+              "desc": "After an ally character uses an Elation Skill to attack an enemy target, inflicts the \"Indulgence\" effect on the attacked enemy target, increasing the DMG taken by this target by 15% for 2 turn(s). This effect applied by each character exists independently. Upon entering \"Surging Grit\", allies gain 40 Punchline(s).\nAfter ally targets use Basic ATK or Skill, for each enemy target hit, additionally accumulates 3 Grit Value for allies."
+            },
+            {
+              "name": "Fugato",
+              "desc": "During \"Surging Grit,\" after an ally target uses an attack, additionally causes 1 random DoT debuff currently applied to the attacked target to immediately produce DMG equal to 400% of its original DMG.\nAfter every instance of DoT dealt by ally targets, additionally accumulates 1 Grit Value for allies."
+            }
+          ]
+        }
+      ],
+      "difficulties": [
+        {
+          "key": "starward",
+          "name": "Starward Mode",
+          "level": 85,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "Flame Reaver of the Deepest Dark",
+              "types": [
+                "Ice",
+                "Imaginary"
+              ]
+            },
+            {
+              "label": "Node 2",
+              "boss": "Alloy Mechatron: King Pom-Pom",
+              "types": [
+                "Fire",
+                "Imaginary"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+            },
+            {
+              "label": "Node 3",
+              "boss": "Argenti",
+              "types": [
+                "Physical",
+                "Ice"
+              ]
+            }
+          ]
+        },
+        {
+          "key": "normal",
+          "name": "Normal Mode · Stage 4",
+          "level": 85,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Node 1",
+              "boss": "Flame Reaver of the Deepest Dark",
+              "types": [
+                "Ice",
+                "Imaginary"
+              ]
+            },
+            {
+              "label": "Node 2",
+              "boss": "Alloy Mechatron: King Pom-Pom",
+              "types": [
+                "Fire",
+                "Imaginary"
+              ],
+              "corruption": "Corruption Level 3 (Voracity Corrosion)"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Honkai: Star Rail Wiki",
+        "page": "Pure Fiction/Stages/4.6",
+        "url": "https://honkai-star-rail.fandom.com/wiki/Pure_Fiction/Stages/4.6"
+      },
+      "updatedAt": "2026-10-23"
     }
   },
   "tracked": [

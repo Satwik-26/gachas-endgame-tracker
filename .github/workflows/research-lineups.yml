@@ -1,14 +1,9 @@
-name: Research endgame lineups
+name: Update endgame lineups
 
 on:
   schedule:
     - cron: '15 21 * * *'   # daily 21:15 UTC, about an hour after the 04:00 (UTC+8) reset
-  workflow_dispatch:        # "Run workflow" button for manual checks
-    inputs:
-      force:
-        description: 'Re-research every mode, even ones already confirmed'
-        type: boolean
-        default: false
+  workflow_dispatch:        # "Run workflow" button for manual checks (free: reads the wiki, no AI)
 
 permissions:
   contents: write
@@ -29,13 +24,9 @@ jobs:
         with:
           node-version: 24
 
-      - name: Ask AI to research lineups
+      - name: Read lineups from the wiki
         id: research
         run: node scripts/research-lineups.mjs
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          RESEARCH_FORCE: ${{ inputs.force && '1' || '' }}
 
       # Save new lineups straight to the live site
       - name: Commit lineups
@@ -44,7 +35,7 @@ jobs:
           git config user.email "reset-bot@users.noreply.github.com"
           git add lineups.json
           git diff --cached --quiet && exit 0
-          git commit -m "Researched endgame lineups"
+          git commit -m "Updated endgame lineups from the wiki"
           git pull --rebase
           git push
 

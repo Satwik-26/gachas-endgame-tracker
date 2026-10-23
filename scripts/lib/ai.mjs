@@ -6,12 +6,13 @@
 //
 // Each Gemini model has its own daily limit, so when one is used up the bot moves on to the next.
 // Only models that can use Google Search on the free tier are worth listing: in AI Studio that is
-// Gemini 2.5 (Gemini 3 and newer show "Search grounding 0 / 0" without billing).
+// Gemini 2.5 (Gemini 3 and newer show "Search grounding 0 / 0" without billing), and Google now only
+// serves 2.5 models to accounts that used them before (2.5 Flash Lite returns 404 for this project).
 
 const GEMINI_KEY = process.env.GEMINI_API_KEY
 const CLAUDE_KEY = process.env.ANTHROPIC_API_KEY
 export const PROVIDER = GEMINI_KEY ? 'gemini' : CLAUDE_KEY ? 'claude' : null
-const DEFAULT_MODELS = PROVIDER === 'gemini' ? 'gemini-2.5-flash,gemini-2.5-flash-lite' : 'claude-haiku-4-5'
+const DEFAULT_MODELS = PROVIDER === 'gemini' ? 'gemini-2.5-flash' : 'claude-haiku-4-5'
 export const MODELS = (process.env.AI_MODELS || process.env.AI_MODEL || DEFAULT_MODELS).split(',').map(s => s.trim()).filter(Boolean)
 // GitHub is ignored so the bot can't cite its own issues
 const IGNORED_DOMAINS = ['github.com', 'github.io', 'youtube.com', 'reddit.com']
