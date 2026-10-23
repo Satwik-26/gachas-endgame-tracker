@@ -425,11 +425,450 @@
         "url": "https://honkai-star-rail.fandom.com/wiki/Pure_Fiction/Stages/4.6"
       },
       "updatedAt": "2026-10-23"
+    },
+    "sa": {
+      "periodStart": "2026-10-16T04:00",
+      "periodEnd": "2026-11-16T04:00",
+      "title": "Floor 12",
+      "effects": [
+        {
+          "name": "Ley Line Disorder · First Half",
+          "desc": "Characters' Stellar Glimmer reaction DMG increased by 75%."
+        },
+        {
+          "name": "Ley Line Disorder · Second Half",
+          "desc": "All party members gain a 75% Cryo DMG Bonus."
+        }
+      ],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "floor12",
+          "name": "Floor 12",
+          "level": 100,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Chamber 1 · First Half",
+              "boss": "Battle-Hardened Chimeric Volkodlak Archer",
+              "types": [],
+              "level": 95,
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Furiosa_Icon.png/revision/latest/scale-to-width-down/240?cb=20260815170455"
+            },
+            {
+              "label": "Chamber 1 · Second Half",
+              "boss": "Iniquitous Baptist - Caller of Flood, Flame, and Fulmination",
+              "types": [],
+              "level": 95,
+              "others": [
+                "Shadowy Husk: Standard Bearer",
+                "Shadowy Husk: Defender"
+              ],
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d8/Iniquitous_Baptist_Icon.png/revision/latest/scale-to-width-down/240?cb=20230412020927"
+            },
+            {
+              "label": "Chamber 2 · First Half",
+              "boss": "Radiant Moonfly",
+              "types": [],
+              "level": 98,
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Radiant_Moonfly_Icon.png/revision/latest/scale-to-width-down/240?cb=20250910024517"
+            },
+            {
+              "label": "Chamber 2 · Second Half",
+              "boss": "Battle-Hardened Elite Treasure Hoarder",
+              "types": [],
+              "level": 98,
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d5/Hiljetta_%28Local_Legend%29_Icon.png/revision/latest/scale-to-width-down/240?cb=20260117120408"
+            },
+            {
+              "label": "Chamber 3 · First Half",
+              "boss": "Chimeric Winged Lion",
+              "types": [],
+              "level": 100,
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Chimeric_Winged_Lion_Icon.png/revision/latest?cb=20260810043855"
+            },
+            {
+              "label": "Chamber 3 · Second Half",
+              "boss": "Secret Source Automaton: Overseer Device",
+              "types": [],
+              "level": 100,
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Secret_Source_Automaton_Overseer_Device_Icon.png/revision/latest/scale-to-width-down/240?cb=20250507034833"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Genshin Impact Wiki",
+        "page": "Spiral Abyss/Floors/2026-10-16",
+        "url": "https://genshin-impact.fandom.com/wiki/Spiral_Abyss/Floors/2026-10-16"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "it": {
+      "periodStart": "2026-10-01T04:00",
+      "periodEnd": "2026-11-01T04:00",
+      "title": "Season 28",
+      "typesLabel": "Advantage",
+      "effects": [
+        {
+          "name": "Blessing",
+          "desc": "After the above characters join your party, Max HP, ATK, and DEF are increased by 20%."
+        }
+      ],
+      "choices": [
+        {
+          "label": "Elements",
+          "style": "elements",
+          "options": [
+            {
+              "name": "Hydro",
+              "desc": ""
+            },
+            {
+              "name": "Cryo",
+              "desc": ""
+            },
+            {
+              "name": "Anemo",
+              "desc": ""
+            }
+          ]
+        },
+        {
+          "label": "Opening characters",
+          "style": "chips",
+          "options": [
+            {
+              "name": "Neuvillette",
+              "desc": ""
+            },
+            {
+              "name": "Barbara",
+              "desc": ""
+            },
+            {
+              "name": "Citlali",
+              "desc": ""
+            },
+            {
+              "name": "Kaeya",
+              "desc": ""
+            },
+            {
+              "name": "Wanderer",
+              "desc": ""
+            },
+            {
+              "name": "Prune",
+              "desc": ""
+            }
+          ]
+        },
+        {
+          "label": "Guest characters",
+          "style": "chips",
+          "options": [
+            {
+              "name": "Ineffa",
+              "desc": ""
+            },
+            {
+              "name": "Yae Miko",
+              "desc": ""
+            },
+            {
+              "name": "Thoma",
+              "desc": ""
+            },
+            {
+              "name": "Chiori",
+              "desc": ""
+            }
+          ]
+        }
+      ],
+      "difficulties": [
+        {
+          "key": "visionary",
+          "name": "Visionary Mode",
+          "level": 100,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Act 3",
+              "boss": "Perpetual Mechanical Array",
+              "types": [],
+              "level": 90,
+              "note": "Focus fire on a single enemy",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Perpetual_Mechanical_Array_Icon.png/revision/latest/scale-to-width-down/240?cb=20210721055430"
+            },
+            {
+              "label": "Act 6",
+              "boss": "Battle-Hardened Chimeric Volkodlak Archer",
+              "types": [],
+              "level": 92,
+              "note": "Stellar Glimmer Reaction Advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Furiosa_Icon.png/revision/latest/scale-to-width-down/240?cb=20260815170455"
+            },
+            {
+              "label": "Act 8",
+              "boss": "Chimeric Winged Lion",
+              "types": [],
+              "level": 95,
+              "note": "Stellar Glimmer Reaction Advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Chimeric_Winged_Lion_Icon.png/revision/latest?cb=20260810043855"
+            },
+            {
+              "label": "Act 10",
+              "boss": "Secret Source Automaton: Overseer Device",
+              "types": [
+                "Cryo"
+              ],
+              "level": 100,
+              "note": "Cryo characters have an advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Secret_Source_Automaton_Overseer_Device_Icon.png/revision/latest/scale-to-width-down/240?cb=20250507034833"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Genshin Impact Wiki",
+        "page": "Imaginarium Theater/Seasons/2026-10-01",
+        "url": "https://genshin-impact.fandom.com/wiki/Imaginarium_Theater/Seasons/2026-10-01"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "so": {
+      "periodStart": "2026-09-30T10:00",
+      "periodEnd": "2026-11-11T10:00",
+      "title": "Luminous Battlefront",
+      "typesLabel": "Advantage",
+      "effects": [
+        {
+          "name": "Ley Line Disturbance",
+          "desc": "A powerful opponent has re-emerged from the Ley Lines, and the battle is sure to be very difficult\nAffected by the Ley Line Disturbance, characters cannot be deployed multiple times\nYou have reached the final defensive line of the Domain. The level of disturbance here is at its highest, interfering with even the Exalted Ones and rendering their Eminent Boons ineffective. After completing the current challenge in Single-Player Mode, characters in your party will be granted Eminence or Enduring Eminence based on your performance.\nDuring the Disturbance Outbreak, you can complete battles to claim special rewards"
+        }
+      ],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "top",
+          "name": "Dire",
+          "level": 110,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Battlefield 1 · Gale Hewing",
+              "boss": "Battle-Hardened Domovoy Sculptor",
+              "types": [
+                "Anemo"
+              ],
+              "level": 110,
+              "note": "Advantage: Stellar Glimmer characters or Anemo characters",
+              "traits": [
+                {
+                  "name": "Big-Mouthed Jack Frost",
+                  "desc": "When battle begins, the Nemesis will harness Anemo energy to create a Prime Ice sculpture. After a short delay, the sculpture will transform into a Big-Mouthed Jack Frost that continuously launches snowballs.\nInflict Radiance: Stellar Glimmer on the Nemesis while it is creating the sculpture to interrupt the process and turn the ice sculpture into a harmless animal statue instead."
+                },
+                {
+                  "name": "Creative Frenzy",
+                  "desc": "Due to the effects of the Ley Line disturbance, the Nemesis will start the battle with greatly increased All Elemental RES and Physical RES and will create Prime Ice sculptures more frequently.\nAfter an ice sculpture is transformed into a small animal statue, it will explode following a brief delay, dealing damage to the Nemesis and reducing its All Elemental RES and Physical RES, while further reducing its Anemo RES. This effect can stack up to 3 times."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Churin_Icon.png/revision/latest/scale-to-width-down/240?cb=20260815170317"
+            },
+            {
+              "label": "Battlefield 2 · Obliterator Panoply",
+              "boss": "Secret Source Automaton: Overseer Device",
+              "types": [
+                "Cryo"
+              ],
+              "level": 110,
+              "note": "Advantage: Cryo characters",
+              "traits": [
+                {
+                  "name": "Preemptive Sweeper Mode",
+                  "desc": "Will immediately enter Sweeper Mode when combat starts: All Elemental and Physical RES is greatly increased, and it will generate Flow Momentum while performing attacks. The higher its Flow Momentum, the faster it will rotate and the more DMG it will deal.\nIt will lose Flow Momentum after taking Cryo DMG. Below a certain Flow Momentum value, it will stop rotating and attacking, and its All Elemental and Physical RES will be greatly decreased, with its Cryo RES decreasing still more.\nEach time it enters Sweeper Mode, it will produce additional Elemental Orbs the first time its rotating attacks are stopped."
+                },
+                {
+                  "name": "Forced Counterstrike Mode",
+                  "desc": "If an active character enters and maintains the Nightsoul's Blessing state for a time, this opponent will enter Forced Counterstrike Mode and switch to attacking with powerful tracking rays. At this time, its All Elemental and Physical RES will be decreased.\nIn this state, after it takes a certain number of Cryo DMG instances, it will cease attacking altogether and its All Elemental and Physical RES will be further decreased."
+                },
+                {
+                  "name": "Damage-Resistant Structure",
+                  "desc": "Affected by the Ley Line disturbance, this great foe has its All RES further increased, and it loses less Flow Momentum when struck by Cryo DMG. It will also lose less RES when in Forced Counterstrike Mode."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Secret_Source_Automaton_Overseer_Device_Icon.png/revision/latest/scale-to-width-down/240?cb=20250507034833"
+            },
+            {
+              "label": "Battlefield 3 · Endless Reverberation",
+              "boss": "Guardian Blade of Drifting Snow",
+              "types": [
+                "Pyro"
+              ],
+              "level": 110,
+              "note": "Advantage: Stellar Glimmer characters or Pyro characters",
+              "traits": [
+                {
+                  "name": "Ice Coffin: Twinned Crystal Lattice",
+                  "desc": "During battle, when the Nemesis's HP falls below a certain threshold, it will encase itself in an Ice Coffin and gain a Cryo Ward to protect itself.\nWhile the Ice Coffin is active, the Nemesis will continuously unleash icy storms around itself. If the Ice Coffin is not destroyed, the Nemesis restores a portion of its HP and creates ice swords to launch a counterattack. However, if the Ice Coffin sustaining its life is destroyed, it enters a weakened state for a period of time and takes backlash DMG. Due to the Ley Line disturbance, the Ice Coffin will be more durable. A short time after it is destroyed for the first time, the Nemesis will encase itself in another Ice Coffin."
+                },
+                {
+                  "name": "Ice Coffin: Warped Crystal Lattice",
+                  "desc": "While the Ice Coffin is active, if the Nemesis is affected by Radiance: Stellar Glimmer, the Ice Coffin's Cryo Ward will transform into a shield that absorbs DMG. Once the shield is destroyed, the Nemesis will take a large amount of backlash DMG."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Guardian_Blade_of_Drifting_Snow_Icon.png/revision/latest/scale-to-width-down/240?cb=20261014144513"
+            }
+          ]
+        }
+      ],
+      "closesAt": "2026-11-03T03:59",
+      "source": {
+        "name": "Genshin Impact Wiki",
+        "page": "Stygian Onslaught/2026-09-30",
+        "url": "https://genshin-impact.fandom.com/wiki/Stygian_Onslaught/2026-09-30"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "sd": {
+      "periodStart": "2026-10-16T04:00",
+      "periodEnd": "2026-10-30T04:00",
+      "title": "Critical Node",
+      "typesLabel": "Weak to",
+      "effects": [
+        {
+          "name": "Frontier buff 1",
+          "desc": "Agent Sharp DMG increases by 20%. After defeating normal enemies, Agents with the Stun specialty restore 15 Energy."
+        },
+        {
+          "name": "Frontier buff 2",
+          "desc": "When Agents' Basic Attack, Special Attack, and Ultimate hit enemies, PEN Ratio increases by 10%. If the enemy is Stunned, ignore 15% of their Electric RES."
+        }
+      ],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "fifth",
+          "name": "Fifth Frontier",
+          "level": 70,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Room 1",
+              "boss": "Metamorphosed - Scorpse",
+              "types": [
+                "Wind",
+                "Electric"
+              ],
+              "resist": [
+                "Ice"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Agent Sharp DMG increases by 20%. After defeating normal enemies, Agents with the Stun specialty restore 15 Energy."
+                },
+                {
+                  "name": "",
+                  "desc": "When Agents' Basic Attack, Special Attack, and Ultimate hit enemies, PEN Ratio increases by 10%. If the enemy is Stunned, ignore 15% of their Electric RES."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Special Anti-Riotboo",
+                "City Guardboo",
+                "Airspace Patrolboo"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/18/Enemy_Metamorphosed_-_Scorpse.png/revision/latest/scale-to-width-down/240?cb=20260618093739"
+            },
+            {
+              "label": "Room 2",
+              "boss": "Miasmic - Thracian",
+              "types": [
+                "Ether",
+                "Wind"
+              ],
+              "resist": [
+                "Electric"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "If there are 2/3 Agents with the Anomaly specialty in the squad, Attribute Anomaly DMG dealt by Agents increases by 10%/60%, and the whole squad initially gains 500/1,500 Decibels upon entering combat."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Ionized - Farbauti",
+                "Ionized - Dullahan"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/26/Enemy_Miasmic_-_Thracian.png/revision/latest/scale-to-width-down/240?cb=20250607225115"
+            },
+            {
+              "label": "Room 3",
+              "boss": "Sacrifice - Covenant Guardian",
+              "types": [
+                "Fire",
+                "Physical"
+              ],
+              "resist": [
+                "Ice",
+                "Wind"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Agent Fire DMG and Ether DMG increase by 15%, and Sheer DMG increases by 15%."
+                },
+                {
+                  "name": "",
+                  "desc": "Agent Ultimate DMG increases by 30%. When an Ultimate attack hits an enemy, it ignores 10% of the target's All-Attribute RES."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Hollow Thug - Bulky Intimidator",
+                "Hollow Thug - Bulky Enforcer"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d1/Enemy_Sacrifice_-_Covenant_Guardian.png/revision/latest/scale-to-width-down/240?cb=20251126234657"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Zenless Zone Zero Wiki",
+        "page": "Shiyu Defense/Critical Node/2026-10-16",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-10-16"
+      },
+      "updatedAt": "2026-10-23"
+    },
+    "toa": {
+      "periodStart": "2026-10-12T04:00",
+      "periodEnd": "2026-11-09T04:00",
+      "notFound": true,
+      "note": "The Wuthering Waves wiki stopped adding Tower of Adversity rotations in early 2026, so there is no lineup to show until its editors catch up.",
+      "flagged": [
+        "**Tower of Adversity**: the wiki still has no page for the period that started 2026-10-12T04:00 (11 days ago). The Wuthering Waves wiki stopped adding Tower of Adversity rotations in early 2026, so there is no lineup to show until its editors catch up."
+      ]
     }
   },
   "tracked": [
+    "sa",
+    "it",
+    "so",
     "moc",
     "pf",
-    "as"
+    "as",
+    "sd",
+    "da",
+    "toa"
   ]
 }

@@ -20,6 +20,7 @@ export function createWiki(host) {
     }
   }
   return {
+    query: params => call({ action: 'query', ...params }),
     pageUrl: title => `https://${host}/wiki/${encodeURIComponent(title.replace(/ /g, '_')).replace(/%2F/g, '/')}`,
     // Subpage titles under a prefix, e.g. "Pure Fiction/Stages/"
     async listPages(prefix) {
@@ -30,25 +31,26 @@ export function createWiki(host) {
       const d = await call({ action: 'parse', page: title, prop: 'wikitext' })
       return d.parse?.wikitext || ''
     },
-    // Picture for each enemy name: its "Enemy <name>.png" icon if the wiki has one, otherwise the
-    // picture on its wiki page (e.g. "Fulminating Wolflord" uses Enemy_Borisin_Warhead_Hoolay.png)
-    async enemyImages(names, size = 240) {
-      const out = new Map(), todo = [...new Set(names.filter(Boolean))].slice(0, 50)
-      if (!todo.length) return out
-      const files = await call({ action: 'query', titles: todo.map(n => `File:Enemy ${n}.png`).join('|'), prop: 'imageinfo', iiprop: 'url', iiurlwidth: String(size) })
-      for (const p of files.query?.pages || []) {
-        const url = p.imageinfo?.[0]?.thumburl || p.imageinfo?.[0]?.url
-        const name = todo.find(n => `File:Enemy ${n}.png`.replace(/_/g, ' ') === p.title.replace(/_/g, ' '))
-        if (url && name) out.set(name, url)
+    // Picture for each enemy name. Tries each file name pattern in order ("{name}" is replaced), following
+    // redirects, then optionally the picture on the enemy's own wiki page. Wikis name their icons differently:
+    // HSR/ZZZ "Enemy {name}.png", Genshin/WuWa "{name} Icon.png".
+    async enemyImages(names, { files = ['Enemy {name}.png'], pageImages = true, size = 240 } = {}) {
+      const out = new Map(), want = [...new Set(names.filter(Boolean))].slice(0, 50)
+      // Query some titles and map the results back to the names asked for, through normalising and redirects
+      async function lookup(titleOf, params, pick) {
+        const todo = want.filter(n => !out.has(n))
+        if (!todo.length) return
+        const asked = new Map(todo.map(n => [titleOf(n), n]))
+        const d = await call({ action: 'query', titles: [...asked.keys()].join('|'), redirects: '1', ...params })
+        const back = new Map(asked)
+        for (const r of [...(d.query?.normalized || []), ...(d.query?.redirects || [])]) if (back.has(r.from)) back.set(r.to, back.get(r.from))
+        for (const page of d.query?.pages || []) { const url = pick(page); if (url && back.has(page.title)) out.set(back.get(page.title), url) }
       }
-      const rest = todo.filter(n => !out.has(n))
-      if (rest.length) {
-        const pages = await call({ action: 'query', titles: rest.join('|'), prop: 'pageimages', piprop: 'thumbnail', pithumbsize: String(size), redirects: '1' })
-        // Titles can come back normalised or redirected, so map them back to the names asked for
-        const back = new Map(rest.map(n => [n, n]))
-        for (const r of [...(pages.query?.normalized || []), ...(pages.query?.redirects || [])]) back.set(r.to, back.get(r.from) || r.from)
-        for (const p of pages.query?.pages || []) if (p.thumbnail?.source && back.has(p.title)) out.set(back.get(p.title), p.thumbnail.source)
+      for (const pattern of files) {
+        await lookup(n => `File:${pattern.replace('{name}', n)}`, { prop: 'imageinfo', iiprop: 'url', iiurlwidth: String(size) },
+          page => page.imageinfo?.[0]?.thumburl || page.imageinfo?.[0]?.url)
       }
+      if (pageImages) await lookup(n => n, { prop: 'pageimages', piprop: 'thumbnail', pithumbsize: String(size) }, page => page.thumbnail?.source)
       return out
     }
   }
@@ -106,9 +108,9 @@ export function allTemplates(text) {
 
 export const stripComments = text => text.replace(/<!--[\s\S]*?-->/g, '')
 
-// Level-2 sections ("==Title==") with their text
-export function sections(text) {
-  const out = [], re = /^==([^=].*?)==\s*$/gm
+// Sections at one heading level ("==Title==" for 2, "===Title===" for 3) with their text
+export function sections(text, level = 2) {
+  const eq = '='.repeat(level), out = [], re = new RegExp(`^${eq}([^=].*?)${eq}\\s*$`, 'gm')
   let m, last = null
   while ((m = re.exec(text))) {
     if (last) last.body = text.slice(last.start, m.index)
@@ -122,15 +124,38 @@ export function sections(text) {
 // Wiki markup -> plain text
 export function plain(s = '') {
   let t = s.replace(/<ref[^>]*\/>/g, '').replace(/<ref[\s\S]*?<\/ref>/g, '').replace(/<br\s*\/?>/gi, '\n')
+    .replace(/\{\{Colon\}\}/gi, ':').replace(/\{\{!\}\}/g, '|')
   for (let k = 0; k < 5 && /\{\{/.test(t); k++) {
-    t = t.replace(/\{\{(?:Color|Enemy|Item|Character)\|(?:[^|{}]*\|)?([^|{}]*)\}\}/gi, '$1').replace(/\{\{[^{}]*\}\}/g, '')
+    t = t.replace(/(\{\{[^{}]*?)\|\s*\w+\s*=[^|{}]*(?=[|}])/g, '$1')       // drop named args like |nobold=1
+      .replace(/\{\{(?:Color|Enemy|Item|Character|Element|Elements)\|(?:[^|{}]*\|)?([^|{}]*)\}\}/gi, '$1')
+      .replace(/\{\{[^{}]*\}\}/g, '')
   }
   return t.replace(/\[\[(?:[^\]|]*\|)?([^\]]*)\]\]/g, '$1').replace(/'{2,}/g, '').replace(/<[^>]+>/g, '')
     .replace(/\\\s*$/, '').replace(/[ \t]+/g, ' ').replace(/ *\n */g, '\n').replace(/\n{2,}/g, '\n').trim()
 }
 
-// "2026/09/28 06:00:00 GMT+8" -> "2026-09-28T06:00" (server-local, like resets.json)
+// String values from a Lua data module: ['Frigidity'] = { eff_1 = "...", eff_2 = "..." } -> { eff_1, eff_2 }
+export function luaEntry(source, key) {
+  const start = source.indexOf(`['${key.replace(/'/g, "\\'")}']`)
+  if (start === -1) return null
+  // The entry's closing brace, skipping braces inside strings (descriptions contain "{{Color|...}}")
+  let end = source.indexOf('{', start), inString = false
+  for (; end !== -1 && end < source.length; end++) {
+    const c = source[end]
+    if (inString) { if (c === '\\') end++; else if (c === '"') inString = false }
+    else if (c === '"') inString = true
+    else if (c === '}') break
+  }
+  const body = source.slice(start, end)
+  return Object.fromEntries([...body.matchAll(/(\w+)\s*=\s*"((?:[^"\\]|\\.)*)"/g)].map(m => [m[1], m[2].replace(/\\(.)/g, '$1')]))
+}
+
+// "a; b;; c" -> ['a', 'b', 'c']
+export const list = (s, sep = ',') => (s || '').split(sep).map(x => x.trim()).filter(Boolean)
+
+// "2026/09/28 06:00:00 GMT+8" or "2026-09-28 06:00:00" -> "2026-09-28T06:00" (server-local, like resets.json).
+// Date-only values ("2026-10-16") get the usual 04:00 reset time.
 export function wikiTime(s = '') {
-  const m = s.match(/(\d{4})\/(\d{2})\/(\d{2})\s+(\d{2}):(\d{2})/)
-  return m ? `${m[1]}-${m[2]}-${m[3]}T${m[4]}:${m[5]}` : null
+  const m = s.match(/(\d{4})[/-](\d{2})[/-](\d{2})(?:[\sT]+(\d{2}):(\d{2}))?/)
+  return m ? `${m[1]}-${m[2]}-${m[3]}T${m[4] || '04'}:${m[5] || '00'}` : null
 }

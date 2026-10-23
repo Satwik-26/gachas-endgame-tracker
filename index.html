@@ -127,12 +127,15 @@
         .tab { display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #a1a1aa; font-size: 0.9rem; font-weight: 800; padding: 0.65rem 0.9rem; cursor: pointer; }
         .tab[aria-selected="true"] { color: #fff; border-bottom-color: var(--card-accent); }
         .nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0.9rem; }
+        .nodes.many { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }   /* 4+ cards: two wider columns */
         .node { background: rgba(0, 0, 0, 0.28); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; }
         .node-head { display: flex; align-items: center; gap: 0.85rem; }
-        .node-img { width: 72px; height: 72px; flex-shrink: 0; border-radius: 14px; object-fit: cover; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .node-head .node-label { margin-bottom: 0.3rem; }
+        /* Narrow cards (three in a row): picture above the name so long names get the full width */
+        .node { container-type: inline-size; }
+        @container (max-width: 250px) { .node-head { flex-direction: column; align-items: flex-start; gap: 0.6rem; } }
+        .node-img { width: 60px; height: 60px; flex-shrink: 0; border-radius: 14px; object-fit: cover; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.08); }
         .node-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-accent); }
-        .node-boss { font-size: 1.05rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+        .node-boss { font-size: 1.05rem; font-weight: 700; line-height: 1.3; overflow-wrap: break-word; hyphens: auto; -webkit-hyphens: auto; min-width: 0; }
         .detail-head h2:focus { outline: none; }
         .effects, .lineup-name { overflow-wrap: anywhere; }
         .node-types-label { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #8b8b94; margin-top: auto; }
@@ -142,6 +145,11 @@
         .effects dd { color: #c4c4cc; white-space: pre-line; }
         .effects.compact { font-size: 0.78rem; margin: 0.5rem 0 0; }
         .tab-meta { font-size: 0.75rem; font-weight: 700; color: #a1a1aa; margin: -0.5rem 0 1rem; }
+        .node-note { font-size: 0.78rem; line-height: 1.45; color: #d4d4d8; }
+        .node-others { font-size: 0.74rem; line-height: 1.45; color: #8b8b94; }
+        .name-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 1rem; }
+        .name-chip { font-size: 0.78rem; font-weight: 700; color: #e4e4e7; background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 99px; padding: 0.2rem 0.65rem; }
+        .choice-label + .weak { margin-bottom: 1rem; }
         .node-corruption { font-size: 0.72rem; font-weight: 800; color: #ff8a8a; background: rgba(255, 107, 107, 0.12); border: 1px solid rgba(255, 107, 107, 0.35); border-radius: 8px; padding: 0.25rem 0.5rem; width: fit-content; }
         .node-traits { font-size: 0.78rem; color: #a1a1aa; }
         .node-traits summary { cursor: pointer; font-weight: 700; color: #d4d4d8; }
@@ -360,10 +368,10 @@
         }
 
         // The saved lineup, but only if it is for the period that is live right now
+        const periodStartOf = (mode, offset) => new Date(mode.period.prev + offset * HOUR).toISOString().slice(0, 16)
         function currentLineup(mode, offset) {
-            const start = new Date(mode.period.prev + offset * HOUR).toISOString().slice(0, 16)
             const l = lineups[mode.id]
-            return l && l.periodStart === start && Array.isArray(l.difficulties) && l.difficulties.length ? l : null
+            return l && l.periodStart === periodStartOf(mode, offset) && Array.isArray(l.difficulties) && l.difficulties.length ? l : null
         }
         const isConfirmed = l => l.locked || l.difficulties.every(d => d.confirmed)
 
@@ -400,19 +408,19 @@
         function effectList(items, className = 'effects') {
             const listEl = el('dl', className)
             for (const item of items) {
-                listEl.append(el('dt', '', item.name))
+                if (item.name) listEl.append(el('dt', '', item.name))
                 if (item.desc) listEl.append(el('dd', '', item.desc))
             }
             return listEl
         }
 
-        function lineupPanel(mode, l) {
+        function lineupPanel(mode, l, missingNote) {
             const panel = el('div', 'panel')
             panel.append(el('div', 'panel-label', 'This period'))
             if (!l) {
-                panel.append(el('p', 'lineup-empty', trackedModes.includes(mode.id)
+                panel.append(el('p', 'lineup-empty', missingNote || (trackedModes.includes(mode.id)
                     ? 'No lineup for this period yet. It is read from the wiki after each reset, so check back soon.'
-                    : 'Boss lineups aren\'t tracked for this mode yet.'))
+                    : 'Boss lineups aren\'t tracked for this mode yet.')))
                 return panel
             }
 
@@ -441,8 +449,11 @@
 
             const nodes = el('div', 'nodes')
             nodes.setAttribute('role', 'tabpanel')
+            if (active.parts.length > 3) nodes.classList.add('many')
             for (const part of active.parts) {
                 const node = el('div', 'node')
+                const ownLevel = part.level && part.level !== active.level ? ` · Lv. ${part.level}` : ''
+                node.append(el('div', 'node-label', part.label + ownLevel))
                 const nodeHead = el('div', 'node-head')
                 // Boss portrait, hotlinked from the wiki's image server only
                 if (/^https:\/\/static\.wikia\.nocookie\.net\//.test(part.image || '')) {
@@ -451,19 +462,20 @@
                     img.alt = ''
                     img.loading = 'lazy'
                     img.referrerPolicy = 'no-referrer'
-                    img.width = img.height = 72
+                    img.width = img.height = 60
                     img.addEventListener('error', () => img.remove())
                     nodeHead.append(img)
                 }
-                const nodeTitle = el('div')
-                nodeTitle.append(el('div', 'node-label', part.label), el('div', 'node-boss', part.boss || 'Unknown boss'))
-                nodeHead.append(nodeTitle)
+                nodeHead.append(el('div', 'node-boss', part.boss || 'Unknown boss'))
                 node.append(nodeHead)
                 if (part.corruption) node.append(el('div', 'node-corruption', part.corruption))
-                if (part.types?.length) node.append(el('div', 'node-types-label', 'Recommended types'), typeChips(part.types))
+                if (part.note) node.append(el('p', 'node-note', part.note))
+                if (part.others?.length) node.append(el('p', 'node-others', `Also appearing: ${part.others.join(', ')}`))
+                if (part.types?.length) node.append(el('div', 'node-types-label', l.typesLabel || 'Recommended types'), typeChips(part.types))
+                if (part.resist?.length) node.append(el('div', 'node-types-label', 'Resists'), typeChips(part.resist))
                 if (part.traits?.length) {
                     const traits = el('details', 'node-traits')
-                    traits.append(el('summary', '', `Boss traits (${part.traits.length})`), effectList(part.traits, 'effects compact'))
+                    traits.append(el('summary', '', `${part.traitsLabel || 'Boss traits'} (${part.traits.length})`), effectList(part.traits, 'effects compact'))
                     node.append(traits)
                 }
                 // Apocalyptic Shadow: buffs the player picks for this node
@@ -479,7 +491,14 @@
 
             // Period-wide choices that aren't tied to a node, e.g. Pure Fiction's Cacophony
             for (const group of (l.choices || []).filter(c => !/^Node \d+ buff$/.test(c.label))) {
-                panel.append(el('div', 'panel-label choice-label', `${group.label}: choose one`), effectList(group.options))
+                if (group.style === 'elements' || group.style === 'chips') {
+                    const names = group.options.map(o => o.name)
+                    const chips = group.style === 'elements' ? typeChips(names) : el('div', 'name-chips')
+                    if (group.style === 'chips') for (const n of names) chips.append(el('span', 'name-chip', n))
+                    panel.append(el('div', 'panel-label choice-label', group.label), chips)
+                } else {
+                    panel.append(el('div', 'panel-label choice-label', `${group.label}: choose one`), effectList(group.options))
+                }
             }
 
             const foot = el('p', 'lineup-foot', l.locked ? 'Checked by hand. ' : '')
@@ -499,6 +518,8 @@
             const mode = detailMode, offset = parseFloat(regionSelect.value)
             const game = games.find(g => g.id === mode.gameId)
             const l = currentLineup(mode, offset)
+            const raw = lineups[mode.id]
+            const missingNote = !l && raw?.notFound && raw.periodStart === periodStartOf(mode, offset) ? raw.note : ''
             detailKey = `${mode.period.prev}|${l ? l.periodStart : ''}`
 
             const back = el('a', 'back-link', '← All endgames')
@@ -526,12 +547,13 @@
                 <div class="progress"><div class="progress-fill" id="bar-detail"></div></div>
                 <div class="progress-meta"><span id="day-detail"></span><span class="ending-label">Ending soon</span></div>
                 <div class="override-note" id="note-detail" hidden></div>
-                <div class="period-dates"><div><span>Started</span><b id="start-detail"></b></div><div><span>Resets</span><b id="end-detail"></b></div></div>`
+                <div class="period-dates"><div><span>Started</span><b id="start-detail"></b></div>${l?.closesAt ? '<div><span>Closes</span><b id="closes-detail"></b></div>' : ''}<div><span>${l?.closesAt ? 'Next one starts' : 'Resets'}</span><b id="end-detail"></b></div></div>`
 
             const layout = el('div', 'detail-layout')
-            layout.append(timer, lineupPanel(mode, l))
+            layout.append(timer, lineupPanel(mode, l, missingNote))
             detailView.className = game.id
             detailView.replaceChildren(back, head, layout)
+            if (l?.closesAt) document.getElementById('closes-detail').innerText = localDate(serverLocalToUTC(l.closesAt, offset))
             updateDetail(offset, Date.now())
         }
 

@@ -31,3 +31,6 @@ export function currentPeriod(mode, now = serverNow()) {
 }
 
 export const nextOnSchedule = mode => currentPeriod(mode).next
+
+// Two server-local times within a day and a half of each other (wiki times can say 06:00 on patch day)
+export const nearTime = (a, b, tolerance = 36 * HOUR) => !!a && !!b && Math.abs(toMs(a) - toMs(b)) <= tolerance
