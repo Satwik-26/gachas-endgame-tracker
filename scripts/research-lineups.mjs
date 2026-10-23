@@ -112,7 +112,7 @@ function sourcesFor(urls, domains) {
 }
 
 // ---------- Main ----------
-const saved = [], review = [], skipped = []
+const saved = [], review = [], skipped = [], failed = []
 
 for (const [id, cfg] of Object.entries(MODES)) {
   const mode = schedule.modes.find(m => m.id === id)
@@ -126,7 +126,16 @@ for (const [id, cfg] of Object.entries(MODES)) {
   if (samePeriod && existing.confirmed && !FORCE) { skipped.push(mode.name); continue }
 
   const q = prompt(mode, game, cfg, periodStart, periodEnd)
-  const [ra, rb] = [await ask(q), await ask(q)]
+  let ra, rb
+  try {
+    ra = await ask(q)
+    rb = await ask(q)
+  } catch (e) {
+    // Keep going so one unavailable mode doesn't lose the others; tomorrow's run tries again
+    console.error(`${mode.name}: ${e.message.split('\n')[0]}`)
+    failed.push(mode.name)
+    continue
+  }
   if (!ra.searched || !rb.searched) { console.error(`${PROVIDER} did not run any web searches (key may lack search quota). No changes made.`); process.exit(1) }
   const a = clean(ra.json, game), b = clean(rb.json, game)
 
@@ -174,9 +183,12 @@ lines.push(saved.length ? '### Confirmed' : 'No new confirmed lineups.')
 saved.forEach(s => lines.push(`- ${s}`))
 if (review.length) { lines.push('', '### Needs your review'); review.forEach(r => lines.push(`- ${r}`)) }
 if (skipped.length) lines.push('', `Already confirmed for this period: ${skipped.join(', ')}.`)
+if (failed.length) lines.push('', `Couldn't reach ${PROVIDER} for: ${failed.join(', ')}. The next run tries again.`)
 lines.push('', `Usage: ${usage.calls} requests, ${usage.searches} searches.`)
 
 await writeFile('lineups-summary.md', lines.join('\n') + '\n')
 console.log(lines.join('\n'))
 if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
 if (process.env.GITHUB_OUTPUT) await writeFile(process.env.GITHUB_OUTPUT, `needs_review=${review.length > 0}\n`, { flag: 'a' })
+// Fail the run only if nothing could be researched, so a total outage still shows up red in Actions
+if (failed.length && failed.length === Object.keys(MODES).length - skipped.length) process.exit(1)

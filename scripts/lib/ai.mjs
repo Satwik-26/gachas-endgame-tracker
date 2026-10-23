@@ -51,8 +51,26 @@ async function askClaude(prompt) {
   }
 }
 
+// Overload and rate-limit errors are usually gone within a minute, so wait and try again
+const RETRY_DELAYS_MS = (process.env.AI_RETRY_DELAYS_MS || '5000,20000,60000').split(',').map(Number)
+const RETRYABLE = /^(Gemini|Claude) (429|500|502|503|504|529):/
+const sleep = ms => new Promise(r => setTimeout(r, ms))
+
+async function withRetry(call) {
+  for (let attempt = 0; ; attempt++) {
+    try {
+      return await call()
+    } catch (e) {
+      const retryable = RETRYABLE.test(e.message) || e.name === 'TypeError'   // TypeError = network failure in fetch
+      if (!retryable || attempt >= RETRY_DELAYS_MS.length) throw e
+      console.warn(`${e.message.split('\n')[0].slice(0, 120)} — retrying in ${RETRY_DELAYS_MS[attempt] / 1000}s`)
+      await sleep(RETRY_DELAYS_MS[attempt])
+    }
+  }
+}
+
 export async function ask(prompt) {
-  const r = PROVIDER === 'gemini' ? await askGemini(prompt) : await askClaude(prompt)
+  const r = await withRetry(() => PROVIDER === 'gemini' ? askGemini(prompt) : askClaude(prompt))
   usage.calls++; usage.searches += r.searches
   const match = r.text.replace(/```json|```/g, '').match(/\{[\s\S]*\}/)
   let json = null
