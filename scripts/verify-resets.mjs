@@ -10,7 +10,7 @@
 // Provider: GEMINI_API_KEY (Google Search) or ANTHROPIC_API_KEY (Claude web search). Node 20+.
 
 import { readFile, writeFile } from 'node:fs/promises'
-import { ask, usage, PROVIDER, MODEL } from './lib/ai.mjs'
+import { ask, usage, modelsUsed, PROVIDER } from './lib/ai.mjs'
 import { DAY, toMs, toStr, nextOnSchedule } from './lib/schedule.mjs'
 
 const FILE = 'resets.json'
@@ -93,7 +93,7 @@ data.lastVerified = today
 await writeFile(FILE, JSON.stringify(data, null, 2) + '\n')
 
 // ---------- Summary ----------
-const lines = [`Automated schedule check on ${today} (${PROVIDER}: ${MODEL}).`, '']
+const lines = [`Automated schedule check on ${today} (${PROVIDER}: ${modelsUsed()}).`, '']
 lines.push(applied.length ? '### Applied automatically' : 'No confirmed changes.')
 applied.forEach(a => lines.push(`- ${a}`))
 if (review.length) { lines.push('', '### Needs your review'); review.forEach(r => lines.push(`- ${r}`)) }

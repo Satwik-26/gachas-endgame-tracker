@@ -16,7 +16,7 @@
 // Provider: GEMINI_API_KEY (Google Search) or ANTHROPIC_API_KEY (Claude web search). Node 20+.
 
 import { readFile, writeFile } from 'node:fs/promises'
-import { ask, usage, domainOf, PROVIDER, MODEL } from './lib/ai.mjs'
+import { ask, usage, domainOf, modelsUsed, PROVIDER } from './lib/ai.mjs'
 import { DAY, toStr, serverNow, currentPeriod } from './lib/schedule.mjs'
 
 const SCHEDULE_FILE = 'resets.json'
@@ -204,7 +204,7 @@ for (const [id, cfg] of Object.entries(MODES)) {
 if (JSON.stringify(data) !== before) await writeFile(FILE, JSON.stringify(data, null, 2) + '\n')
 
 // ---------- Summary ----------
-const lines = [`Lineup research on ${today} (${PROVIDER}: ${MODEL}).`, '']
+const lines = [`Lineup research on ${today} (${PROVIDER}: ${modelsUsed()}).`, '']
 lines.push(saved.length ? '### Confirmed' : 'No new confirmed lineups.')
 saved.forEach(s => lines.push(`- ${s}`))
 if (review.length) { lines.push('', '### Needs your review'); review.forEach(r => lines.push(`- ${r}`)) }
