@@ -92,25 +92,56 @@
         .progress-fill { height: 100%; width: 0; background: var(--card-accent); box-shadow: 0 0 10px var(--card-glow); border-radius: inherit; transition: width 0.5s linear; }
         .progress-meta { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #a1a1aa; letter-spacing: 0.03em; margin-bottom: 1.25rem; }
         .ending-label { color: var(--warn); visibility: hidden; text-transform: uppercase; letter-spacing: 0.08em; }
-        .card.ending .ending-label { visibility: visible; }
-        .card.ending .progress-fill { background: var(--warn); box-shadow: 0 0 10px var(--warn-glow); }
+        .ending .ending-label { visibility: visible; }
+        .ending .progress-fill { background: var(--warn); box-shadow: 0 0 10px var(--warn-glow); }
         .override-note { font-size: 0.8rem; line-height: 1.45; color: #e4e4e7; background: rgba(255, 255, 255, 0.06); border-left: 3px solid var(--card-accent); padding: 0.6rem 0.75rem; border-radius: 8px; margin-bottom: 1rem; }
 
-        .lineup { margin-top: 1rem; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 0.9rem; }
-        .lineup summary { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; cursor: pointer; list-style: none; font-size: 0.85rem; font-weight: 700; color: #e4e4e7; }
-        .lineup summary::-webkit-details-marker { display: none; }
-        .lineup summary::before { content: ''; width: 0.45rem; height: 0.45rem; border-right: 2px solid #a1a1aa; border-bottom: 2px solid #a1a1aa; transform: rotate(-45deg); transition: transform 0.2s ease; margin-right: 0.15rem; }
-        .lineup[open] summary::before { transform: rotate(45deg); }
-        .lineup summary:focus-visible { outline: 2px solid #fff; outline-offset: 3px; border-radius: 4px; }
-        .lineup-title { color: var(--card-accent); }
+        /* Whole card opens the mode's detail view */
+        .card { cursor: pointer; }
+        .card-open { position: absolute; inset: 0; z-index: 1; border-radius: inherit; }
+        .card-open:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        .card-more { margin-top: 1rem; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; font-size: 0.8rem; font-weight: 700; color: #a1a1aa; }
+        .more-title { color: var(--card-accent); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .more-cta { color: #fff; white-space: nowrap; margin-left: auto; }
+        @media (hover: hover) { .card:hover .more-cta { text-decoration: underline; } }
+
+        #detail-view { width: 100%; max-width: 1150px; }
+        #detail-view[hidden], #list-view[hidden] { display: none; }
+        #list-view { width: 100%; display: flex; flex-direction: column; align-items: center; }
+        .back-link { display: inline-flex; align-items: center; gap: 0.45rem; color: #e4e4e7; text-decoration: none; font-weight: 700; font-size: 0.9rem; margin: 1rem 0 1.75rem; padding: 0.45rem 1rem 0.45rem 0.75rem; border-radius: 99px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); }
+        .back-link:hover { background: rgba(255, 255, 255, 0.1); }
+        .back-link:focus-visible, .tab:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        .detail-head { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem; }
+        .detail-head img { width: 56px; height: 56px; border-radius: 14px; box-shadow: 0 0 18px var(--card-glow); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .detail-game { font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-accent); margin-bottom: 0.2rem; }
+        .detail-head h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+        .detail-layout { display: grid; grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 1.5rem; align-items: start; }
+        .panel { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.75rem; overflow: hidden; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); }
+        .panel::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); box-shadow: 0 0 20px var(--card-glow); opacity: 0.8; }
+        .panel-label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-bottom: 1rem; }
+        .period-dates { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.25rem; font-size: 0.85rem; font-weight: 600; color: #e4e4e7; }
+        .period-dates span { display: block; font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #8b8b94; margin-bottom: 0.2rem; }
+        .lineup-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-bottom: 0.75rem; }
+        .lineup-name { font-size: 1.5rem; font-weight: 800; letter-spacing: -0.01em; color: var(--card-accent); }
+        .lineup-buff { font-size: 0.92rem; line-height: 1.6; color: #d4d4d8; margin-bottom: 1.5rem; }
+        .tabs { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-bottom: 1.25rem; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+        .tab { display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none; border-bottom: 2px solid transparent; margin-bottom: -1px; color: #a1a1aa; font-size: 0.9rem; font-weight: 800; padding: 0.65rem 0.9rem; cursor: pointer; }
+        .tab[aria-selected="true"] { color: #fff; border-bottom-color: var(--card-accent); }
+        .nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(210px, 100%), 1fr)); gap: 0.9rem; }
+        .node { background: rgba(0, 0, 0, 0.28); border: 1px solid rgba(255, 255, 255, 0.06); border-radius: 16px; padding: 1.1rem; display: flex; flex-direction: column; gap: 0.55rem; }
+        .node-label { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: var(--card-accent); }
+        .node-boss { font-size: 1.05rem; font-weight: 700; line-height: 1.3; overflow-wrap: anywhere; }
+        .detail-head h2:focus { outline: none; }
+        .lineup-buff, .lineup-name { overflow-wrap: anywhere; }
+        .node-types-label { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #8b8b94; margin-top: auto; }
+        .lineup-foot { margin-top: 1.5rem; font-size: 0.75rem; line-height: 1.55; color: #8b8b94; }
+        .lineup-foot a { color: #c4c4cc; }
+        .lineup-empty { font-size: 0.92rem; line-height: 1.6; color: #a1a1aa; }
+        .tag-hand { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #6ee7a8; border: 1px solid rgba(110, 231, 168, 0.5); border-radius: 99px; padding: 0.1rem 0.5rem; }
+        @media (max-width: 860px) { .detail-layout { grid-template-columns: minmax(0, 1fr); } }
+        @media (max-width: 600px) { .panel { padding: 1.25rem; } .lineup-name { font-size: 1.25rem; } }
+
         .tag-unconfirmed { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.5); border-radius: 99px; padding: 0.1rem 0.5rem; }
-        .lineup-body { padding-top: 0.9rem; display: flex; flex-direction: column; gap: 0.9rem; }
-        .lineup-buff { font-size: 0.82rem; line-height: 1.5; color: #d4d4d8; }
-        .lineup-stage { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; }
-        .half { background: rgba(0, 0, 0, 0.25); border-radius: 12px; padding: 0.75rem 0.85rem; }
-        .half-name { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-bottom: 0.5rem; }
-        .half ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
-        .half li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.4rem 0.75rem; font-size: 0.88rem; font-weight: 600; }
         .weak { display: flex; flex-wrap: wrap; gap: 0.3rem; }
         .el { --el: #d4d4d8; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.03em; color: var(--el); border: 1px solid color-mix(in srgb, var(--el) 55%, transparent); background: color-mix(in srgb, var(--el) 12%, transparent); border-radius: 99px; padding: 0.12rem 0.5rem; }
         .el[data-el="Fire"], .el[data-el="Pyro"], .el[data-el="Fusion"] { --el: #ff7b5c; }
@@ -123,9 +154,6 @@
         .el[data-el="Hydro"] { --el: #5aa9ff; }
         .el[data-el="Dendro"] { --el: #a6e05a; }
         .el[data-el="Ether"], .el[data-el="Havoc"] { --el: #ff6fb8; }
-        .lineup-foot { font-size: 0.72rem; line-height: 1.5; color: #8b8b94; }
-        .lineup-foot a { color: #c4c4cc; }
-
         @media (max-width: 600px) {
             body { padding: 2.5rem 1rem 6rem; }
             #tracker-container { gap: 3.5rem; }
@@ -175,10 +203,14 @@
             <option value="1">Europe (UTC+1)</option>
         </select>
     </div>
-    <div class="filter" id="game-filter" role="group" aria-label="Games to show"></div>
-    <p class="verified" id="verified"></p>
 
-    <div id="tracker-container"></div>
+    <div id="list-view">
+        <div class="filter" id="game-filter" role="group" aria-label="Games to show"></div>
+        <p class="verified" id="verified"></p>
+        <div id="tracker-container"></div>
+    </div>
+
+    <section id="detail-view" hidden aria-live="polite"></section>
 
     <button class="feedback-btn" id="open-feedback">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
@@ -222,6 +254,7 @@
         const filterBar = document.getElementById('game-filter')
         let modes = []
         let lineups = {}
+        let trackedModes = []
 
         // Saved per browser; storage can be blocked (private mode), so failures fall back to defaults
         function load(key, fallback) {
@@ -284,51 +317,120 @@
             return node
         }
 
-        // Shown only when the saved lineup is for the period that is live right now
-        function renderLineup(mode, offset) {
-            const slot = document.getElementById(`lineup-${mode.id}`)
-            if (!slot) return
+        const DATE_FORMAT = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
+        const localDate = ms => new Date(ms).toLocaleDateString(undefined, DATE_FORMAT)
+
+        // Writes a mode's countdown into the elements whose ids end in `-${suffix}` (a card, or the detail view)
+        function fillCountdown(suffix, mode, now) {
+            const diff = Math.max(0, mode.currentDiff)
+            const byId = p => document.getElementById(`${p}-${suffix}`)
+            const set = (p, v) => { const el = byId(p); if (el) el.innerText = String(v).padStart(2, '0') }
+            set('d', Math.floor(diff / DAY))
+            set('h', Math.floor(diff / HOUR) % 24)
+            set('m', Math.floor(diff / 60000) % 60)
+            set('s', Math.floor(diff / 1000) % 60)
+
+            const { prev, next, reason } = mode.period
+            const elapsed = Math.min(1, Math.max(0, (now - prev) / (next - prev)))
+            const bar = byId('bar')
+            if (bar) bar.style.width = (elapsed * 100).toFixed(2) + '%'
+            const dayEl = byId('day')
+            if (dayEl) dayEl.innerText = `Day ${Math.min(Math.floor((now - prev) / DAY) + 1, Math.round((next - prev) / DAY))} of ${Math.round((next - prev) / DAY)}`
+            byId('card')?.classList.toggle('ending', diff < ENDING_SOON)
+            const note = byId('note')
+            if (note) {
+                note.hidden = !reason
+                note.innerText = reason ? `Irregular period: ${reason}` : ''
+            }
+            const dateEl = byId('date')
+            if (dateEl) dateEl.innerText = 'Local Time: ' + localDate(mode.targetMs)
+        }
+
+        // The saved lineup, but only if it is for the period that is live right now
+        function currentLineup(mode, offset) {
             const start = new Date(mode.period.prev + offset * HOUR).toISOString().slice(0, 16)
-            if (slot.dataset.period === start) return
-            slot.dataset.period = start
-            slot.replaceChildren()
             const l = lineups[mode.id]
-            if (!l || l.periodStart !== start || !Array.isArray(l.halves) || !l.halves.length) return
+            return l && l.periodStart === start && Array.isArray(l.difficulties) && l.difficulties.length ? l : null
+        }
+        const isConfirmed = l => l.locked || l.difficulties.every(d => d.confirmed)
 
-            const details = el('details', 'lineup')
-            const summary = el('summary')
-            summary.append(el('span', '', 'Lineup'))
-            if (l.title) summary.append(el('span', 'lineup-title', l.title))
-            if (!l.confirmed) summary.append(el('span', 'tag-unconfirmed', 'Unconfirmed'))
+        function renderCardMore(mode, offset) {
+            const slot = document.getElementById(`more-${mode.id}`)
+            const l = currentLineup(mode, offset)
+            const key = l ? `${l.periodStart}|${l.title}` : ''
+            if (!slot || slot.dataset.key === key) return
+            slot.dataset.key = key
+            slot.replaceChildren()
+            if (l?.title) slot.append(el('span', 'more-title', l.title))
+            slot.append(el('span', 'more-cta', l ? 'View lineup →' : 'View details →'))
+        }
 
-            const body = el('div', 'lineup-body')
-            if (l.buff) body.append(el('p', 'lineup-buff', l.buff))
-            if (l.stage) body.append(el('div', 'lineup-stage', l.stage))
-            for (const half of l.halves) {
-                const box = el('div', 'half')
-                const list = el('ul')
-                box.append(el('div', 'half-name', half.name), list)
-                for (const enemy of half.enemies || []) {
-                    const item = el('li')
-                    const weak = el('span', 'weak')
-                    const weaknesses = enemy.weaknesses || []
-                    if (weaknesses.length) weak.setAttribute('aria-label', `Weak to ${weaknesses.join(', ')}`)
-                    for (const w of weaknesses) {
-                        const chip = el('span', 'el', w)
-                        chip.dataset.el = w
-                        chip.setAttribute('aria-hidden', 'true')
-                        weak.append(chip)
-                    }
-                    item.append(el('span', '', enemy.name), weak)
-                    list.append(item)
-                }
-                body.append(box)
+        // ---------- Detail view (#<mode id>) ----------
+        const detailView = document.getElementById('detail-view')
+        const listView = document.getElementById('list-view')
+        const chosenDifficulty = {}
+        let detailMode = null, detailKey = '', listScroll = 0
+
+        function typeChips(types) {
+            const wrap = el('span', 'weak')
+            if (types.length) wrap.setAttribute('aria-label', types.join(', '))
+            for (const t of types) {
+                const chip = el('span', 'el', t)
+                chip.dataset.el = t
+                chip.setAttribute('aria-hidden', 'true')
+                wrap.append(chip)
+            }
+            return wrap
+        }
+
+        function lineupPanel(mode, l) {
+            const panel = el('div', 'panel')
+            panel.append(el('div', 'panel-label', 'This period'))
+            if (!l) {
+                panel.append(el('p', 'lineup-empty', trackedModes.includes(mode.id)
+                    ? 'No lineup for this period yet. It is researched automatically after each reset, so check back soon.'
+                    : 'Boss lineups aren\'t tracked for this mode yet.'))
+                return panel
             }
 
+            const head = el('div', 'lineup-head')
+            head.append(el('span', 'lineup-name', l.title || mode.name))
+            if (l.locked) head.append(el('span', 'tag-hand', 'Checked by hand'))
+            panel.append(head)
+            if (l.buff) panel.append(el('p', 'lineup-buff', l.buff))
+
+            const diffs = l.difficulties
+            const active = diffs.find(d => d.key === chosenDifficulty[mode.id]) || diffs[0]
+            const tabs = el('div', 'tabs')
+            tabs.setAttribute('role', 'tablist')
+            tabs.setAttribute('aria-label', 'Difficulty')
+            for (const d of diffs) {
+                const tab = el('button', 'tab', d.name)
+                tab.type = 'button'
+                tab.setAttribute('role', 'tab')
+                tab.setAttribute('aria-selected', d === active)
+                if (!d.confirmed && !l.locked) tab.append(el('span', 'tag-unconfirmed', 'Unconfirmed'))
+                tab.addEventListener('click', () => { chosenDifficulty[mode.id] = d.key; renderDetail() })
+                tabs.append(tab)
+            }
+            panel.append(tabs)
+
+            const nodes = el('div', 'nodes')
+            nodes.setAttribute('role', 'tabpanel')
+            for (const part of active.parts) {
+                const node = el('div', 'node')
+                node.append(el('div', 'node-label', part.label), el('div', 'node-boss', part.boss))
+                if (part.types?.length) node.append(el('div', 'node-types-label', 'Recommended types'), typeChips(part.types))
+                nodes.append(node)
+            }
+            panel.append(nodes)
+
             const sources = (l.sources || []).filter(s => /^https:\/\//.test(s.url || ''))
-            const foot = el('p', 'lineup-foot', (l.confirmed
-                ? 'Researched by AI and cross-checked across sites'
-                : 'Researched by AI but not cross-checked yet, so double-check in-game') + (sources.length ? '. Sources: ' : '.'))
+            const foot = el('p', 'lineup-foot', (l.locked
+                ? 'Researched by AI, then checked by hand'
+                : active.confirmed
+                    ? 'Researched by AI and cross-checked across sites'
+                    : 'Researched by AI but not cross-checked yet, so double-check in-game') + (sources.length ? '. Sources: ' : '.'))
             sources.forEach((s, i) => {
                 if (i) foot.append(', ')
                 const a = el('a', '', s.name)
@@ -337,9 +439,74 @@
                 a.rel = 'noopener noreferrer'
                 foot.append(a)
             })
-            body.append(foot)
-            details.append(summary, body)
-            slot.append(details)
+            panel.append(foot)
+            return panel
+        }
+
+        function renderDetail() {
+            const mode = detailMode, offset = parseFloat(regionSelect.value)
+            const game = games.find(g => g.id === mode.gameId)
+            const l = currentLineup(mode, offset)
+            detailKey = `${mode.period.prev}|${l ? l.periodStart : ''}`
+
+            const back = el('a', 'back-link', '← All endgames')
+            back.href = '#'
+            const head = el('div', 'detail-head')
+            const icon = el('img')
+            icon.src = `${game.id}.png`
+            icon.alt = ''
+            const titles = el('div')
+            const heading = el('h2', '', mode.name)
+            heading.tabIndex = -1
+            titles.append(el('div', 'detail-game', game.name), heading)
+            head.append(icon, titles)
+
+            const timer = el('div', 'panel')
+            timer.id = 'card-detail'
+            timer.innerHTML = `
+                <div class="panel-label">Resets in</div>
+                <div class="timer-grid">
+                    <div class="time-box"><span class="time-val" id="d-detail">00</span><span class="time-label">Days</span></div>
+                    <div class="time-box"><span class="time-val" id="h-detail">00</span><span class="time-label">Hours</span></div>
+                    <div class="time-box"><span class="time-val" id="m-detail">00</span><span class="time-label">Mins</span></div>
+                    <div class="time-box"><span class="time-val" id="s-detail">00</span><span class="time-label">Secs</span></div>
+                </div>
+                <div class="progress"><div class="progress-fill" id="bar-detail"></div></div>
+                <div class="progress-meta"><span id="day-detail"></span><span class="ending-label">Ending soon</span></div>
+                <div class="override-note" id="note-detail" hidden></div>
+                <div class="period-dates"><div><span>Started</span><b id="start-detail"></b></div><div><span>Resets</span><b id="end-detail"></b></div></div>`
+
+            const layout = el('div', 'detail-layout')
+            layout.append(timer, lineupPanel(mode, l))
+            detailView.className = game.id
+            detailView.replaceChildren(back, head, layout)
+            updateDetail(offset, Date.now())
+        }
+
+        function updateDetail(offset, now) {
+            const mode = detailMode
+            // Period rolled over, or the server changed: rebuild so the lineup matches
+            if (`${mode.period.prev}|${currentLineup(mode, offset)?.periodStart || ''}` !== detailKey) return renderDetail()
+            fillCountdown('detail', mode, now)
+            document.getElementById('start-detail').innerText = localDate(mode.period.prev)
+            document.getElementById('end-detail').innerText = localDate(mode.period.next)
+        }
+
+        // #moc opens that mode; anything else shows the list
+        function route() {
+            const mode = modes.find(m => m.id === decodeURIComponent(location.hash.slice(1)))
+            if (mode && !detailMode) listScroll = window.scrollY
+            detailMode = mode || null
+            listView.hidden = !!mode
+            detailView.hidden = !mode
+            document.title = mode ? `${mode.name} | Gacha Endgame Tracker` : 'Gacha Endgame Tracker | Live Reset Timers'
+            if (mode) {
+                renderDetail()
+                window.scrollTo(0, 0)
+                detailView.querySelector('h2')?.focus({ preventScroll: true })   // screen readers land on the new view
+            } else {
+                window.scrollTo(0, listScroll)
+            }
         }
 
         function renderFilter() {
@@ -404,7 +571,8 @@
                         <div class="progress-meta"><span id="day-${mode.id}"></span><span class="ending-label">Ending soon</span></div>
                         <div class="override-note" id="note-${mode.id}" hidden></div>
                         <div class="date-display" id="date-${mode.id}"></div>
-                        <div id="lineup-${mode.id}"></div>`
+                        <div class="card-more" id="more-${mode.id}"><span class="more-cta">View details →</span></div>
+                        <a class="card-open" href="#${mode.id}" aria-label="${mode.name}: open details"></a>`
                     grid.appendChild(card)
                 })
             })
@@ -434,33 +602,10 @@
             })
 
             modes.forEach(mode => {
-                const diff = Math.max(0, mode.currentDiff)
-                const set = (p, v) => { const el = document.getElementById(`${p}-${mode.id}`); if (el) el.innerText = String(v).padStart(2, '0') }
-                set('d', Math.floor(diff / DAY))
-                set('h', Math.floor(diff / HOUR) % 24)
-                set('m', Math.floor(diff / 60000) % 60)
-                set('s', Math.floor(diff / 1000) % 60)
-
-                const { prev, next, reason } = mode.period
-                const elapsed = Math.min(1, Math.max(0, (now - prev) / (next - prev)))
-                const bar = document.getElementById(`bar-${mode.id}`)
-                if (bar) bar.style.width = (elapsed * 100).toFixed(2) + '%'
-                const dayEl = document.getElementById(`day-${mode.id}`)
-                if (dayEl) dayEl.innerText = `Day ${Math.min(Math.floor((now - prev) / DAY) + 1, Math.round((next - prev) / DAY))} of ${Math.round((next - prev) / DAY)}`
-                document.getElementById(`card-${mode.id}`)?.classList.toggle('ending', diff < ENDING_SOON)
-                const note = document.getElementById(`note-${mode.id}`)
-                if (note) {
-                    note.hidden = !reason
-                    note.innerText = reason ? `Irregular period: ${reason}` : ''
-                }
-                renderLineup(mode, offset)
-
-                const dateEl = document.getElementById(`date-${mode.id}`)
-                if (dateEl) {
-                    const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
-                    dateEl.innerText = 'Local Time: ' + new Date(mode.targetMs).toLocaleDateString(undefined, options)
-                }
+                fillCountdown(mode.id, mode, now)
+                renderCardMore(mode, offset)
             })
+            if (detailMode) updateDetail(offset, now)
         }
 
         async function init() {
@@ -479,7 +624,9 @@
                 return
             }
             modes = data.modes
-            lineups = (await lineupsReq)?.modes || {}
+            const lineupData = await lineupsReq
+            lineups = lineupData?.modes || {}
+            trackedModes = lineupData?.tracked || []
             document.getElementById('verified').innerText = data.lastVerified
                 ? `Schedule last verified ${new Date(data.lastVerified + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}`
                 : ''
@@ -487,7 +634,9 @@
             render()
             applyHidden()
             updateTimers()
+            route()
             setInterval(updateTimers, 1000)
+            window.addEventListener('hashchange', route)
             regionSelect.addEventListener('change', () => {
                 save('endgame.region', regionSelect.value)
                 updateTimers()
