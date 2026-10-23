@@ -165,4 +165,4 @@ lines.push('', `Usage: ${usage.calls} requests, ${usage.searches} searches.`)
 await writeFile('verify-summary.md', lines.join('\n') + '\n')
 console.log(lines.join('\n'))
 if (process.env.GITHUB_STEP_SUMMARY) await writeFile(process.env.GITHUB_STEP_SUMMARY, lines.join('\n') + '\n', { flag: 'a' })
-if (process.
+if (process.env.GITHUB_OUTPUT) await writeFile(process.env.GITHUB_OUTPUT, `needs_review=${review.length > 0}\n`, { flag: 'a' })
