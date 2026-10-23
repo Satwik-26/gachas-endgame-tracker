@@ -80,10 +80,18 @@ async function ask(prompt) {
 // ---------- Schedule math ----------
 const toMs = s => Date.parse(s + ':00Z')              // server-local string -> comparable ms
 const toStr = ms => new Date(ms).toISOString().slice(0, 16)
+// Same rule as the page: an override replaces the regular reset nearest to it,
+// and the cycle carries on from the latest override that has passed.
 function nextOnSchedule(mode) {
-  const start = toMs(mode.anchor), now = Date.now() + 8 * HOUR, cycle = mode.days * DAY
-  if (now < start) return start
-  return start + (Math.floor((now - start) / cycle) + 1) * cycle
+  const now = Date.now() + 8 * HOUR, cycle = mode.days * DAY
+  const points = [mode.anchor, ...(mode.overrides || []).map(o => o.date)].map(toMs).sort((a, b) => a - b)
+  const past = points.filter(p => p <= now)
+  const upcoming = points.find(p => p > now)
+  if (!past.length) return upcoming
+  const base = past[past.length - 1]
+  const next = base + (Math.floor((now - base) / cycle) + 1) * cycle
+  if (upcoming !== undefined && next >= base + Math.max(1, Math.round((upcoming - base) / cycle)) * cycle) return upcoming
+  return next
 }
 
 // ---------- Pass 1: look for anything that differs from the schedule ----------
@@ -144,7 +152,8 @@ for (const d of pass1.json.differences || []) {
   }
 
   applied.push(`${label}. Confirmed ${CONFIRM_RUNS}× by ${check.domains.join(', ')}. Cycle stays ${mode.days} days.`)
-  mode.anchor = d.statedNextReset          // cycle length is never touched
+  // Recorded as a one-off date so the page can show why; cycle length is never touched
+  mode.overrides = [...(mode.overrides || []), { date: d.statedNextReset, reason: d.quote || `Confirmed by ${check.domains.join(', ')}` }]
 }
 
 for (const n of pass1.json.newModes || []) {

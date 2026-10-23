@@ -26,12 +26,14 @@
             --zzz-glow: rgba(204, 255, 0, 0.4);
             --wuwa-accent: #fbbf24;
             --wuwa-glow: rgba(251, 191, 36, 0.4);
+            --warn: #ff6b6b;
+            --warn-glow: rgba(255, 107, 107, 0.45);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-display); -webkit-font-smoothing: antialiased; }
         @keyframes gradientMove { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         body { background: linear-gradient(-45deg, #07090e, #13111c, #0d1a20, #0a0a0a); background-size: 400% 400%; animation: gradientMove 20s ease infinite; color: #ffffff; min-height: 100vh; padding: 4rem 1.5rem; display: flex; flex-direction: column; align-items: center; }
         h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 1.5rem; text-align: center; text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        .controls { margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.05); padding: 0.75rem 1.5rem; border-radius: 99px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
+        .controls { margin-bottom: 1rem; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; background: rgba(255, 255, 255, 0.05); padding: 0.75rem 1.5rem; border-radius: 99px; border: 1px solid var(--glass-border); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); }
         .controls label { font-size: 0.9rem; color: #a1a1aa; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
         select { background: transparent; color: #fff; border: none; font-size: 1rem; font-weight: 700; outline: none; cursor: pointer; appearance: none; padding-right: 1.5rem; background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%23a1a1aa' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right center; }
         select option { color: #000; }
@@ -40,12 +42,14 @@
         .game-section { display: flex; flex-direction: column; gap: 2rem; }
         .game-header { display: flex; align-items: center; gap: 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1.25rem; }
         .game-header img { width: 44px; height: 44px; border-radius: 10px; box-shadow: 0 0 16px var(--card-glow); border: 1px solid rgba(255,255,255,0.1); }
-        .game-header h2 { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-        .card { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.75rem; display: flex; flex-direction: column; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .game-header h2 { font-size: clamp(1.4rem, 6vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; }
+        .card { position: relative; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 24px; padding: 1.75rem; display: flex; flex-direction: column; backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); overflow: hidden; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease; }
         .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--card-accent); box-shadow: 0 0 20px var(--card-glow); opacity: 0.8; transition: opacity 0.3s ease; }
-        .card:hover { transform: translateY(-5px) scale(1.01); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow); }
-        .card:hover::before { opacity: 1; }
+        @media (hover: hover) {
+            .card:hover { transform: translateY(-5px) scale(1.01); border-color: rgba(255, 255, 255, 0.2); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px var(--card-glow); }
+            .card:hover::before { opacity: 1; }
+        }
         .mode-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 2rem; }
         .title-group { display: flex; flex-direction: column; gap: 0.6rem; }
         .mode-title { font-size: 1.45rem; font-weight: 700; color: #ffffff; letter-spacing: -0.01em; }
@@ -62,7 +66,39 @@
         .genshin { --card-accent: var(--genshin-accent); --card-glow: var(--genshin-glow); }
         .zzz { --card-accent: var(--zzz-accent); --card-glow: var(--zzz-glow); }
         .wuwa { --card-accent: var(--wuwa-accent); --card-glow: var(--wuwa-glow); }
-        @media (prefers-reduced-motion: reduce) { body, .status-dot { animation: none; } .card { transition: none; } }
+        .filter { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-bottom: 1rem; }
+        .chip { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.05); color: #fff; border: 1px solid var(--glass-border); border-radius: 99px; padding: 0.35rem 0.9rem 0.35rem 0.35rem; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s ease, border-color 0.2s ease, background 0.2s ease; }
+        .chip img { width: 24px; height: 24px; border-radius: 7px; }
+        .chip[aria-pressed="true"] { border-color: var(--card-accent); background: rgba(255, 255, 255, 0.1); }
+        .chip[aria-pressed="false"] { opacity: 0.45; }
+        .chip[aria-pressed="false"] img { filter: grayscale(1); }
+        .chip:focus-visible, select:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+        .game-section[hidden] { display: none; }
+        .status-msg { text-align: center; color: #a1a1aa; font-size: 1rem; line-height: 1.6; padding: 2rem 1rem; }
+
+        .progress { height: 6px; border-radius: 99px; background: rgba(255, 255, 255, 0.08); overflow: hidden; margin-bottom: 0.6rem; }
+        .progress-fill { height: 100%; width: 0; background: var(--card-accent); box-shadow: 0 0 10px var(--card-glow); border-radius: inherit; transition: width 0.5s linear; }
+        .progress-meta { display: flex; justify-content: space-between; font-size: 0.75rem; font-weight: 700; color: #a1a1aa; letter-spacing: 0.03em; margin-bottom: 1.25rem; }
+        .ending-label { color: var(--warn); visibility: hidden; text-transform: uppercase; letter-spacing: 0.08em; }
+        .card.ending .ending-label { visibility: visible; }
+        .card.ending .progress-fill { background: var(--warn); box-shadow: 0 0 10px var(--warn-glow); }
+        .override-note { font-size: 0.8rem; line-height: 1.45; color: #e4e4e7; background: rgba(255, 255, 255, 0.06); border-left: 3px solid var(--card-accent); padding: 0.6rem 0.75rem; border-radius: 8px; margin-bottom: 1rem; }
+
+        @media (max-width: 600px) {
+            body { padding: 2.5rem 1rem 6rem; }
+            #tracker-container { gap: 3.5rem; }
+            .verified { margin-bottom: 2.5rem; }
+            .card { padding: 1.25rem; }
+            .timer-grid { gap: 0.5rem; }
+            .time-val { font-size: 1.35rem; }
+        }
+        /* A moving full-page gradient and heavy blur behind every card are costly for phone GPUs */
+        @media (max-width: 900px), (hover: none) {
+            body { animation: none; }
+            .card { backdrop-filter: none; -webkit-backdrop-filter: none; background: rgba(20, 20, 25, 0.85); }
+            .controls, .feedback-btn, .modal-overlay { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+        }
+        @media (prefers-reduced-motion: reduce) { body, .status-dot { animation: none; } .card, .progress-fill { transition: none; } }
 
         .feedback-btn { position: fixed; bottom: 2rem; right: 2rem; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.75rem 1.5rem; border-radius: 99px; font-size: 0.9rem; font-weight: 700; cursor: pointer; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; z-index: 100; display: flex; align-items: center; gap: 0.5rem; }
         .feedback-btn:hover { background: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
@@ -97,6 +133,7 @@
             <option value="1">Europe (UTC+1)</option>
         </select>
     </div>
+    <div class="filter" id="game-filter" role="group" aria-label="Games to show"></div>
     <p class="verified" id="verified"></p>
 
     <div id="tracker-container"></div>
@@ -129,68 +166,107 @@
 
     <script>
         const games = [
-            { id: 'genshin', name: 'Genshin Impact',    icon: '<img src="genshin.png" alt="Genshin Impact">' },
-            { id: 'hsr',     name: 'Honkai: Star Rail', icon: '<img src="hsr.png" alt="Honkai Star Rail">' },
-            { id: 'zzz',     name: 'Zenless Zone Zero', icon: '<img src="zzz.png" alt="Zenless Zone Zero">' },
-            { id: 'wuwa',    name: 'Wuthering Waves',   icon: '<img src="wuwa.png" alt="Wuthering Waves">' }
+            { id: 'genshin', name: 'Genshin Impact',    short: 'Genshin',   icon: '<img src="genshin.png" alt="Genshin Impact">' },
+            { id: 'hsr',     name: 'Honkai: Star Rail', short: 'Star Rail', icon: '<img src="hsr.png" alt="Honkai Star Rail">' },
+            { id: 'zzz',     name: 'Zenless Zone Zero', short: 'ZZZ',       icon: '<img src="zzz.png" alt="Zenless Zone Zero">' },
+            { id: 'wuwa',    name: 'Wuthering Waves',   short: 'WuWa',      icon: '<img src="wuwa.png" alt="Wuthering Waves">' }
         ]
-
-        // Used only if resets.json can't be loaded (e.g. opening the file directly from disk).
-        const FALLBACK = {
-            lastVerified: null,
-            modes: [
-                { id: 'sa',  name: 'Spiral Abyss',        gameId: 'genshin', type: 'monthly', day: 16, hour: 4 },
-                { id: 'it',  name: 'Imaginarium Theater', gameId: 'genshin', type: 'monthly', day: 1,  hour: 4 },
-                { id: 'so',  name: 'Stygian Onslaught',   gameId: 'genshin', type: 'cycle', anchor: '2026-09-30T10:00', days: 42 },
-                { id: 'moc', name: 'Memory of Chaos',     gameId: 'hsr',  type: 'cycle', anchor: '2026-09-28T04:00', days: 42 },
-                { id: 'as',  name: 'Apocalyptic Shadow',  gameId: 'hsr',  type: 'cycle', anchor: '2026-10-05T04:00', days: 42 },
-                { id: 'pf',  name: 'Pure Fiction',        gameId: 'hsr',  type: 'cycle', anchor: '2026-10-19T04:00', days: 42 },
-                { id: 'sd',  name: 'Shiyu Defense',       gameId: 'zzz',  type: 'cycle', anchor: '2026-10-02T04:00', days: 14 },
-                { id: 'da',  name: 'Deadly Assault',      gameId: 'zzz',  type: 'cycle', anchor: '2026-10-09T04:00', days: 14 },
-                { id: 'toa', name: 'Tower of Adversity',  gameId: 'wuwa', type: 'cycle', anchor: '2026-10-12T04:00', days: 28 },
-                { id: 'ww',  name: 'Whimpering Wastes',   gameId: 'wuwa', type: 'cycle', anchor: '2026-10-26T04:00', days: 28 }
-            ]
-        }
 
         const HOUR = 3600000
         const DAY = 24 * HOUR
+        const ENDING_SOON = 48 * HOUR
         const container = document.getElementById('tracker-container')
         const regionSelect = document.getElementById('region-select')
+        const filterBar = document.getElementById('game-filter')
         let modes = []
+
+        // Saved per browser; storage can be blocked (private mode), so failures fall back to defaults
+        function load(key, fallback) {
+            try { const v = localStorage.getItem(key); return v === null ? fallback : JSON.parse(v) } catch { return fallback }
+        }
+        function save(key, value) {
+            try { localStorage.setItem(key, JSON.stringify(value)) } catch {}
+        }
+        const hiddenGames = new Set(load('endgame.hiddenGames', []))
+
+        // First visit: pick the server that matches the visitor's time zone
+        function guessRegion() {
+            let tz = ''
+            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '' } catch {}
+            if (tz.startsWith('America/')) return '-5'
+            if (/^(Europe|Africa|Atlantic)\//.test(tz)) return '1'
+            return '8'
+        }
+        const savedRegion = load('endgame.region', null)
+        regionSelect.value = [...regionSelect.options].some(o => o.value === savedRegion) ? savedRegion : guessRegion()
 
         // "2026-09-28T04:00" in server-local time -> real UTC ms for a server at `offset` hours
         function serverLocalToUTC(str, offset) {
             return Date.parse(str + ':00Z') - offset * HOUR
         }
 
-        function calculateMonthlyReset(day, hour, offset) {
-            const shifted = new Date(Date.now() + offset * HOUR)
-            let y = shifted.getUTCFullYear()
-            let m = shifted.getUTCMonth()
-            const thisMonth = Date.UTC(y, m, day, hour) - offset * HOUR
-            if (Date.now() < thisMonth) return thisMonth
-            m++
-            if (m > 11) { m = 0; y++ }
-            return Date.UTC(y, m, day, hour) - offset * HOUR
+        // Each returns the current period as { prev, next } in UTC ms (prev = when it started)
+        function monthlyPeriod(day, hour, offset, now) {
+            const shifted = new Date(now + offset * HOUR)
+            const y = shifted.getUTCFullYear(), m = shifted.getUTCMonth()
+            const at = k => Date.UTC(y, m + k, day, hour) - offset * HOUR   // Date.UTC rolls month overflow into the year
+            return now < at(0) ? { prev: at(-1), next: at(0) } : { prev: at(0), next: at(1) }
         }
 
-        function calculateCycleReset(anchor, days, offset) {
-            const now = Date.now()
-            const start = serverLocalToUTC(anchor, offset)
-            if (now < start) return start
-            const cycle = days * DAY
-            const passed = Math.floor((now - start) / cycle) + 1
-            return start + passed * cycle
+        // Overrides are one-off reset dates that break the usual rhythm (a shorter or longer period).
+        // Each replaces the regular reset nearest to it, and the cycle carries on from the latest one that has passed.
+        function cyclePeriod(mode, offset, now) {
+            const cycle = mode.days * DAY
+            const points = [{ at: serverLocalToUTC(mode.anchor, offset) },
+                ...(mode.overrides || []).map(o => ({ at: serverLocalToUTC(o.date, offset), reason: o.reason }))]
+                .sort((a, b) => a.at - b.at)
+            const past = points.filter(p => p.at <= now)
+            const upcoming = points.find(p => p.at > now)
+            if (!past.length) return { prev: upcoming.at - cycle, next: upcoming.at, reason: upcoming.reason }
+
+            const base = past[past.length - 1].at
+            const prev = base + Math.floor((now - base) / cycle) * cycle
+            if (upcoming) {
+                const replaced = base + Math.max(1, Math.round((upcoming.at - base) / cycle)) * cycle
+                if (prev + cycle >= replaced) return { prev: replaced - cycle, next: upcoming.at, reason: upcoming.reason }
+            }
+            return { prev, next: prev + cycle }
+        }
+
+        function renderFilter() {
+            filterBar.innerHTML = ''
+            games.forEach(game => {
+                if (!modes.some(m => m.gameId === game.id)) return
+                const chip = document.createElement('button')
+                chip.type = 'button'
+                chip.className = `chip ${game.id}`
+                chip.dataset.game = game.id
+                chip.innerHTML = `<img src="${game.id}.png" alt=""><span>${game.short}</span>`
+                chip.addEventListener('click', () => {
+                    hiddenGames.has(game.id) ? hiddenGames.delete(game.id) : hiddenGames.add(game.id)
+                    save('endgame.hiddenGames', [...hiddenGames])
+                    applyHidden()
+                })
+                filterBar.appendChild(chip)
+            })
+        }
+
+        function applyHidden() {
+            filterBar.querySelectorAll('.chip').forEach(chip => chip.setAttribute('aria-pressed', !hiddenGames.has(chip.dataset.game)))
+            const sections = container.querySelectorAll('.game-section')
+            sections.forEach(s => { s.hidden = hiddenGames.has(s.dataset.game) })
+            document.getElementById('all-hidden').hidden = [...sections].some(s => !s.hidden)
         }
 
         function render() {
-            container.innerHTML = ''
+            container.innerHTML = '<p class="status-msg" id="all-hidden" hidden>All games are hidden. Tap one above to show it again.</p>'
             games.forEach(game => {
                 const gameModes = modes.filter(m => m.gameId === game.id)
                 if (gameModes.length === 0) return
 
                 const section = document.createElement('div')
                 section.className = `game-section ${game.id}`
+                section.dataset.game = game.id
                 section.innerHTML = `
                     <div class="game-header">${game.icon}<h2>${game.name}</h2></div>
                     <div class="grid" id="grid-${game.id}"></div>`
@@ -215,6 +291,9 @@
                             <div class="time-box"><span class="time-val" id="m-${mode.id}">00</span><span class="time-label">Mins</span></div>
                             <div class="time-box"><span class="time-val" id="s-${mode.id}">00</span><span class="time-label">Secs</span></div>
                         </div>
+                        <div class="progress"><div class="progress-fill" id="bar-${mode.id}"></div></div>
+                        <div class="progress-meta"><span id="day-${mode.id}"></span><span class="ending-label">Ending soon</span></div>
+                        <div class="override-note" id="note-${mode.id}" hidden></div>
                         <div class="date-display" id="date-${mode.id}"></div>`
                     grid.appendChild(card)
                 })
@@ -226,9 +305,10 @@
             const now = Date.now()
 
             modes.forEach(mode => {
-                mode.targetMs = mode.type === 'monthly'
-                    ? calculateMonthlyReset(mode.day, mode.hour ?? 4, offset)
-                    : calculateCycleReset(mode.anchor, mode.days, offset)
+                mode.period = mode.type === 'monthly'
+                    ? monthlyPeriod(mode.day, mode.hour ?? 4, offset, now)
+                    : cyclePeriod(mode, offset, now)
+                mode.targetMs = mode.period.next
                 mode.currentDiff = mode.targetMs - now
             })
 
@@ -251,6 +331,19 @@
                 set('m', Math.floor(diff / 60000) % 60)
                 set('s', Math.floor(diff / 1000) % 60)
 
+                const { prev, next, reason } = mode.period
+                const elapsed = Math.min(1, Math.max(0, (now - prev) / (next - prev)))
+                const bar = document.getElementById(`bar-${mode.id}`)
+                if (bar) bar.style.width = (elapsed * 100).toFixed(2) + '%'
+                const dayEl = document.getElementById(`day-${mode.id}`)
+                if (dayEl) dayEl.innerText = `Day ${Math.min(Math.floor((now - prev) / DAY) + 1, Math.round((next - prev) / DAY))} of ${Math.round((next - prev) / DAY)}`
+                document.getElementById(`card-${mode.id}`)?.classList.toggle('ending', diff < ENDING_SOON)
+                const note = document.getElementById(`note-${mode.id}`)
+                if (note) {
+                    note.hidden = !reason
+                    note.innerText = reason ? `Irregular period: ${reason}` : ''
+                }
+
                 const dateEl = document.getElementById(`date-${mode.id}`)
                 if (dateEl) {
                     const options = { weekday: 'short', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }
@@ -260,21 +353,31 @@
         }
 
         async function init() {
-            let data = FALLBACK
+            let data
             try {
                 const res = await fetch('resets.json', { cache: 'no-store' })
-                if (res.ok) data = await res.json()
+                if (!res.ok) throw new Error(`HTTP ${res.status}`)
+                data = await res.json()
             } catch (e) {
-                console.warn('Using built-in schedule; resets.json not reachable.', e)
+                console.error('Could not load resets.json', e)
+                container.innerHTML = location.protocol === 'file:'
+                    ? '<p class="status-msg">Couldn\'t load the reset schedule. Browsers block it when the page is opened straight from a file, so view it through GitHub Pages or a local web server.</p>'
+                    : '<p class="status-msg">Couldn\'t load the reset schedule. Check your connection and refresh the page.</p>'
+                return
             }
             modes = data.modes
             document.getElementById('verified').innerText = data.lastVerified
                 ? `Schedule last verified ${new Date(data.lastVerified + 'T00:00:00Z').toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}`
                 : ''
+            renderFilter()
             render()
+            applyHidden()
             updateTimers()
             setInterval(updateTimers, 1000)
-            regionSelect.addEventListener('change', updateTimers)
+            regionSelect.addEventListener('change', () => {
+                save('endgame.region', regionSelect.value)
+                updateTimers()
+            })
         }
         init()
 
