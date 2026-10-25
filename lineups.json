@@ -1161,6 +1161,167 @@
         "url": "https://encore.moe/toa"
       },
       "updatedAt": "2026-10-23"
+    },
+    "da": {
+      "periodStart": "2026-10-23T04:00",
+      "periodEnd": "2026-11-06T04:00",
+      "title": "Deadly Assault",
+      "typesLabel": "Weak to",
+      "effects": [
+        {
+          "name": "Blazing Descent",
+          "desc": "If there are 2/3 Anomaly specialty Agents in your squad, the whole squad's Anomaly Proficiency increases by 20/50 respectively.\nWhen an Anomaly specialty Agent deals Attribute Anomaly DMG and triggers a critical hit, Attribute Anomaly DMG dealt by the whole squad increases by 20%, and Fire Attribute Anomaly DMG increases by 10% for 15s; repeated triggers reset the duration."
+        },
+        {
+          "name": "Radiant Sky",
+          "desc": "Stun specialty Agents' Daze increases by 20%, and Energy generation efficiency increases by 20%.\nAfter the Agent uses an EX Special Attack or Special Attack, Sharp DMG increases by 30%, and attacks that hit enemies ignore 20% of their Electric RES and Ether RES for 15s; repeated triggers reset the duration."
+        },
+        {
+          "name": "Perfect Rhythm",
+          "desc": "Stun specialty Agents' Daze increases by 15%. Upon hitting a Stunned enemy, their Stun recovery Speed reduces by 10% for 15s; repeated triggers reset the duration.\nAttribute Anomaly DMG dealt by Agents increases by 15%. Against Stunned enemies, Attribute Anomaly DMG dealt additionally increases by 25%."
+        }
+      ],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "trial",
+          "name": "Trial Mode",
+          "level": 70,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "First Challenge",
+              "boss": "Etheric Other - Truvia",
+              "types": [
+                "Fire"
+              ],
+              "resist": [
+                "Ice"
+              ],
+              "level": 70,
+              "note": "Suitable for Agents with Anomaly specialty.",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "When a Boss enemy is attacked, the attack's Anomaly Buildup Rate increases by 10%."
+                },
+                {
+                  "name": "",
+                  "desc": "Each time a Boss enemy enters an Attribute Anomaly state, it gains 1 stack of Afterglow Mark. When it reaches 3 stacks, all Afterglow Marks are consumed, and the Boss enters the Wax Wings state for 30 seconds."
+                },
+                {
+                  "name": "",
+                  "desc": "While in the Wax Wings state, the Boss takes 30% increased Attribute Anomaly DMG and accumulates an additional 5% Daze when entering an Attribute Anomaly state, but no longer gains Afterglow Marks."
+                },
+                {
+                  "name": "",
+                  "desc": "When the Boss is Stunned, it immediately enters the Wax Wings state. If it is already in the Wax Wings state, the duration is reset."
+                },
+                {
+                  "name": "",
+                  "desc": "Each successful against an enemy attack grants an additional 1,000 Performance Points;"
+                },
+                {
+                  "name": "",
+                  "desc": "After an enemy deploys a Spatial Barrier, each successful stomp on a golden area that triggers a Defensive Assist grants an additional 1,500 Performance Points; up to 5,000 Performance Points can be earned this way."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/4/45/Enemy_Etheric_Other_-_Truvia.png/revision/latest/scale-to-width-down/240?cb=20261021224352"
+            },
+            {
+              "label": "Second Challenge",
+              "boss": "Unknown Corruption Complex",
+              "types": [
+                "Electric",
+                "Ether"
+              ],
+              "resist": [],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "When dealing sufficient DMG to the boss enemy's legs, Impaired will be triggered. Upon successfully breaking the boss enemy's legs, the Agent restores 1,000 Decibels, and the boss gains 1 stack of Disintegration for 20 seconds, up to a maximum of 4 stacks. When the Agent's attacks hit an enemy, for each stack of Disintegration the target has, CRIT DMG is increased by 25%."
+                },
+                {
+                  "name": "",
+                  "desc": "Successfully impairing an enemy grants 800 Performance Points. A maximum of 5,000 Performance Points can be obtained."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/15/Enemy_Unknown_Corruption_Complex.png/revision/latest/scale-to-width-down/240?cb=20240725120604"
+            },
+            {
+              "label": "Third Challenge",
+              "boss": "Discordant Solo - Vesper",
+              "types": [
+                "Ether",
+                "Wind"
+              ],
+              "resist": [
+                "Fire",
+                "Ice"
+              ],
+              "level": 70,
+              "note": "Suitable for Agents with Anomaly specialty.",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Agent Anomaly Buildup Rate increases by 15%, Anomaly DMG dealt to Discordant Solo increases by 30%, when Agents are in Ether Veil during combat, Discordant Solo's Stun DMG Multiplier increases by 30%."
+                },
+                {
+                  "name": "",
+                  "desc": "During a Control Skill, every successful counter of a Boss attack grants 350 Performance Points. A Shutdown of the Boss's Control Skill or counter of the final strike of certain skills inflicts on the Boss the Impaired effect and grants 750 Performance Points. During the , when triggering Shutdown via Counter Assists, obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Enemy_Discordant_Solo_-_Vesper.png/revision/latest/scale-to-width-down/240?cb=20260208185223"
+            }
+          ]
+        },
+        {
+          "key": "adversity",
+          "name": "Adversity Mode",
+          "level": 70,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Adversity Mode",
+              "boss": "Integrated - Stagnant Aberrant",
+              "types": [
+                "Fire"
+              ],
+              "resist": [],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "When an Agent inflicts an Attribute Anomaly on an enemy, the target enemy gains 1 stack of Blight Mark of the corresponding attribute. When an enemy's Gash is removed upon Maim DMG settlement, they gain 2 stacks of non-Attribute Blight Marks, lasting 10s. Blight Marks can stack up to 3 times, and reapplying a Blight Mark of the same Attribute resets its duration."
+                },
+                {
+                  "name": "",
+                  "desc": "For each Blight Mark an enemy has, Anomaly DMG they take is increased by 15%, DMG from is increased by 15%, and Sharp DMG is increased by 35%."
+                },
+                {
+                  "name": "",
+                  "desc": "When Impaired or Shutdown is inflicted on an enemy, the whole squad's Anomaly Proficiency increases by 50 for 15s. Repeated triggers reset the duration."
+                },
+                {
+                  "name": "",
+                  "desc": "Successfully inflicting Impaired grants 1000 Performance Points; successfully countering grants 500 Performance Points each time; preventing an enemy's Corruptive Barrier from completing its charge and rendering them Impaired grants 1,500 Performance Points. During the , when triggering Shutdown via , obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
+                }
+              ],
+              "traitsLabel": "Mechanics"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Zenless Zone Zero Wiki",
+        "page": "Deadly Assault/2026-10-23",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Deadly_Assault/2026-10-23"
+      },
+      "updatedAt": "2026-10-25"
     }
   },
   "tracked": [
