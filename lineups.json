@@ -736,18 +736,18 @@
       "updatedAt": "2026-10-23"
     },
     "sd": {
-      "periodStart": "2026-10-16T04:00",
-      "periodEnd": "2026-10-30T04:00",
+      "periodStart": "2026-10-30T04:00",
+      "periodEnd": "2026-11-13T04:00",
       "title": "Critical Node",
       "typesLabel": "Weak to",
       "effects": [
         {
           "name": "Frontier buff 1",
-          "desc": "Agent Sharp DMG increases by 20%. After defeating normal enemies, Agents with the Stun specialty restore 15 Energy."
+          "desc": "Anomaly specialty Agents' Fire DMG is increased by 20%."
         },
         {
           "name": "Frontier buff 2",
-          "desc": "When Agents' Basic Attack, Special Attack, and Ultimate hit enemies, PEN Ratio increases by 10%. If the enemy is Stunned, ignore 15% of their Electric RES."
+          "desc": "When an Agent deals Attribute Anomaly DMG and triggers a critical hit, the squad recovers 20 Energy, and Attribute Anomaly DMG increases by 30% for 20s. This effect can trigger once every 20s."
         }
       ],
       "choices": [],
@@ -760,10 +760,10 @@
           "parts": [
             {
               "label": "Room 1",
-              "boss": "Metamorphosed - Scorpse",
+              "boss": "Miasma Ravager - Avarus",
               "types": [
-                "Wind",
-                "Electric"
+                "Fire",
+                "Ether"
               ],
               "resist": [
                 "Ice"
@@ -772,83 +772,85 @@
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agent Sharp DMG increases by 20%. After defeating normal enemies, Agents with the Stun specialty restore 15 Energy."
+                  "desc": "Anomaly specialty Agents' Fire DMG is increased by 20%."
                 },
                 {
                   "name": "",
-                  "desc": "When Agents' Basic Attack, Special Attack, and Ultimate hit enemies, PEN Ratio increases by 10%. If the enemy is Stunned, ignore 15% of their Electric RES."
+                  "desc": "When an Agent deals Attribute Anomaly DMG and triggers a critical hit, the squad recovers 20 Energy, and Attribute Anomaly DMG increases by 30% for 20s. This effect can trigger once every 20s."
                 }
               ],
               "traitsLabel": "Room buffs",
               "others": [
-                "Special Anti-Riotboo",
-                "City Guardboo",
-                "Airspace Patrolboo"
+                "Corrupted Bandit - Frenzied Maniac",
+                "Corrupted Bandit - Wicked Wraith"
               ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/18/Enemy_Metamorphosed_-_Scorpse.png/revision/latest/scale-to-width-down/240?cb=20260618093739"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/3/38/Enemy_Miasma_Ravager_-_Avarus.png/revision/latest/scale-to-width-down/240?cb=20250606164145"
             },
             {
               "label": "Room 2",
-              "boss": "Miasmic - Thracian",
+              "boss": "Lockspring (Boss)",
               "types": [
-                "Ether",
-                "Wind"
-              ],
-              "resist": [
-                "Electric"
-              ],
-              "level": 70,
-              "traits": [
-                {
-                  "name": "",
-                  "desc": "If there are 2/3 Agents with the Anomaly specialty in the squad, Attribute Anomaly DMG dealt by Agents increases by 10%/60%, and the whole squad initially gains 500/1,500 Decibels upon entering combat."
-                }
-              ],
-              "traitsLabel": "Room buffs",
-              "others": [
-                "Ionized - Farbauti",
-                "Ionized - Dullahan"
-              ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/26/Enemy_Miasmic_-_Thracian.png/revision/latest/scale-to-width-down/240?cb=20250607225115"
-            },
-            {
-              "label": "Room 3",
-              "boss": "Sacrifice - Covenant Guardian",
-              "types": [
-                "Fire",
+                "Electric",
                 "Physical"
               ],
               "resist": [
-                "Ice",
-                "Wind"
+                "Ether"
               ],
               "level": 70,
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agent Fire DMG and Ether DMG increase by 15%, and Sheer DMG increases by 15%."
+                  "desc": "Agents' Sharp DMG increases by 20%, and DEF increases by 20%."
                 },
                 {
                   "name": "",
-                  "desc": "Agent Ultimate DMG increases by 30%. When an Ultimate attack hits an enemy, it ignores 10% of the target's All-Attribute RES."
+                  "desc": "When an Agent defeats an Elite enemy, Agents with the Stun specialty restore 30 Energy, and the whole squad restores 500 Decibels."
                 }
               ],
               "traitsLabel": "Room buffs",
               "others": [
-                "Hollow Thug - Bulky Intimidator",
-                "Hollow Thug - Bulky Enforcer"
+                "Assault Gunner",
+                "Autonomous Support Unit - Guardian MK II"
               ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d1/Enemy_Sacrifice_-_Covenant_Guardian.png/revision/latest/scale-to-width-down/240?cb=20251126234657"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/0/0d/Enemy_Lockspring_%28Boss%29.png/revision/latest/scale-to-width-down/240?cb=20260101153231"
+            },
+            {
+              "label": "Room 3",
+              "boss": "Miasmic Doppelganger Komano Manato",
+              "types": [
+                "Ice"
+              ],
+              "resist": [
+                "Physical"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Attack specialty Agents' Ether DMG and Ice DMG increase by 20%, and CRIT DMG increases by 40%."
+                },
+                {
+                  "name": "",
+                  "desc": "When an Agent Stuns an enemy, their Stun recovery rate decreases by 15% for 15s; repeated triggers reset the duration."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Miasma Spawn",
+                "Miasma Ravager - Huskron",
+                "Huskron"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/57/Enemy_Miasmic_Doppelganger_Komano_Manato.png/revision/latest/scale-to-width-down/240?cb=20251018175614"
             }
           ]
         }
       ],
       "source": {
         "name": "Zenless Zone Zero Wiki",
-        "page": "Shiyu Defense/Critical Node/2026-10-16",
-        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-10-16"
+        "page": "Shiyu Defense/Critical Node/2026-10-30",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-10-30"
       },
-      "updatedAt": "2026-10-23"
+      "updatedAt": "2026-10-31"
     },
     "toa": {
       "periodStart": "2026-10-12T04:00",
