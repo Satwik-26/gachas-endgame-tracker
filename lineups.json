@@ -504,9 +504,9 @@
       "updatedAt": "2026-10-23"
     },
     "it": {
-      "periodStart": "2026-10-01T04:00",
-      "periodEnd": "2026-11-01T04:00",
-      "title": "Season 28",
+      "periodStart": "2026-11-01T04:00",
+      "periodEnd": "2026-12-01T04:00",
+      "title": "Season 29",
       "typesLabel": "Advantage",
       "effects": [
         {
@@ -524,11 +524,11 @@
               "desc": ""
             },
             {
-              "name": "Cryo",
+              "name": "Electro",
               "desc": ""
             },
             {
-              "name": "Anemo",
+              "name": "Geo",
               "desc": ""
             }
           ]
@@ -538,27 +538,27 @@
           "style": "chips",
           "options": [
             {
-              "name": "Neuvillette",
+              "name": "Yelan",
               "desc": ""
             },
             {
-              "name": "Barbara",
+              "name": "Aino",
               "desc": ""
             },
             {
-              "name": "Citlali",
+              "name": "Flins",
               "desc": ""
             },
             {
-              "name": "Kaeya",
+              "name": "Fischl",
               "desc": ""
             },
             {
-              "name": "Wanderer",
+              "name": "Zhongli",
               "desc": ""
             },
             {
-              "name": "Prune",
+              "name": "Kachina",
               "desc": ""
             }
           ]
@@ -568,19 +568,19 @@
           "style": "chips",
           "options": [
             {
-              "name": "Ineffa",
+              "name": "Qiqi",
               "desc": ""
             },
             {
-              "name": "Yae Miko",
+              "name": "Odette",
               "desc": ""
             },
             {
-              "name": "Thoma",
+              "name": "Vesna",
               "desc": ""
             },
             {
-              "name": "Chiori",
+              "name": "Jahoda",
               "desc": ""
             }
           ]
@@ -595,47 +595,50 @@
           "parts": [
             {
               "label": "Act 3",
-              "boss": "Perpetual Mechanical Array",
-              "types": [],
+              "boss": "Jadeplume Terrorshroom",
+              "types": [
+                "Electro"
+              ],
               "level": 90,
-              "note": "Focus fire on a single enemy",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/b/b3/Perpetual_Mechanical_Array_Icon.png/revision/latest/scale-to-width-down/240?cb=20210721055430"
+              "note": "Electro characters have an advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Jadeplume_Terrorshroom_Icon.png/revision/latest/scale-to-width-down/240?cb=20220824024707"
             },
             {
               "label": "Act 6",
-              "boss": "Battle-Hardened Chimeric Volkodlak Archer",
+              "boss": "Lord of the Hidden Depths: Whisperer of Nightmares",
               "types": [],
               "level": 92,
-              "note": "Stellar Glimmer Reaction Advantage",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/4/40/Furiosa_Icon.png/revision/latest/scale-to-width-down/240?cb=20260815170455"
+              "note": "Lunar reactions have an advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/5/5a/Lord_of_the_Hidden_Depths_Whisperer_of_Nightmares_Icon.png/revision/latest/scale-to-width-down/240?cb=20260114092748"
             },
             {
               "label": "Act 8",
-              "boss": "Chimeric Winged Lion",
-              "types": [],
+              "boss": "Battle-Hardened Samachurl",
+              "types": [
+                "Hydro",
+                "Geo"
+              ],
               "level": 95,
-              "note": "Stellar Glimmer Reaction Advantage",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Chimeric_Winged_Lion_Icon.png/revision/latest?cb=20260810043855"
+              "note": "Hydro characters have an advantage\nGeo characters have an advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/21/Churldric_Icon.png/revision/latest/scale-to-width-down/240?cb=20260507130634"
             },
             {
               "label": "Act 10",
-              "boss": "Secret Source Automaton: Overseer Device",
-              "types": [
-                "Cryo"
-              ],
+              "boss": "Radiant Moonfly",
+              "types": [],
               "level": 100,
-              "note": "Cryo characters have an advantage",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Secret_Source_Automaton_Overseer_Device_Icon.png/revision/latest/scale-to-width-down/240?cb=20250507034833"
+              "note": "Characters who heal have an advantage",
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Radiant_Moonfly_Icon.png/revision/latest/scale-to-width-down/240?cb=20250910024517"
             }
           ]
         }
       ],
       "source": {
         "name": "Genshin Impact Wiki",
-        "page": "Imaginarium Theater/Seasons/2026-10-01",
-        "url": "https://genshin-impact.fandom.com/wiki/Imaginarium_Theater/Seasons/2026-10-01"
+        "page": "Imaginarium Theater/Seasons/2026-11-01",
+        "url": "https://genshin-impact.fandom.com/wiki/Imaginarium_Theater/Seasons/2026-11-01"
       },
-      "updatedAt": "2026-10-23"
+      "updatedAt": "2026-11-04"
     },
     "so": {
       "periodStart": "2026-09-30T10:00",
@@ -873,7 +876,7 @@
                 "Fusion"
               ],
               "level": 100,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_994_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_994_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -894,7 +897,7 @@
                 "Fusion"
               ],
               "level": 100,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_350_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_350_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -916,7 +919,7 @@
               "boss": "Impermanence Heron",
               "types": [],
               "level": 100,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_995_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_995_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -944,7 +947,7 @@
               "boss": "Sentry Construct + Crownless",
               "types": [],
               "level": 100,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33012_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33012_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -976,7 +979,7 @@
                 "Havoc"
               ],
               "level": 70,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_295_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_295_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -999,7 +1002,7 @@
                 "Havoc"
               ],
               "level": 75,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31042_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31042_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1024,7 +1027,7 @@
                 "Havoc"
               ],
               "level": 80,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_986_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_986_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1049,7 +1052,7 @@
                 "Havoc"
               ],
               "level": 90,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33013_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33013_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1080,7 +1083,7 @@
                 "Glacio"
               ],
               "level": 70,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31055_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31055_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1100,7 +1103,7 @@
                 "Glacio"
               ],
               "level": 75,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_135_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_135_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1120,7 +1123,7 @@
                 "Glacio"
               ],
               "level": 80,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32032_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32032_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1140,7 +1143,7 @@
                 "Glacio"
               ],
               "level": 90,
-              "image": "https://api.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_34012_UI.webp",
+              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_34012_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1161,7 +1164,7 @@
         "page": "Season 41",
         "url": "https://encore.moe/toa"
       },
-      "updatedAt": "2026-10-23"
+      "updatedAt": "2026-11-04"
     },
     "da": {
       "periodStart": "2026-10-23T04:00",
