@@ -1167,22 +1167,22 @@
       "updatedAt": "2026-11-04"
     },
     "da": {
-      "periodStart": "2026-10-23T04:00",
-      "periodEnd": "2026-11-06T04:00",
+      "periodStart": "2026-11-06T04:00",
+      "periodEnd": "2026-11-20T04:00",
       "title": "Deadly Assault",
       "typesLabel": "Weak to",
       "effects": [
         {
-          "name": "Blazing Descent",
-          "desc": "If there are 2/3 Anomaly specialty Agents in your squad, the whole squad's Anomaly Proficiency increases by 20/50 respectively.\nWhen an Anomaly specialty Agent deals Attribute Anomaly DMG and triggers a critical hit, Attribute Anomaly DMG dealt by the whole squad increases by 20%, and Fire Attribute Anomaly DMG increases by 10% for 15s; repeated triggers reset the duration."
+          "name": "Blazing Radiance",
+          "desc": "Anomaly specialty Agents' ATK increases by 10%, and Fire Anomaly Buildup Rate increases by 10%.\nWhen an Agent deals Attribute Anomaly DMG and triggers a critical hit, the whole squad's Anomaly Proficiency increases by 30 and Attribute Anomaly DMG increases by 10% for 15s; repeated triggers reset the duration."
         },
         {
-          "name": "Radiant Sky",
-          "desc": "Stun specialty Agents' Daze increases by 20%, and Energy generation efficiency increases by 20%.\nAfter the Agent uses an EX Special Attack or Special Attack, Sharp DMG increases by 30%, and attacks that hit enemies ignore 20% of their Electric RES and Ether RES for 15s; repeated triggers reset the duration."
+          "name": "Storm Tribulation",
+          "desc": "Agents' Wind DMG increases by 40%, and Wind CRIT DMG increases by 40%.\nAttack specialty Agents' ATK increases by 25%, and Basic Attack DMG increases by 40%."
         },
         {
-          "name": "Perfect Rhythm",
-          "desc": "Stun specialty Agents' Daze increases by 15%. Upon hitting a Stunned enemy, their Stun recovery Speed reduces by 10% for 15s; repeated triggers reset the duration.\nAttribute Anomaly DMG dealt by Agents increases by 15%. Against Stunned enemies, Attribute Anomaly DMG dealt additionally increases by 25%."
+          "name": "Corroding Edge",
+          "desc": "Agents' Electric DMG increases by 30%, Sharp DMG increases by 10%.\nAttack or Armorer specialty Agents' PEN Ratio increases by 20%, and DMG dealt by Special Attack and EX Special Attack increases by 30%."
         }
       ],
       "choices": [],
@@ -1235,51 +1235,59 @@
             },
             {
               "label": "Second Challenge",
-              "boss": "Unknown Corruption Complex",
+              "boss": "Infernal Revenant",
               "types": [
-                "Electric",
-                "Ether"
+                "Wind",
+                "Ice"
               ],
-              "resist": [],
+              "resist": [
+                "Physical"
+              ],
               "level": 70,
               "traits": [
                 {
                   "name": "",
-                  "desc": "When dealing sufficient DMG to the boss enemy's legs, Impaired will be triggered. Upon successfully breaking the boss enemy's legs, the Agent restores 1,000 Decibels, and the boss gains 1 stack of Disintegration for 20 seconds, up to a maximum of 4 stacks. When the Agent's attacks hit an enemy, for each stack of Disintegration the target has, CRIT DMG is increased by 25%."
+                  "desc": "After Infernal Revenant enters the Infernal state, the Attribute Anomaly DMG it takes is reduced by 30%; every time is triggered, the Boss gains 1 stack of Overheat; triggering Defensive Assist or Perfect Dodge 2 times in total applies 1 stack of Overheat on the Boss, and each stack of Overheat increases CRIT DMG of the whole squad by 25%, stacking up to 3 times and lasting 20s. Triggering Defensive Assist or retriggering Overheat resets the duration."
                 },
                 {
                   "name": "",
-                  "desc": "Successfully impairing an enemy grants 800 Performance Points. A maximum of 5,000 Performance Points can be obtained."
+                  "desc": "Successfully triggering Shutdown grants 2000 Performance Points; each flint shattered grants 1000 Performance Points, up to a maximum of 5000 Performance Points."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/15/Enemy_Unknown_Corruption_Complex.png/revision/latest/scale-to-width-down/240?cb=20240725120604"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/12/Enemy_Infernal_Revenant.png/revision/latest/scale-to-width-down/240?cb=20260803005415"
             },
             {
               "label": "Third Challenge",
-              "boss": "Discordant Solo - Vesper",
+              "boss": "Autonomous Assault Unit - Typhon Destroyer",
               "types": [
-                "Ether",
+                "Electric",
                 "Wind"
               ],
               "resist": [
-                "Fire",
-                "Ice"
+                "Fire"
               ],
               "level": 70,
-              "note": "Suitable for Agents with Anomaly specialty.",
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agent Anomaly Buildup Rate increases by 15%, Anomaly DMG dealt to Discordant Solo increases by 30%, when Agents are in Ether Veil during combat, Discordant Solo's Stun DMG Multiplier increases by 30%."
+                  "desc": "Agents inflict Overwhelmed when landing a Defensive Assist hit against a Boss enemy, and 3 stacks of Overwhelmed when accumulating 3 Defensive Assist hits and triggering Impaired. Each stack of Overwhelmed increases Daze by 15%, and Chain Attack and Ultimate DMG taken while Stunned by 10%. The enemy will fix the impaired parts and reset the impairment level while charging, and will reset its Overwhelmed stacks after recovering from Stun."
                 },
                 {
                   "name": "",
-                  "desc": "During a Control Skill, every successful counter of a Boss attack grants 350 Performance Points. A Shutdown of the Boss's Control Skill or counter of the final strike of certain skills inflicts on the Boss the Impaired effect and grants 750 Performance Points. During the , when triggering Shutdown via Counter Assists, obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
+                  "desc": "Assist Points are not consumed for this battle."
+                },
+                {
+                  "name": "",
+                  "desc": "Successfully triggering a Perfect Assist grants 300 Performance Points."
+                },
+                {
+                  "name": "",
+                  "desc": "Successfully causing Impaired grants 900 Performance Points. A maximum of 5,000 Performance Points can be obtained."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/3/30/Enemy_Discordant_Solo_-_Vesper.png/revision/latest/scale-to-width-down/240?cb=20260208185223"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/c/c3/Enemy_Autonomous_Assault_Unit_-_Typhon_Destroyer.png/revision/latest/scale-to-width-down/240?cb=20250115211600"
             }
           ]
         },
@@ -1291,41 +1299,41 @@
           "parts": [
             {
               "label": "Adversity Mode",
-              "boss": "Integrated - Stagnant Aberrant",
+              "boss": "Rewritten - Sanguine Sweeper",
               "types": [
+                "Wind",
                 "Fire"
               ],
-              "resist": [],
+              "resist": [
+                "Physical"
+              ],
               "level": 70,
               "traits": [
                 {
                   "name": "",
-                  "desc": "When an Agent inflicts an Attribute Anomaly on an enemy, the target enemy gains 1 stack of Blight Mark of the corresponding attribute. When an enemy's Gash is removed upon Maim DMG settlement, they gain 2 stacks of non-Attribute Blight Marks, lasting 10s. Blight Marks can stack up to 3 times, and reapplying a Blight Mark of the same Attribute resets its duration."
+                  "desc": "After Shutdown against a Boss enemy's Control Skill, Daze dealt by the whole squad's Agents increases by 15%, DEF increases by 30%, and when their attacks hit enemies, CRIT DMG increases by 75%, and Attribute Anomaly DMG increases by 15%."
                 },
                 {
                   "name": "",
-                  "desc": "For each Blight Mark an enemy has, Anomaly DMG they take is increased by 15%, DMG from is increased by 15%, and Sharp DMG is increased by 35%."
+                  "desc": "While the Boss is Stunned, Sharp DMG dealt by the whole squad's Agents increases by 60%, Wind and Ice CRIT DMG dealt increases by 80% and ignores 40% of the Boss's DEF."
                 },
                 {
                   "name": "",
-                  "desc": "When Impaired or Shutdown is inflicted on an enemy, the whole squad's Anomaly Proficiency increases by 50 for 15s. Repeated triggers reset the duration."
-                },
-                {
-                  "name": "",
-                  "desc": "Successfully inflicting Impaired grants 1000 Performance Points; successfully countering grants 500 Performance Points each time; preventing an enemy's Corruptive Barrier from completing its charge and rendering them Impaired grants 1,500 Performance Points. During the , when triggering Shutdown via , obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
+                  "desc": "Each time you successfully neutralize the boss's attacks and trigger the boss's special stagger, it grants 1,000 Performance Points. During the , each successful counter against the Boss's attacks grants 500 Performance Points. Performing a Shutdown on the Boss's Control Skill grants 2,000 Performance Points. During the , when triggering Shutdown via , obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
                 }
               ],
-              "traitsLabel": "Mechanics"
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2c/Enemy_Rewritten_-_Sanguine_Sweeper.png/revision/latest/scale-to-width-down/240?cb=20260506205432"
             }
           ]
         }
       ],
       "source": {
         "name": "Zenless Zone Zero Wiki",
-        "page": "Deadly Assault/2026-10-23",
-        "url": "https://zenless-zone-zero.fandom.com/wiki/Deadly_Assault/2026-10-23"
+        "page": "Deadly Assault/2026-11-06",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Deadly_Assault/2026-11-06"
       },
-      "updatedAt": "2026-10-25"
+      "updatedAt": "2026-11-07"
     }
   },
   "tracked": [
