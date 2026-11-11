@@ -876,7 +876,7 @@
                 "Glacio"
               ],
               "level": 100,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_999_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_999_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -897,7 +897,7 @@
                 "Glacio"
               ],
               "level": 100,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_325_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_325_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -919,7 +919,7 @@
               "boss": "Sigillum",
               "types": [],
               "level": 100,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_34025_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_34025_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -947,7 +947,7 @@
               "boss": "Fallacy of No Return + Mourning Aix",
               "types": [],
               "level": 100,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_350_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_350_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -979,7 +979,7 @@
                 "Fusion"
               ],
               "level": 70,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31045_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_31045_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1002,7 +1002,7 @@
                 "Fusion"
               ],
               "level": 75,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_215_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_215_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1025,7 +1025,7 @@
                 "Fusion"
               ],
               "level": 80,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_984_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_984_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1049,7 +1049,7 @@
                 "Fusion"
               ],
               "level": 90,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_995_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_995_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1080,7 +1080,7 @@
                 "Spectro"
               ],
               "level": 70,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32030_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32030_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1100,7 +1100,7 @@
                 "Spectro"
               ],
               "level": 75,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_185_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_185_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1123,7 +1123,7 @@
                 "Spectro"
               ],
               "level": 80,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32028_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_32028_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1143,7 +1143,7 @@
                 "Spectro"
               ],
               "level": 90,
-              "image": "https://api-v2.encore.moe/api/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33013_UI.webp",
+              "image": "https://api-v2.encore.moe/resource/Data/Game/Aki/UI/UIResources/Common/Image/IconMonsterHead/T_IconMonsterHead_33013_UI.webp",
               "traits": [
                 {
                   "name": "",
@@ -1164,7 +1164,7 @@
         "page": "Season 42",
         "url": "https://encore.moe/toa"
       },
-      "updatedAt": "2026-11-09"
+      "updatedAt": "2026-11-11"
     },
     "da": {
       "periodStart": "2026-11-06T04:00",
