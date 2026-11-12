@@ -641,9 +641,9 @@
       "updatedAt": "2026-11-04"
     },
     "so": {
-      "periodStart": "2026-09-30T10:00",
-      "periodEnd": "2026-11-11T10:00",
-      "title": "Luminous Battlefront",
+      "periodStart": "2026-11-11T10:00",
+      "periodEnd": "2026-12-23T10:00",
+      "title": "Battle Amid the Great Waves",
       "typesLabel": "Advantage",
       "effects": [
         {
@@ -660,82 +660,82 @@
           "confirmed": true,
           "parts": [
             {
-              "label": "Battlefield 1 · Gale Hewing",
-              "boss": "Battle-Hardened Domovoy Sculptor",
-              "types": [
-                "Anemo"
-              ],
+              "label": "Battlefield 1 · Stormfang",
+              "boss": "Wavebinder",
+              "types": [],
               "level": 110,
-              "note": "Advantage: Stellar Glimmer characters or Anemo characters",
+              "note": "Advantage: Stellar Glimmer characters or characters",
               "traits": [
                 {
-                  "name": "Big-Mouthed Jack Frost",
-                  "desc": "When battle begins, the Nemesis will harness Anemo energy to create a Prime Ice sculpture. After a short delay, the sculpture will transform into a Big-Mouthed Jack Frost that continuously launches snowballs.\nInflict Radiance: Stellar Glimmer on the Nemesis while it is creating the sculpture to interrupt the process and turn the ice sculpture into a harmless animal statue instead."
+                  "name": "Courage Against the Cold: Hearty Draught",
+                  "desc": "Due to the effects of the Ley Line disturbance, this Nemesis will periodically take out a flask and drink deeply, gaining a large amount of Courage in the process. If it is affected by Radiance: Stellar Glimmer while drinking, it will gain Courage at a reduced rate. Dealing Electro DMG to it will also reduce its Courage. Electro DMG considered to be DMG from the corresponding Stellar Glimmer Reaction will reduce Courage by a significantly greater amount."
                 },
                 {
-                  "name": "Creative Frenzy",
-                  "desc": "Due to the effects of the Ley Line disturbance, the Nemesis will start the battle with greatly increased All Elemental RES and Physical RES and will create Prime Ice sculptures more frequently.\nAfter an ice sculpture is transformed into a small animal statue, it will explode following a brief delay, dealing damage to the Nemesis and reducing its All Elemental RES and Physical RES, while further reducing its Anemo RES. This effect can stack up to 3 times."
+                  "name": "Valiant Assault",
+                  "desc": "Due to the effects of the Ley Line disturbance, once the Nemesis's Courage is full, they will enter the Valiant Assault state. While in this state, their attacks will become more ferocious. They will also generate a shield and greatly increase all Elemental and Physical RES other than Electro RES, which will receive a small increase.. While Valiant Assault is active, the Nemesis's Courage will be continuously consumed. Electro DMG will also drain more Courage than usual. It will exit this state and suffer massive backlash DMG once its Courage is depleted. The more DMG its shield absorbs during Valiant Assault, the greater the backlash DMG it will suffer when the state ends. Stellar Glimmer reaction DMG will increase the backlash DMG taken when the Shield is broken."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/1/17/Churin_Icon.png/revision/latest/scale-to-width-down/240?cb=20260815170317"
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/3/32/Wavebinder_Icon.png/revision/latest/scale-to-width-down/240?cb=20261104063219"
             },
             {
-              "label": "Battlefield 2 · Obliterator Panoply",
-              "boss": "Secret Source Automaton: Overseer Device",
-              "types": [
-                "Cryo"
-              ],
+              "label": "Battlefield 2 · Ordained Conquest",
+              "boss": "Emperor of Fire and Iron",
+              "types": [],
               "level": 110,
-              "note": "Advantage: Cryo characters",
+              "note": "Advantage: characters, characters",
               "traits": [
                 {
-                  "name": "Preemptive Sweeper Mode",
-                  "desc": "Will immediately enter Sweeper Mode when combat starts: All Elemental and Physical RES is greatly increased, and it will generate Flow Momentum while performing attacks. The higher its Flow Momentum, the faster it will rotate and the more DMG it will deal.\nIt will lose Flow Momentum after taking Cryo DMG. Below a certain Flow Momentum value, it will stop rotating and attacking, and its All Elemental and Physical RES will be greatly decreased, with its Cryo RES decreasing still more.\nEach time it enters Sweeper Mode, it will produce additional Elemental Orbs the first time its rotating attacks are stopped."
+                  "name": "Molten Crown",
+                  "desc": "The twin molten horns located high up on the body of the Emperor of Fire and Iron are Pyro-aligned organs that enable it to unleash more vicious elemental attacks and grant it even stronger defensive capabilities. When unleashing certain attacks, its twin molten horns will stay close to the ground, providing an opportunity to use Elemental Reactions to destroy them. Once the Pyro element stored within the twin molten horns is exhausted, they will be destroyed, causing the powerful foe to take a single instance of immense DMG. Once destroyed, the horns cannot be restored for a period of time."
                 },
                 {
-                  "name": "Forced Counterstrike Mode",
-                  "desc": "If an active character enters and maintains the Nightsoul's Blessing state for a time, this opponent will enter Forced Counterstrike Mode and switch to attacking with powerful tracking rays. At this time, its All Elemental and Physical RES will be decreased.\nIn this state, after it takes a certain number of Cryo DMG instances, it will cease attacking altogether and its All Elemental and Physical RES will be further decreased."
+                  "name": "Shield Bearers",
+                  "desc": "Affected by the Ley Line disturbance, the Emperor of Fire and Iron will summon Sternshield Crabs to assist during battle. Sternshield Crabs continuously channel Pyro to the twin molten horns. Once their Pyro is exhausted, the Sternshield Crabs will be defeated. Once a Sternshield Crab is defeated, it will lose control and collide with the Emperor of Fire and Iron, overloading the Pyro element within its twin molten horns and damaging them, causing the Emperor of Fire and Iron to take DMG proportional to the DMG the Sternshield Crab itself has received. A maximum of three Sternshield Crabs can be on the field at once."
                 },
                 {
-                  "name": "Damage-Resistant Structure",
-                  "desc": "Affected by the Ley Line disturbance, this great foe has its All RES further increased, and it loses less Flow Momentum when struck by Cryo DMG. It will also lose less RES when in Forced Counterstrike Mode."
+                  "name": "Radiant Coronation",
+                  "desc": "Affected by the Ley Line disturbance, the Emperor of Fire and Iron will perform Radiant Coronation in battle, charging briefly before dealing DMG over a large AoE. Destroy the twin molten horns to interrupt its charging."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/d/d9/Secret_Source_Automaton_Overseer_Device_Icon.png/revision/latest/scale-to-width-down/240?cb=20250507034833"
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/f/f5/Emperor_of_Fire_and_Iron_Icon.png/revision/latest/scale-to-width-down/240?cb=20230816022743"
             },
             {
-              "label": "Battlefield 3 · Endless Reverberation",
-              "boss": "Guardian Blade of Drifting Snow",
+              "label": "Battlefield 3 · Entangled Fangs",
+              "boss": "Radiant Moongecko",
               "types": [
-                "Pyro"
+                "Geo"
               ],
               "level": 110,
-              "note": "Advantage: Stellar Glimmer characters or Pyro characters",
+              "note": "Advantage: Geo Characters or Healing Characters",
               "traits": [
                 {
-                  "name": "Ice Coffin: Twinned Crystal Lattice",
-                  "desc": "During battle, when the Nemesis's HP falls below a certain threshold, it will encase itself in an Ice Coffin and gain a Cryo Ward to protect itself.\nWhile the Ice Coffin is active, the Nemesis will continuously unleash icy storms around itself. If the Ice Coffin is not destroyed, the Nemesis restores a portion of its HP and creates ice swords to launch a counterattack. However, if the Ice Coffin sustaining its life is destroyed, it enters a weakened state for a period of time and takes backlash DMG. Due to the Ley Line disturbance, the Ice Coffin will be more durable. A short time after it is destroyed for the first time, the Nemesis will encase itself in another Ice Coffin."
+                  "name": "Vagrant Reverberation",
+                  "desc": "After the battle begins, the Nemesis leaves a Moonstone Anchor in its place before leaping to higher ground to prepare for Vagrant Reverberation. Some time later, it unleashes a large and powerful AoE strike. Use methods suited to dealing with Geo to break through the multiple Geo ward layers on the Moonstone Anchor. Destroying it interrupts the skill's charge-up and deals massive DMG to the Nemesis. The more DMG the Moonstone Anchor takes during the preparation phase, the greater the DMG dealt to the Nemesis when the Moonstone Anchor is destroyed. Due to the effects of the Ley Line disturbance, using Geo attacks against the Moonstone Anchor further increases the DMG dealt to the Nemesis."
                 },
                 {
-                  "name": "Ice Coffin: Warped Crystal Lattice",
-                  "desc": "While the Ice Coffin is active, if the Nemesis is affected by Radiance: Stellar Glimmer, the Ice Coffin's Cryo Ward will transform into a shield that absorbs DMG. Once the shield is destroyed, the Nemesis will take a large amount of backlash DMG."
+                  "name": "Unshakable Rock",
+                  "desc": "Due to the effects of the Ley Line disturbance, the Moonstone Anchor's multi-layered Geo Ward becomes more resilient."
+                },
+                {
+                  "name": "Radiant Cocoon",
+                  "desc": "During battle, the Nemesis harnesses Geo to apply Radiant Cocoon to characters and increase its own Geo RES. Characters afflicted by Radiant Cocoon deal less DMG and receive less healing. When a character's HP is restored to full through healing, they break free from the cocoon and gain the Disentangled effect, which boosts their abilities for a short time. Once any character in the party successfully breaks free, the Nemesis loses the Geo RES granted by Radiant Cocoon.|}"
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/gensin-impact/images/0/02/Guardian_Blade_of_Drifting_Snow_Icon.png/revision/latest/scale-to-width-down/240?cb=20261014144513"
+              "image": "https://static.wikia.nocookie.net/gensin-impact/images/2/20/Radiant_Moongecko_Icon.png/revision/latest/scale-to-width-down/240?cb=20260225052747"
             }
           ]
         }
       ],
-      "closesAt": "2026-11-03T03:59",
+      "closesAt": "2026-12-15T03:59",
       "source": {
         "name": "Genshin Impact Wiki",
-        "page": "Stygian Onslaught/2026-09-30",
-        "url": "https://genshin-impact.fandom.com/wiki/Stygian_Onslaught/2026-09-30"
+        "page": "Stygian Onslaught/2026-11-11",
+        "url": "https://genshin-impact.fandom.com/wiki/Stygian_Onslaught/2026-11-11"
       },
-      "updatedAt": "2026-10-23"
+      "updatedAt": "2026-11-12"
     },
     "sd": {
       "periodStart": "2026-10-30T04:00",
