@@ -735,13 +735,119 @@
     "sd": {
       "periodStart": "2026-11-13T04:00",
       "periodEnd": "2026-11-27T04:00",
-      "notFound": true,
-      "flagged": [
-        "**Shiyu Defense**: the wiki still has no page for the period that started 2026-11-13T04:00 (3 days ago).",
-        "**Shiyu Defense**: the wiki still has no page for the period that started 2026-11-13T04:00 (4 days ago).",
-        "**Shiyu Defense**: the wiki still has no page for the period that started 2026-11-13T04:00 (5 days ago).",
-        "**Shiyu Defense**: the wiki still has no page for the period that started 2026-11-13T04:00 (6 days ago)."
-      ]
+      "title": "Critical Node",
+      "typesLabel": "Weak to",
+      "effects": [
+        {
+          "name": "Frontier buff 1",
+          "desc": "Attack specialty Agents' ATK increases by 35%, and Wind DMG increases by 20%."
+        },
+        {
+          "name": "Frontier buff 2",
+          "desc": "When an Agent's Ultimate hits an enemy, the enemy's Wind RES reduces by 15% for 30s; repeated triggers reset the duration."
+        }
+      ],
+      "choices": [],
+      "difficulties": [
+        {
+          "key": "fifth",
+          "name": "Fifth Frontier",
+          "level": 70,
+          "confirmed": true,
+          "parts": [
+            {
+              "label": "Room 1",
+              "boss": "Autonomous Assault Unit - Airspace Sentinel",
+              "types": [
+                "Ice",
+                "Wind"
+              ],
+              "resist": [
+                "Ether"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Attack specialty Agents' ATK increases by 35%, and Wind DMG increases by 20%."
+                },
+                {
+                  "name": "",
+                  "desc": "When an Agent's Ultimate hits an enemy, the enemy's Wind RES reduces by 15% for 30s; repeated triggers reset the duration."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Miasmic - Frenzied Maniac",
+                "Miasmic - Trinox"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/50/Enemy_Autonomous_Assault_Unit_-_Airspace_Sentinel.png/revision/latest/scale-to-width-down/240?cb=20260618093740"
+            },
+            {
+              "label": "Room 2",
+              "boss": "Miasmic - Doppelganger - The Defector",
+              "types": [
+                "Fire",
+                "Physical"
+              ],
+              "resist": [
+                "Ether"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Agents with the Anomaly specialty that deal Attribute Anomaly DMG and trigger a CRIT increase the whole squad's ATK by 10% and Attribute Anomaly DMG by 20% for 15s; repeated triggers reset the duration."
+                },
+                {
+                  "name": "",
+                  "desc": "When an Agent inflicts an enemy with Fire Anomaly, the target's Fire RES is reduced by 10% for 15s; repeated triggers reset the duration."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Mushussu"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/c/c0/Enemy_Miasmic_-_Doppelganger_-_The_Defector.png/revision/latest/scale-to-width-down/240?cb=20250906185239"
+            },
+            {
+              "label": "Room 3",
+              "boss": "Haytor",
+              "types": [
+                "Fire",
+                "Ice"
+              ],
+              "resist": [
+                "Electric"
+              ],
+              "level": 70,
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "Agents' Sheer DMG increases by 35%."
+                },
+                {
+                  "name": "",
+                  "desc": "After a Rupture specialty Agent uses their Ultimate, their Fire DMG and Ice DMG increases by 50% for 15s; repeated triggers reset the duration."
+                }
+              ],
+              "traitsLabel": "Room buffs",
+              "others": [
+                "Corrupted Bandit - Ruthless Fiend",
+                "Corrupted Bandit - Vicious Striker",
+                "Corrupted Bandit - Greedy Ranger"
+              ],
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5a/Enemy_Haytor.png/revision/latest/scale-to-width-down/240?cb=20251027145121"
+            }
+          ]
+        }
+      ],
+      "source": {
+        "name": "Zenless Zone Zero Wiki",
+        "page": "Shiyu Defense/Critical Node/2026-11-13",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-11-13"
+      },
+      "updatedAt": "2026-11-20"
     },
     "toa": {
       "periodStart": "2026-11-09T04:00",
