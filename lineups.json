@@ -1162,22 +1162,22 @@
       "updatedAt": "2026-11-11"
     },
     "da": {
-      "periodStart": "2026-11-06T04:00",
-      "periodEnd": "2026-11-20T04:00",
+      "periodStart": "2026-11-20T04:00",
+      "periodEnd": "2026-12-04T04:00",
       "title": "Deadly Assault",
       "typesLabel": "Weak to",
       "effects": [
         {
-          "name": "Blazing Radiance",
-          "desc": "Anomaly specialty Agents' ATK increases by 10%, and Fire Anomaly Buildup Rate increases by 10%.\nWhen an Agent deals Attribute Anomaly DMG and triggers a critical hit, the whole squad's Anomaly Proficiency increases by 30 and Attribute Anomaly DMG increases by 10% for 15s; repeated triggers reset the duration."
+          "name": "Sweeping Frost",
+          "desc": "Agents' Wind DMG increases by 30%. When attacks hit enemies, ignore 30% of their Wind RES.\nAttack specialty Agents' CRIT DMG increases by 40% and Basic Attack DMG increases by 50%."
         },
         {
-          "name": "Storm Tribulation",
-          "desc": "Agents' Wind DMG increases by 40%, and Wind CRIT DMG increases by 40%.\nAttack specialty Agents' ATK increases by 25%, and Basic Attack DMG increases by 40%."
+          "name": "Surging Thunder",
+          "desc": "Agents' DEF increases by 10%, and their Sharp DMG increases by 15%.\nAfter an Agent uses an EX Special Attack, Special Attack, or Ultimate, Electric DMG and Wind DMG increases by 20% for 15s; repeated triggers reset the duration."
         },
         {
-          "name": "Corroding Edge",
-          "desc": "Agents' Electric DMG increases by 30%, Sharp DMG increases by 10%.\nAttack or Armorer specialty Agents' PEN Ratio increases by 20%, and DMG dealt by Special Attack and EX Special Attack increases by 30%."
+          "name": "Spirit Zenith",
+          "desc": "Anomaly specialty Agents' ATK increases by 10%, and Fire and Wind Anomaly Buildup Rate increases by 10%.\nWhen an Agent deals Attribute Anomaly DMG and triggers a critical hit, the whole squad gains 20 Energy, and Attribute Anomaly DMG increases by 20% for 20s. This effect can trigger once every 20s."
         }
       ],
       "choices": [],
@@ -1190,46 +1190,6 @@
           "parts": [
             {
               "label": "First Challenge",
-              "boss": "Etheric Other - Truvia",
-              "types": [
-                "Fire"
-              ],
-              "resist": [
-                "Ice"
-              ],
-              "level": 70,
-              "note": "Suitable for Agents with Anomaly specialty.",
-              "traits": [
-                {
-                  "name": "",
-                  "desc": "When a Boss enemy is attacked, the attack's Anomaly Buildup Rate increases by 10%."
-                },
-                {
-                  "name": "",
-                  "desc": "Each time a Boss enemy enters an Attribute Anomaly state, it gains 1 stack of Afterglow Mark. When it reaches 3 stacks, all Afterglow Marks are consumed, and the Boss enters the Wax Wings state for 30 seconds."
-                },
-                {
-                  "name": "",
-                  "desc": "While in the Wax Wings state, the Boss takes 30% increased Attribute Anomaly DMG and accumulates an additional 5% Daze when entering an Attribute Anomaly state, but no longer gains Afterglow Marks."
-                },
-                {
-                  "name": "",
-                  "desc": "When the Boss is Stunned, it immediately enters the Wax Wings state. If it is already in the Wax Wings state, the duration is reset."
-                },
-                {
-                  "name": "",
-                  "desc": "Each successful against an enemy attack grants an additional 1,000 Performance Points;"
-                },
-                {
-                  "name": "",
-                  "desc": "After an enemy deploys a Spatial Barrier, each successful stomp on a golden area that triggers a Defensive Assist grants an additional 1,500 Performance Points; up to 5,000 Performance Points can be earned this way."
-                }
-              ],
-              "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/4/45/Enemy_Etheric_Other_-_Truvia.png/revision/latest/scale-to-width-down/240?cb=20261021224352"
-            },
-            {
-              "label": "Second Challenge",
               "boss": "Infernal Revenant",
               "types": [
                 "Wind",
@@ -1253,36 +1213,58 @@
               "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/12/Enemy_Infernal_Revenant.png/revision/latest/scale-to-width-down/240?cb=20260803005415"
             },
             {
-              "label": "Third Challenge",
-              "boss": "Autonomous Assault Unit - Typhon Destroyer",
+              "label": "Second Challenge",
+              "boss": "Kusarikku",
               "types": [
-                "Electric",
-                "Wind"
+                "Fire",
+                "Electric"
               ],
               "resist": [
-                "Fire"
+                "Ice"
               ],
               "level": 70,
+              "note": "Suitable for Agents with Armorer specialty.",
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agents inflict Overwhelmed when landing a Defensive Assist hit against a Boss enemy, and 3 stacks of Overwhelmed when accumulating 3 Defensive Assist hits and triggering Impaired. Each stack of Overwhelmed increases Daze by 15%, and Chain Attack and Ultimate DMG taken while Stunned by 10%. The enemy will fix the impaired parts and reset the impairment level while charging, and will reset its Overwhelmed stacks after recovering from Stun."
+                  "desc": "Attribute Anomaly DMG taken by Kusarikku is reduced by 40%."
                 },
                 {
                   "name": "",
-                  "desc": "Assist Points are not consumed for this battle."
+                  "desc": "When an Agent successfully uses a Defensive Assist against Kusarikku's , applies 1 stack of Exposed to Kusarikku. When Kusarikku becomes Stunned, applies 2 stacks of Exposed. Each stack of Exposed increases the Laceration DMG Kusarikku receives by 10%. Exposed can stack up to 4 times and lasts 30s. Repeated triggers reset the duration."
                 },
                 {
                   "name": "",
-                  "desc": "Successfully triggering a Perfect Assist grants 300 Performance Points."
-                },
-                {
-                  "name": "",
-                  "desc": "Successfully causing Impaired grants 900 Performance Points. A maximum of 5,000 Performance Points can be obtained."
+                  "desc": "After Kusarikku activates Corruptive Barrier, use Defensive Assist to counter Kusarikku's and leave it Impaired to gain 1000 Performance Points; successfully countering a with Defensive Assist grants 700 Performance Points; executing a Shutdown on Kusarikku's grants 2000 Performance Points. A maximum of 5000 Performance Points can be obtained."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/c/c3/Enemy_Autonomous_Assault_Unit_-_Typhon_Destroyer.png/revision/latest/scale-to-width-down/240?cb=20250115211600"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/d/d2/Enemy_Kusarikku.png/revision/latest/scale-to-width-down/240?cb=20260909034235"
+            },
+            {
+              "label": "Third Challenge",
+              "boss": "Phaethon of the Scorched Horizon",
+              "types": [
+                "Wind",
+                "Ice"
+              ],
+              "resist": [
+                "Physical"
+              ],
+              "level": 70,
+              "note": "Suitable for Agents with Anomaly specialty.",
+              "traits": [
+                {
+                  "name": "",
+                  "desc": "After Scorched Horizon activates Gale Scorcher, they gain 5 stacks of Into Flames. Each stack of Into Flames increases DMG dealt by 10% and reduces CRIT DMG taken by 25%. With Into Flames stacks, every time Scorched Horizon is inflicted with an Anomaly, one stack of Into Flames is lost, and subsequent Abloom DMG taken increases by 10% for 15s (max 3 stacks). Repeated triggers reset the duration."
+                },
+                {
+                  "name": "",
+                  "desc": "When Scorched Horizon is in Gale Scorcher state, Impairing them grants 1,250 Performance Points. Striking down Scorched Horizon when they're attacking in mid-air grants 1,500 Performance Points. Performing a Shutdown against Scorched Horizon's grants 2,000 Performance Points. Max 5,000 Performance Points."
+                }
+              ],
+              "traitsLabel": "Mechanics",
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/7/77/Enemy_Phaethon_of_the_Scorched_Horizon.png/revision/latest/scale-to-width-down/240?cb=20260506204905"
             }
           ]
         },
@@ -1294,41 +1276,43 @@
           "parts": [
             {
               "label": "Adversity Mode",
-              "boss": "Rewritten - Sanguine Sweeper",
+              "boss": "Integrated - Girtablullu",
               "types": [
                 "Wind",
                 "Fire"
               ],
-              "resist": [
-                "Physical"
-              ],
+              "resist": [],
               "level": 70,
               "traits": [
                 {
                   "name": "",
-                  "desc": "After Shutdown against a Boss enemy's Control Skill, Daze dealt by the whole squad's Agents increases by 15%, DEF increases by 30%, and when their attacks hit enemies, CRIT DMG increases by 75%, and Attribute Anomaly DMG increases by 15%."
+                  "desc": "When an Agent's attack hits a Boss, the Boss gains 1 point of Dissonance. The same Agent can apply 1 point of Dissonance at most once every 1s."
                 },
                 {
                   "name": "",
-                  "desc": "While the Boss is Stunned, Sharp DMG dealt by the whole squad's Agents increases by 60%, Wind and Ice CRIT DMG dealt increases by 80% and ignores 40% of the Boss's DEF."
+                  "desc": "When a Boss accumulates 10 points of Dissonance, all Dissonance points are immediately removed and the Boss enters the Dissonant state. While in the Dissonant state, Attribute Anomaly DMG dealt to the Boss increases by 20%, CRIT DMG increases by 120%, Sharp DMG dealt to the Boss increases by 65%, and Laceration DMG increases by 25% for 10s. Re-entering the Dissonant state resets the duration."
                 },
                 {
                   "name": "",
-                  "desc": "Each time you successfully neutralize the boss's attacks and trigger the boss's special stagger, it grants 1,000 Performance Points. During the , each successful counter against the Boss's attacks grants 500 Performance Points. Performing a Shutdown on the Boss's Control Skill grants 2,000 Performance Points. During the , when triggering Shutdown via , obtain the remaining Performance Points available from the current Control Skill. Maximum obtainable Performance Points: 5,000."
+                  "desc": "When an Agent successfully inflicts an Attribute Anomaly on a Boss, the whole squad's Anomaly Proficiency increases by 20 points for 10s, and repeated triggers reset the duration."
+                },
+                {
+                  "name": "",
+                  "desc": "Each time you successfully parry an attack from Girtablullu's summoned minions and trigger Active Conversion, you gain 500 Performance Points; successfully triggering against Girtablullu's attacks grants 1000 Performance Points, up to 3 times; if you successfully break the Corruptive Barrier within 25s of Girtablullu first activating , you gain 1500 Performance Points. A maximum of 5,000 Performance Points can be obtained."
                 }
               ],
               "traitsLabel": "Mechanics",
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/2c/Enemy_Rewritten_-_Sanguine_Sweeper.png/revision/latest/scale-to-width-down/240?cb=20260506205432"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/50/Enemy_Integrated_-_Girtablullu.png/revision/latest/scale-to-width-down/240?cb=20260803005102"
             }
           ]
         }
       ],
       "source": {
         "name": "Zenless Zone Zero Wiki",
-        "page": "Deadly Assault/2026-11-06",
-        "url": "https://zenless-zone-zero.fandom.com/wiki/Deadly_Assault/2026-11-06"
+        "page": "Deadly Assault/2026-11-20",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Deadly_Assault/2026-11-20"
       },
-      "updatedAt": "2026-11-07"
+      "updatedAt": "2026-11-23"
     }
   },
   "tracked": [
