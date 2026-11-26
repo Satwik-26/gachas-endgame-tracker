@@ -437,6 +437,14 @@
         {
           "name": "Ley Line Disorder · Second Half",
           "desc": "All party members have their Elemental Mastery increased by 200."
+        },
+        {
+          "name": "Ley Line Disorder",
+          "desc": "(Chamber 1) Battle Hardened Prism Slime - HP 118.75% to Local Legend (6,646,213pt)."
+        },
+        {
+          "name": "Ley Line Disorder",
+          "desc": "All other enemies' HP increased to 475%."
         }
       ],
       "choices": [],
@@ -496,7 +504,7 @@
         "page": "Spiral Abyss/Floors/2026-11-16",
         "url": "https://genshin-impact.fandom.com/wiki/Spiral_Abyss/Floors/2026-11-16"
       },
-      "updatedAt": "2026-11-16"
+      "updatedAt": "2026-11-26"
     },
     "it": {
       "periodStart": "2026-11-01T04:00",
