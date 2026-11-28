@@ -741,18 +741,18 @@
       "updatedAt": "2026-11-12"
     },
     "sd": {
-      "periodStart": "2026-11-13T04:00",
-      "periodEnd": "2026-11-27T04:00",
+      "periodStart": "2026-11-27T04:00",
+      "periodEnd": "2026-12-11T04:00",
       "title": "Critical Node",
       "typesLabel": "Weak to",
       "effects": [
         {
           "name": "Frontier buff 1",
-          "desc": "Attack specialty Agents' ATK increases by 35%, and Wind DMG increases by 20%."
+          "desc": "Attack specialty Agents' Wind DMG increases by 30% and CRIT DMG increases by 40%."
         },
         {
           "name": "Frontier buff 2",
-          "desc": "When an Agent's Ultimate hits an enemy, the enemy's Wind RES reduces by 15% for 30s; repeated triggers reset the duration."
+          "desc": "After an Agent uses EX Special Attack, attacks ignore 20% of the enemy's Wind RES on hit for 15s; repeated triggers reset the duration."
         }
       ],
       "choices": [],
@@ -765,38 +765,39 @@
           "parts": [
             {
               "label": "Room 1",
-              "boss": "Autonomous Assault Unit - Airspace Sentinel",
+              "boss": "Autonomous Tactical Unit - Conqueror",
               "types": [
-                "Ice",
-                "Wind"
+                "Wind",
+                "Electric"
               ],
               "resist": [
-                "Ether"
+                "Physical"
               ],
               "level": 70,
               "traits": [
                 {
                   "name": "",
-                  "desc": "Attack specialty Agents' ATK increases by 35%, and Wind DMG increases by 20%."
+                  "desc": "Attack specialty Agents' Wind DMG increases by 30% and CRIT DMG increases by 40%."
                 },
                 {
                   "name": "",
-                  "desc": "When an Agent's Ultimate hits an enemy, the enemy's Wind RES reduces by 15% for 30s; repeated triggers reset the duration."
+                  "desc": "After an Agent uses EX Special Attack, attacks ignore 20% of the enemy's Wind RES on hit for 15s; repeated triggers reset the duration."
                 }
               ],
               "traitsLabel": "Room buffs",
               "others": [
-                "Miasmic - Frenzied Maniac",
-                "Miasmic - Trinox"
+                "Special Anti-Riotboo",
+                "City Guardboo",
+                "Airspace Patrolboo"
               ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/50/Enemy_Autonomous_Assault_Unit_-_Airspace_Sentinel.png/revision/latest/scale-to-width-down/240?cb=20260618093740"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/1/19/Enemy_Autonomous_Tactical_Unit_-_Conqueror.png/revision/latest/scale-to-width-down/240?cb=20260909034227"
             },
             {
               "label": "Room 2",
-              "boss": "Miasmic - Doppelganger - The Defector",
+              "boss": "Miasmic - Autonomous Support Unit - Terror Raptor",
               "types": [
                 "Fire",
-                "Physical"
+                "Electric"
               ],
               "resist": [
                 "Ether"
@@ -805,25 +806,27 @@
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agents with the Anomaly specialty that deal Attribute Anomaly DMG and trigger a CRIT increase the whole squad's ATK by 10% and Attribute Anomaly DMG by 20% for 15s; repeated triggers reset the duration."
+                  "desc": "Armorer specialty Agents' DEF increases by 15%, and Sharp DMG increases by 15%."
                 },
                 {
                   "name": "",
-                  "desc": "When an Agent inflicts an enemy with Fire Anomaly, the target's Fire RES is reduced by 10% for 15s; repeated triggers reset the duration."
+                  "desc": "When an Agent's attack hits an enemy, it ignores 10% of the enemy's Fire RES and Electric RES."
                 }
               ],
               "traitsLabel": "Room buffs",
               "others": [
-                "Mushussu"
+                "Miasmic Trooper - Shieldguard",
+                "Lahmu",
+                "Miasmic Trooper - Cannoneer"
               ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/c/c0/Enemy_Miasmic_-_Doppelganger_-_The_Defector.png/revision/latest/scale-to-width-down/240?cb=20250906185239"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/9/92/Enemy_Miasmic_-_Autonomous_Support_Unit_-_Terror_Raptor.png/revision/latest/scale-to-width-down/240?cb=20250906184943"
             },
             {
               "label": "Room 3",
-              "boss": "Haytor",
+              "boss": "Miasmic - Thracian",
               "types": [
-                "Fire",
-                "Ice"
+                "Ether",
+                "Wind"
               ],
               "resist": [
                 "Electric"
@@ -832,30 +835,29 @@
               "traits": [
                 {
                   "name": "",
-                  "desc": "Agents' Sheer DMG increases by 35%."
+                  "desc": "Agents' Anomaly Proficiency increases by 30. After Stunning an enemy, their Stun recovery rate decreases by 10% for 15s; repeated triggers reset the duration."
                 },
                 {
                   "name": "",
-                  "desc": "After a Rupture specialty Agent uses their Ultimate, their Fire DMG and Ice DMG increases by 50% for 15s; repeated triggers reset the duration."
+                  "desc": "While in Ether Veil, Agent ATK increases by 15%, and attacks ignore 20% of the enemy's Ether RES."
                 }
               ],
               "traitsLabel": "Room buffs",
               "others": [
-                "Corrupted Bandit - Ruthless Fiend",
-                "Corrupted Bandit - Vicious Striker",
-                "Corrupted Bandit - Greedy Ranger"
+                "Ionized - Farbauti",
+                "Ionized - Dullahan"
               ],
-              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/5/5a/Enemy_Haytor.png/revision/latest/scale-to-width-down/240?cb=20251027145121"
+              "image": "https://static.wikia.nocookie.net/zenless-zone-zero/images/2/26/Enemy_Miasmic_-_Thracian.png/revision/latest/scale-to-width-down/240?cb=20250607225115"
             }
           ]
         }
       ],
       "source": {
         "name": "Zenless Zone Zero Wiki",
-        "page": "Shiyu Defense/Critical Node/2026-11-13",
-        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-11-13"
+        "page": "Shiyu Defense/Critical Node/2026-11-27",
+        "url": "https://zenless-zone-zero.fandom.com/wiki/Shiyu_Defense/Critical_Node/2026-11-27"
       },
-      "updatedAt": "2026-11-20"
+      "updatedAt": "2026-11-28"
     },
     "toa": {
       "periodStart": "2026-11-09T04:00",
